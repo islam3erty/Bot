@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-<a href=""></a>
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+?php
+
+include "curl.php";
+include "parser.php";
+$curl = new Engine();
+
+define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
+define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
+
+function ler($message){
+	$message_id = $message['message_id'];
+	$chat_id = $message['chat']['id'];
+
+	
+
+
+
+
+?>
