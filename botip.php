@@ -53,7 +53,7 @@ define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
 define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
 
 $conteudo = file_get_contents("php://input");
-$update = json_decode($conteudo, true);
+$update = json_decode($conteudo, TRUE);
 $mensagem = $update["message"];
 
 $chat_id=$mensagem["chat"]["id"];
@@ -62,7 +62,7 @@ $texto = $mensagem["text"];
 $reply = "eu sou o cara mais foda do mundo";
 
 if($texto === "/start"){
-	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."text=".$reply);
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$reply);
 }
 
 
