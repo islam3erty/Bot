@@ -38,7 +38,7 @@ class Engine {
 		curl_close($ch);
 
 		$json = json_decode($output);
-		return urlencode("ip: ".$json->ip."\ncidade: ".$json->city."<br/>"."Região: ".$json->region."<br/>"."Pais: ".$json->country."<br/>"."Latitude e Longitude: ".$json->loc."<br/>"."Codigo postal: ".@$json->postal."<br/>"."Servidor da: ".$json->org);
+		return urlencode("ip: ".$json->ip."\ncidade: ".$json->city."\nRegião: ".$json->region."\nPais: ".$json->country."\nLatitude e Longitude: ".$json->loc."\nCodigo postal: ".@$json->postal."\nServidor da: ".$json->org);
 	}
 
 	public function enviarMensagem($metodo, $parametros){
