@@ -62,7 +62,7 @@ $texto = $mensagem["text"];
 $reply = "eu sou o cara mais foda do mundo";
 
 if($texto === "/start"){
-	file_get_contents(URL."sendmessage?chat_id=".$chat_id."text=".$reply);
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."text=".$reply);
 }
 
 
