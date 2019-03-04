@@ -67,7 +67,7 @@ $reply = $motor->getDetails();
 
 if($texto === "/start"){
 	//file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$reply);
-	return $strings->falas["start"];
+	return $this->falas["start"];
 
 }
 
