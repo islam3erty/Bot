@@ -68,14 +68,15 @@ $texto = $mensagem["text"];
 
 if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
-}else if($texto==="/bin"){$bin = substr($texto, 5, 10);
+}else if($texto==="/bin"){
+	$bin = substr($texto, 5, 10);
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$motor->bin($bin));
 }else if($texto === "/acerca"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["acerca"]);
-}else if("/sobre"){
+}else if($texto === "/sobre"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["sobre"]);
-}else if("/gen"){
-	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função indisponivel...");
+}else if($texto === "/ferramentas"){
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["ferramentas"]);
 }else{
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função desconhecida");
 }
