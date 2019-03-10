@@ -71,7 +71,7 @@ class Strings
 		"erroHTTP"=>"",
 		"processando"=>"Processando...",
 		"sobre"=>"Criador: Comentador | https://t.me/Comentered. Linguagem: PHP Wsociety@",
-		"ferramentas"=>"Bin-checker:/bin 457173"."<br>"."Bin-Generator: /gen"
+		"ferramentas"=>"Bin-checker:/bin 457173"."\n\rBin-Generator: /gen"
 	];
 }
 
