@@ -26,35 +26,7 @@ class Engine {
 		$json = json_decode($output);
 		return $json->wx_desc."<br/>"."Temperatura em Celcius: ".$json->temp_c."°C"."<br/>"."Temperatura em Faranheith: ".$json->temp_f."°F"."<br/>"."Humidade: ".$json->humid_pct."<br/>"."Velocidade do vento(Km/h): ".$json->windspd_kmh."km/h"."<br/>"."Velocidade do vento(m/h): ".$json->windspd_mph."m/h"."<br/>"."Velocidade do vento(m/s): ".$json->windspd_ms."m/s"."<br/>"."Percentagem de Nuvens: ".$json->cloudtotal_pct."%"."<br/>"."Visibilidade: ".$json->vis_km."<br/>"."Pressão do ar: ".$json->slp_mb;
 	}*/
-
-	public function getDetails(){
 		
-		$ch = curl_init();
-
-		curl_setopt($ch, CURLOPT_URL, "http://ipinfo.io/?token=03a2079b5357d1");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$output = curl_exec($ch);
-		$info = curl_getinfo($ch);
-		curl_close($ch);
-
-		$json = json_decode($output);
-		return urlencode("ip: ".$json->ip."\ncidade: ".$json->city."\nRegião: ".$json->region."\nPais: ".$json->country."\nLatitude e Longitude: ".$json->loc."\nCodigo postal: ".@$json->postal."\nServidor da: ".$json->org);
-	}
-
-	public function enviarMensagem($metodo, $parametros){
-		$options = [
-			"HTTP"=>[
-				"method"=> "POST",
-				"content"=> json_encode($parametros),
-				"header"=>"content-type: aplication/json\r\n".
-						  "accept: aplication/json\r\n"
-			]
-		];
-
-		$context = stream_context_create( $options );
-		file_get_contents($this->API_URL.$metodo,false,$context);
-		
-	}
 
 	public function remoteIp($ip){
 		$ch = curl_init();
@@ -68,6 +40,26 @@ class Engine {
 		$json = json_decode($output);
 		return "ip: ".$json->ip."<br/>"."cidade: ".$json->city."<br/>"."Região: ".$json->region."<br/>"."Pais: ".$json->country."<br/>"."Latitude e Longitude: ".$json->loc."<br/>"."Codigo postal: ".@$json->postal."<br/>"."Servidor da: ".$json->org;
 	}
+
+	public function bin($bin){
+		$ch = curl_init();
+
+		$url = "https://lookup.binlist.net/".$bin;
+
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept-Version: 3"));
+		$resposta = curl_exec($ch);
+		$info = curl_getinfo($ch);
+		curl_close($ch);
+
+		$json = json_decode($resposta);
+
+
+		echo "Bandeira: ".$json->scheme."<br>"."Tipo: ".$json->type."<br>"."Brand: ".$json->brand."<br>"."País: ".$json->country->name."(".$json->country->emoji.")"."<br>"."Latitude: ".$json->country->latitude."<br>"."Longitude: ".$json->country->longitude."<br>"."Banco: ".$json->bank->name."<br>"."Website: ".$json->bank->url."<br>"."Phone: ".$json->bank->phone."<br>"."Cidade: ".$json->bank->city;
+
+	}
 }
 
 
@@ -75,16 +67,20 @@ class Strings
 {
 
 	public $falas = [
-		"start"=>"Bem vindo ao Ipf1nd! Fui programado para localizar e dar informações sobre IP* /instruções*"."<br/>"."* /sobre *",
-		"instruções"=>"Como vê a informação sobre o seu ip foi mostrada quando iniciou uma conversa comigo!. Agora para saber sobre um ip que não seja o seu basta me enviar o Ip","erroVazio"=>"Nenhum ip informado",
-		"erroHTTP"=>"Ip não disponivel para localização",
-		"problemas"=>"Criador: C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶  (https://t.me/Comentered)",
+		"start"=>"Eai man. Por enquanto minhas unicas funcões são gerar e checar Bins e INN. Para saber o que é uma bin clica na funcão /acerca. clique no comando a seguir para saber como o que faço. /ferramentas para duvidas e perguntas /sobre. " ,
+		
+		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.",
+		
+		"erroHTTP"=>"",
+		
 		"processando"=>"Processando...",
-		"sobre"=>"Endereço IP” significa endereço de protocolo de Internet, e cada dispositivo que está conectado a uma rede (como a Internet) possui um.
+		
+		"sobre"=>"Criador: Comentador | https://t.me/Comentered. Linguagem: PHP Wsociety@",
 
-		Um endereço IP é similar a seu número de telefone. Seu número de telefone é um conjunto único de números que identifica seu telefone, de forma que outras pessoas possam ligar para você. Da mesma forma, um endereço IP é um conjunto único de números que identifica seu computador, de forma que ele possa enviar e receber dados com outros computadores.
+		"ferramentas"=>urlencode("Bin-checker:/bin 457173"."<br>"."Bin-Generator: /gen")
 
-		Atualmente, a maioria dos endereços IP consistem em quatro conjuntos de números, cada um separado por um ponto. 192.168.1.42 é um exemplo de endereço IP."
+
+	
 
 	];
 }
