@@ -65,26 +65,20 @@ $texto = $mensagem["text"];
 
 $reply = $motor->getDetails();
 
-switch($texto){
-	case "/start":
-		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$this->falas["start"]);
-	break;
 
-	case "/bin":
-		$bin = substr($texto, 5, 10);
+	if ($texto === "/start"){
+		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$this->falas["start"]);
+	}else if($texto==="/bin"){$bin = substr($texto, 5, 10);
 		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$motor->bin($bin));
-	break;
-	case "/acerca":
+	}else if($texto === "/acerca"){
 		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$this->falas["acerca"]);
-	break;
-	case "/sobre":
+	}else if("/sobre"){
 		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$this->falas["sobre"]);
-	break;
-	case "/gen":
+	}else if("/gen"){
 		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função indisponivel...");
-	break;
-	default:
+	}else{
 		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função desconhecida");
+	}
 
 
 
