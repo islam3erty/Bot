@@ -63,22 +63,22 @@ $mensagem = $update["message"];
 $chat_id=$mensagem["chat"]["id"];
 $texto = $mensagem["text"];
 
-$reply = $motor->getDetails();
 
 
-	if ($texto === "/start"){
-		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$this->falas["start"]);
-	}else if($texto==="/bin"){$bin = substr($texto, 5, 10);
-		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$motor->bin($bin));
-	}else if($texto === "/acerca"){
-		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$this->falas["acerca"]);
-	}else if("/sobre"){
-		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$this->falas["sobre"]);
-	}else if("/gen"){
-		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função indisponivel...");
-	}else{
-		file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função desconhecida");
-	}
+
+if ($texto === "/start"){
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
+}else if($texto==="/bin"){$bin = substr($texto, 5, 10);
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$motor->bin($bin));
+}else if($texto === "/acerca"){
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["acerca"]);
+}else if("/sobre"){
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["sobre"]);
+}else if("/gen"){
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função indisponivel...");
+}else{
+	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função desconhecida");
+}
 
 
 
