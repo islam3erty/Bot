@@ -68,7 +68,7 @@ $texto = $mensagem["text"];
 
 if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
-}else if($texto==="/bin"){
+}else if(substr($texto, 0, 4)==="/bin"){
 	$bin = substr($texto, 5, 10);
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$motor->bin($bin));
 }else if($texto === "/acerca"){
