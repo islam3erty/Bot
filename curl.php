@@ -56,7 +56,7 @@ class Engine {
 		$json = json_decode($resposta);
 
 
-		return urlencode("Bandeira: ".$json->scheme."\nTipo: ".$json->type."<br>"."Brand: ".$json->brand."<br>"."País: ".$json->country->name."(".$json->country->emoji.")"."<br>"."Latitude: ".$json->country->latitude."<br>"."Longitude: ".$json->country->longitude."<br>"."Banco: ".$json->bank->name."<br>"."Website: ".$json->bank->url."<br>"."Phone: ".$json->bank->phone."<br>"."Cidade: ".$json->bank->city);
+		return urlencode("Bandeira: ".$json->scheme."\nTipo: ".$json->type."\nBrand: ".$json->brand."\nPaís: ".$json->country->name."(".$json->country->emoji.")"."\nLatitude: ".$json->country->latitude."\nLongitude: ".$json->country->longitude."\nBanco: ".$json->bank->name."\nWebsite: ".$json->bank->url."\nPhone: ".$json->bank->phone."\nCidade: ".$json->bank->city);
 
 	}
 }
