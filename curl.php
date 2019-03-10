@@ -1,9 +1,8 @@
 <?php
 class Engine {
 
-	private $BOT_TOKEN = "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE";
-	private $API_URL = "https://api.telegram.org/bot".BOT_TOKEN."/";
-	private $str = null;
+	
+	
 
 	public function __construct(){
 		$this->str = new Strings();
@@ -67,21 +66,12 @@ class Strings
 {
 
 	public $falas = [
-		"start"=>"Eai man. Por enquanto minhas unicas funcões são gerar e checar Bins e INN. Para saber o que é uma bin clica na funcão /acerca. clique no comando a seguir para saber como o que faço. /ferramentas para duvidas e perguntas /sobre. " ,
-		
+		"start"=>"Eai man. Por enquanto minhas unicas funcões são gerar e checar Bins e INN. Para saber o que é uma bin clica na funcão /acerca. clique no comando a seguir para saber como o que faço. /ferramentas para duvidas e perguntas /sobre. ",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.",
-		
 		"erroHTTP"=>"",
-		
 		"processando"=>"Processando...",
-		
 		"sobre"=>"Criador: Comentador | https://t.me/Comentered. Linguagem: PHP Wsociety@",
-
-		"ferramentas"=>urlencode("Bin-checker:/bin 457173"."<br>"."Bin-Generator: /gen")
-
-
-	
-
+		"ferramentas"=>"Bin-checker:/bin 457173"."<br>"."Bin-Generator: /gen"
 	];
 }
 
