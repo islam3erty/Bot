@@ -24,26 +24,6 @@ class Engine {
 		return $json->wx_desc."<br/>"."Temperatura em Celcius: ".$json->temp_c."°C"."<br/>"."Temperatura em Faranheith: ".$json->temp_f."°F"."<br/>"."Humidade: ".$json->humid_pct."<br/>"."Velocidade do vento(Km/h): ".$json->windspd_kmh."km/h"."<br/>"."Velocidade do vento(m/h): ".$json->windspd_mph."m/h"."<br/>"."Velocidade do vento(m/s): ".$json->windspd_ms."m/s"."<br/>"."Percentagem de Nuvens: ".$json->cloudtotal_pct."%"."<br/>"."Visibilidade: ".$json->vis_km."<br/>"."Pressão do ar: ".$json->slp_mb;
 	}*/
 
-
-	
-
-	public function getDetails(){
-		
-		$ch = curl_init();
-
-		curl_setopt($ch, CURLOPT_URL, "http://ipinfo.io/?token=03a2079b5357d1");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$output = curl_exec($ch);
-		$info = curl_getinfo($ch);
-		curl_close($ch);
-
-		$json = json_decode($output);
-		return urlencode("ip: ".$json->ip.PHP_EOL."cidade: ".$json->city."<br/>"."Região: ".$json->region."<br/>"."Pais: ".$json->country."<br/>"."Latitude e Longitude: ".$json->loc."<br/>"."Codigo postal: ".@$json->postal."<br/>"."Servidor da: ".$json->org);
-	}
-
-	
-		
-
 	public function remoteIp($ip){
 		$ch = curl_init();
 
@@ -54,7 +34,7 @@ class Engine {
 		curl_close($ch);
 
 		$json = json_decode($output);
-		return "ip: ".$json->ip."<br/>"."cidade: ".$json->city."<br/>"."Região: ".$json->region."<br/>"."Pais: ".$json->country."<br/>"."Latitude e Longitude: ".$json->loc."<br/>"."Codigo postal: ".@$json->postal."<br/>"."Servidor da: ".$json->org;
+		return "ip: ".$json->ip."\ncidade: ".$json->city."\nRegião: ".$json->region."\nPais: ".$json->country."\nLatitude e Longitude: ".$json->loc."\nCodigo postal: ".@$json->postal."\nServidor da: ".$json->org;
 	}
 
 	public function apiRequest($metodo, $param){
@@ -84,6 +64,24 @@ class Engine {
         $this->apiRequest("sendMessage", $param);
 
 }
+	public function bin($bin){
+	$ch = curl_init();
+
+	$url = "https://lookup.binlist.net/";
+
+	curl_setopt($ch, CURLOPT_URL, $url.$bin);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept-Version: 3"));
+	$resposta = curl_exec($ch);
+	$info = curl_getinfo($ch);
+	curl_close($ch);
+
+	$json = json_decode($resposta);
+
+
+	return "Bandeira: ".$json->scheme."\nTipo: ".$json->type."\nBrand: ".$json->brand."\nPaís: ".$json->country->name."(".$json->country->emoji.")"."\nLatitude: ".$json->country->latitude."\nLongitude: ".$json->country->longitude."\nBanco: ".$json->bank->name."\nWebsite: ".$json->bank->url."\nPhone: ".$json->bank->phone."\nCidade: ".$json->bank->city;
+}
 
 }
 
@@ -92,10 +90,10 @@ class Strings
 {
 
 	public $falas = [
-		"start"=>"Eai mano você ta querendo checar sua bin?. ta no lugar certo. clique no comando /ferramentas para saber todas minhas funcionalidades.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\nDuvidas clique no comando /sobre.",
+		"start"=>"Eai mano você ta querendo checar sua bin?. ta no lugar certo. clique no comando /ferramentas para saber todas minhas funcionalidades.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\nLinguagem: PHP Wsociety@",
-		"ferramentas"=>"/bin 404528\n/gen"
+		"ferramentas"=>"Ferramentas:\n/bin 404528\n\n/gen"
 
 	];
 }
