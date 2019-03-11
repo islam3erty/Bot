@@ -1,5 +1,6 @@
 <?php
 
+
 require "curl.php";
 $motor = new Engine();
 $strings = new Strings();
@@ -34,45 +35,27 @@ $texto = $mensagem["text"];
 }*/
 
 if ($texto === "/start"){
-	$params = [
-		"chat_id"=>$chat_id,
-		"$text"=>$strings->falas["start"]
-	];
-	$motor->apiRequest("sendmessage", $params);
+	
+	$motor->env($chat_id, $strings->falas["start"]);
+
 }else if(substr($texto, 0, 4)==="/bin"){
 	$bin = substr($texto, 5, 10);
-	$params=[
-		"chat_id"=>$chat_id,
-		"text"=>$motor->bin($bin)
-];
 	
-	$motor->apiRequest("sendmessage", $params);
+	$motor->env($chat_id, $motor->bin($bin));
 
 }else if($texto === "/acerca"){
-	$params=[
-		"chat_id"=>$chat_id,
-		"text"=>$strings->falas["acerca"]
-	];
-	$motor->apiRequest("sendmessage", $params);
+	
+	$motor->env($chat_id, $strings->falas["acerca"]);
 
 }else if($texto === "/sobre"){
-	$params=[
-		"chat_id"=>$chat_id,
-		"text"=>$strings->falas["sobre"]
-	];
-	$motor->apiRequest("sendmessage", $params);
+	
+	$motor->env($chat_id, $strings->falas["sobre"]);
 }else if($texto === "/ferramentas"){
-	$params=[
-		"chat_id"=>$chat_id,
-		"text"=>$strings->falas["ferramentas"]
-	];
-	$motor->apiRequest("sendmessage", $params);
+	
+	$motor->env($chat_id, $strings->falas["ferramentas"]);
 }else{
-	$params=[
-		"chat_id"=>$chat_id,
-		"text"=>"Função desconhecida"
-	];
-	$motor->apiRequest("sendmessage", $params);
+	
+	$motor->env($chat_id, "Função desconhecida");
 }
 
 
