@@ -1,53 +1,5 @@
 <?php
 
-/*include "curl.php";
-$curl = new Engine();
-$strings = new Strings();
-
-define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
-define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
-
-function process($message){
-		$chat_id=$message['chat']['id'];
-		$message_id=$message["message_id"];
-
-		if(isset($message['text'])){
-			$text = $message['text'];
-
-			if(strpos($text, "/start")){
-				$param = [
-					"chat_id"=>$chat_id, 
-					"text"=> $strings->str->falas['start'].
-					" Para além do seu Ip pode saber sobre outro ip basta informa-lo."];
-				$ip = [
-					"chat_id"=>$chat_id,
-					"text"=>$curl->getDetails()
-				];
-
-				$curl->enviarMensagem('sendMessage', $param);
-				$curl->enviarMensagem('sendMessage', $ip);
-
-			}
-		}else{
-			if($text === "/instruções"){
-				$strings->falas["instruções"];
-			}else if($text ==="/sobre"){
-				$strings->fala["sobre"];
-			}else{
-				$strings->falas["processando"]
-				$curl->remoteIp($text);
-			}
-			
-		}
-
-	}
-
-$update_response = file_get_contents("php://input");
-$update = json_decode($update_response, true);
-
-if(isset($update["message"])){
-	process($update["message"]);
-}*/
 require "curl.php";
 $motor = new Engine();
 $strings = new Strings();
@@ -66,7 +18,7 @@ $texto = $mensagem["text"];
 
 
 
-if ($texto === "/start"){
+/*if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
 }else if(substr($texto, 0, 4)==="/bin"){
 	$bin = substr($texto, 5, 10);
@@ -79,6 +31,48 @@ if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["ferramentas"]);
 }else{
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função desconhecida");
+}*/
+
+if ($texto === "/start"){
+	$params = [
+		"chat_id"=>$chat_id,
+		"$text"=>$strings->falas["start"]
+	];
+	$motor->apiRequest("sendmessage", $params);
+}else if(substr($texto, 0, 4)==="/bin"){
+	$bin = substr($texto, 5, 10);
+	$params=[
+		"chat_id"=>$chat_id,
+		"text"=>$motor->bin($bin))
+];
+	
+	$motor->apiRequest("sendmessage", $params);
+
+}else if($texto === "/acerca"){
+	$params=[
+		"chat_id"=>$chat_id,
+		"text"=>$strings->falas["acerca"]
+	];
+	$motor->apiRequest("sendmessage", $params);
+
+}else if($texto === "/sobre"){
+	$params=[
+		"chat_id"=>$chat_id,
+		"text"=>$strings->falas["sobre"]
+	];
+	$motor->apiRequest("sendmessage", $params);
+}else if($texto === "/ferramentas"){
+	$params=[
+		"chat_id"=>$chat_id,
+		"text"=>$strings->falas["ferramentas"]
+	];
+	$motor->apiRequest("sendmessage", $params);
+}else{
+	$params=[
+		"chat_id"=>$chat_id,
+		"text"=>"Função desconhecida"
+	];
+	$motor->apiRequest("sendmessage", $params);
 }
 
 
