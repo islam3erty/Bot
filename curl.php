@@ -92,7 +92,7 @@ class Strings
 {
 
 	public $falas = [
-		"start"=>"Eai mano você ta querendo checar sua bin?. ta no lugar certo. clique no comando /ferramentas para saber todas minhas funcionalidades.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\nDuvidas clique no comando /sobre."
+		"start"=>"Eai mano você ta querendo checar sua bin?. ta no lugar certo. clique no comando /ferramentas para saber todas minhas funcionalidades.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\nDuvidas clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"/bin 404528\n/gen"
