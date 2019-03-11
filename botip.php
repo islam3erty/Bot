@@ -18,7 +18,7 @@ $opc["texto"] = $mensagem["text"];
 
 
 
-
+//Metodo Get pra quem quiser simplicidade. Mais n faz quebra de linhas. by C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ 
 /*if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
 }else if(substr($texto, 0, 4)==="/bin"){
@@ -39,7 +39,7 @@ if ($opc["texto"] === "/start"){
 	$motor->env($opc, $strings->falas["start"]);
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
-	$bin = substr($texto, 5, 10);
+	$bin = substr($opc["texto"], 5, 10);
 	
 	$motor->env($opc, $motor->bin($bin));
 
