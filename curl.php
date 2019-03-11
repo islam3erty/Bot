@@ -92,19 +92,14 @@ class Strings
 {
 
 	public $falas = [
-		"start"=>"Bem vindo ao Ipf1nd! Fui programado para localizar e dar informações sobre IP* /instruções*"."<br/>"."* /sobre *",
-		"instruções"=>"Como vê a informação sobre o seu ip foi mostrada quando iniciou uma conversa comigo!. Agora para saber sobre um ip que não seja o seu basta me enviar o Ip","erroVazio"=>"Nenhum ip informado",
-		"erroHTTP"=>"Ip não disponivel para localização",
-		"problemas"=>"Criador: C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶  (https://t.me/Comentered)",
-		"processando"=>"Processando...",
-		"sobre"=>"Endereço IP” significa endereço de protocolo de Internet, e cada dispositivo que está conectado a uma rede (como a Internet) possui um.
-
-		Um endereço IP é similar a seu número de telefone. Seu número de telefone é um conjunto único de números que identifica seu telefone, de forma que outras pessoas possam ligar para você. Da mesma forma, um endereço IP é um conjunto único de números que identifica seu computador, de forma que ele possa enviar e receber dados com outros computadores.
-
-		Atualmente, a maioria dos endereços IP consistem em quatro conjuntos de números, cada um separado por um ponto. 192.168.1.42 é um exemplo de endereço IP."
+		"start"=>"Eai mano você ta querendo checar sua bin?. ta no lugar certo. clique no comando /ferramentas para saber todas minhas funcionalidades.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\nDuvidas clique no comando /sobre."
+		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.",
+		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\nLinguagem: PHP Wsociety@",
+		"ferramentas"=>"/bin 404528\n/gen"
 
 	];
 }
+
 
 
 
