@@ -61,7 +61,7 @@ class Engine {
 	}
 	
 	public function apiRequest($metodo, $param){
-
+	$param = json_encode($param);
 	$ch = curl_init();
 
 	curl_setopt($ch, CURLOPT_URL, API_URL.$metodo."?");
