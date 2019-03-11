@@ -67,9 +67,9 @@ class Engine {
 	public function bin($bin){
 	$ch = curl_init();
 
-	$url = "https://lookup.binlist.net/";
+	$url = "https://lookup.binlist.net/".$bin;
 
-	curl_setopt($ch, CURLOPT_URL, $url.$bin);
+	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept-Version: 3"));
