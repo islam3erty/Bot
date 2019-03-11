@@ -59,6 +59,22 @@ class Engine {
 		return urlencode("Bandeira: ".$json->scheme."\nTipo: ".$json->type."\nBrand: ".$json->brand."\nPaís: ".$json->country->name."(".$json->country->emoji.")"."\nLatitude: ".$json->country->latitude."\nLongitude: ".$json->country->longitude."\nBanco: ".$json->bank->name."\nWebsite: ".$json->bank->url."\nPhone: ".$json->bank->phone."\nCidade: ".$json->bank->city);
 
 	}
+	
+	public function apiRequest($metodo, $param){
+
+	$ch = curl_init();
+
+	curl_setopt($ch, CURLOPT_URL, API_URL.$metodo."?");
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($paramm));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$resp = curl_exec($ch);
+	curl_close($ch);
+
+	
+	}
 }
 
 
