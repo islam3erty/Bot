@@ -43,7 +43,7 @@ if ($texto === "/start"){
 	$bin = substr($texto, 5, 10);
 	$params=[
 		"chat_id"=>$chat_id,
-		"text"=>$motor->bin($bin))
+		"text"=>$motor->bin($bin)
 ];
 	
 	$motor->apiRequest("sendmessage", $params);
