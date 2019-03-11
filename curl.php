@@ -73,9 +73,9 @@ class Engine {
 
 }
 
-	public function env($chat, $msg){
+	public function env($opc, $msg){
         $param = [
-            "chat_id" => $chat_id,
+            "chat_id" => $opc["chat_id"],
             "disable_web_page_preview" => 1,
             "parse_mode" => "Markdown",
             "text" => $msg
