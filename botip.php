@@ -12,9 +12,9 @@ define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
 $conteudo = file_get_contents("php://input");
 $update = json_decode($conteudo, TRUE);
 $mensagem = $update["message"];
-
-$chat_id=$mensagem["chat"]["id"];
-$texto = $mensagem["text"];
+$opc = [];
+$opc["chat_id"]=$mensagem["chat"]["id"];
+$opc["texto"] = $mensagem["text"];
 
 
 
@@ -34,28 +34,28 @@ $texto = $mensagem["text"];
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função desconhecida");
 }*/
 
-if ($texto === "/start"){
+if ($opc["texto"] === "/start"){
 	
-	$motor->env($chat_id, $strings->falas["start"]);
+	$motor->env($opc, $strings->falas["start"]);
 
-}else if(substr($texto, 0, 4)==="/bin"){
+}else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($texto, 5, 10);
 	
-	$motor->env($chat_id, $motor->bin($bin));
+	$motor->env($opc, $motor->bin($bin));
 
-}else if($texto === "/acerca"){
+}else if($opc["texto"] === "/acerca"){
 	
-	$motor->env($chat_id, $strings->falas["acerca"]);
+	$motor->env($opc, $strings->falas["acerca"]);
 
-}else if($texto === "/sobre"){
+}else if($opc["texto"] === "/sobre"){
 	
-	$motor->env($chat_id, $strings->falas["sobre"]);
-}else if($texto === "/ferramentas"){
+	$motor->env($opc, $strings->falas["sobre"]);
+}else if($opc["texto"] === "/ferramentas"){
 	
-	$motor->env($chat_id, $strings->falas["ferramentas"]);
+	$motor->env($opc, $strings->falas["ferramentas"]);
 }else{
 	
-	$motor->env($chat_id, "Função desconhecida");
+	$motor->env($opc, "Função desconhecida");
 }
 
 
