@@ -61,10 +61,14 @@ class Engine {
 	}
 	
 	public function apiRequest($metodo, $param){
-	$param = json_encode($param);
+	
 	$ch = curl_init();
 
 	curl_setopt($ch, CURLOPT_URL, API_URL.$metodo."?");
+	curl_setopt($ch, CURLOPT_HTTPHEADER,
+            array(
+                "Content-Type" => "multipart/form-data"
+            ));
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
