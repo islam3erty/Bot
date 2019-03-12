@@ -51,22 +51,22 @@ if ($opc["texto"] === "/start"){
 	$motor->env($opc, $strings->falas["bandeiras"]);
 
 }else if($opc["texto"] === "/MasterCard"){
-	$motor->env($opc, $motor->ccGen("mastercard"));
+	$motor->env($opc, $motor->genCC("mastercard"));
 
 }else if($opc["texto"] === "/Visa"){
-	$motor->env($opc, $motor->ccGen("visa"));
+	$motor->env($opc, $motor->genCC("visa"));
 
 }else if($opc["texto"] === "/Amex"){
-	$motor->env($opc, $motor->ccGen("amex"));
+	$motor->env($opc, $motor->genCC("amex"));
 
 }else if($opc["texto"] === "/Diners"){
-	$motor->env($opc, $motor->ccGen("diners"));
+	$motor->env($opc, $motor->genCC("diners"));
 
 }else if($opc["texto"] === "/Maestro"){
-	$motor->env($opc, $motor->ccGen("maestro"));
+	$motor->env($opc, $motor->genCC("maestro"));
 
 }else if($opc["texto"] === "/Jcb"){
-	$motor->env($opc, $motor->ccGen("jcb"));
+	$motor->env($opc, $motor->genCC("jcb"));
 }else if($opc["texto"] === "/BinGen"){
 	$motor->env($opc, $motor->binGen());
 }else{
