@@ -52,7 +52,7 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/ccgen"){
 	
-	$motor->env($opc, $strings->falas["bandeiras"]);
+	$motor->keyboard($opc, $strings->falas["bandeiras"]);
 
 }else if($opc["texto"] === "/mastercard"){
 	$motor->env($opc, $motor->genCC("mastercard"));
