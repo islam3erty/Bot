@@ -121,8 +121,8 @@ class Strings
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"Ferramentas:\nChecar Bin: /bin 404528\n\nGerar Cartão de Credito: /CCGen\n\nGerar Bin: /BinGen\n\nGeolocalizar ip: /ip 159.89.157.64",
 		"bandeiras"=>[[["text"=>"/MasterCard", "visa"=>"/Visa" /*/Maestro\n\n/Amex\n\n/Jcb/\n\n/Diners"*/]]],
-		"sintaxes"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar"
-		
+		"sintaxes"=>["bin"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar"
+		]
 
 	];
 }
