@@ -29,13 +29,13 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
 
-}else if(substr($opc["texto"], 0, 4)==="/bin" or "/bin@InformedBot"){
+}else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
 
-	if(empty($bin)==false){
-		$motor->env($opc, $motor->bin($bin));
-	}else{
+	if(empty($bin)==false && strlen($bin) < 6){
 		$motor->env($opc, $strings->falas["sintaxe"]["bin"]);
+	}else{
+		$motor->env($opc, $motor->bin($bin));
 	}
 
 }else if($opc["texto"] === "/acerca"){
@@ -50,28 +50,28 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["ferramentas"]);
 
-}else if($opc["texto"] === "/CCGen"){
+}else if($opc["texto"] === "/ccgen"){
 	
 	$motor->env($opc, $strings->falas["bandeiras"]);
 
-}else if($opc["texto"] === "/MasterCard"){
+}else if($opc["texto"] === "/mastercard"){
 	$motor->env($opc, $motor->genCC("mastercard"));
 
-}else if($opc["texto"] === "/Visa"){
+}else if($opc["texto"] === "/visa"){
 	$motor->env($opc, $motor->genCC("visa"));
 
-}else if($opc["texto"] === "/Amex"){
+}else if($opc["texto"] === "/amex"){
 	$motor->env($opc, $motor->genCC("amex"));
 
-}else if($opc["texto"] === "/Diners"){
+}else if($opc["texto"] === "/diners"){
 	$motor->env($opc, $motor->genCC("diners"));
 
-}else if($opc["texto"] === "/Maestro"){
+}else if($opc["texto"] === "/maestro"){
 	$motor->env($opc, $motor->genCC("maestro"));
 
-}else if($opc["texto"] === "/Jcb"){
+}else if($opc["texto"] === "/jcb"){
 	$motor->env($opc, $motor->genCC("jcb"));
-}else if($opc["texto"] === "/BinGen"){
+}else if($opc["texto"] === "/bingen"){
 	$motor->env($opc, $motor->binGen());
 }else{
 	$motor->env($opc, "Função desconhecida");

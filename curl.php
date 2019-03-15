@@ -64,15 +64,17 @@ class Engine {
 
 
 	public function apiRequest($metodo, $param){
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, API_URL.$metodo."?");
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	$resp = curl_exec($ch);
-	curl_close($ch);
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, API_URL.$metodo."?");
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+		curl_setop($ch, CURLOPT_TIMEOUT, 10);
+		$resp = curl_exec($ch);
+		curl_close($ch);
 	
 }
 	public function env($opc, $msg){
@@ -84,31 +86,43 @@ class Engine {
         ];
         
         $this->apiRequest("sendMessage", $param);
-}
+	}
+
+	public function keyboard($opc, $msg){
+		$param = [
+			"chat_id" => $opc["chat_id"],
+			"disable_web_page_preview"=> 1,
+			"parse_mode"=> "Markdown",
+			"reply_markup"=> array("inline_keyboard" => $this->str->falas["bandeiras"]) 
+		];
+
+		$this->apiRequest("sendMessage", $param);
+	}
+	
 	public function bin($bin){
-	$ch = curl_init();
-	$url = "https://lookup.binlist.net/".$bin;
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept-Version: 3"));
-	$resposta = curl_exec($ch);
-	$info = curl_getinfo($ch);
-	curl_close($ch);
-	$json = json_decode($resposta);
-	return "Bandeira: ".$json->scheme."\nTipo: ".$json->type."\nBrand: ".$json->brand."\nPaís: ".$json->country->name."(".$json->country->emoji.")"."\nLatitude: ".$json->country->latitude."\nLongitude: ".$json->country->longitude."\nBanco: ".$json->bank->name."\nWebsite: ".$json->bank->url."\nPhone: ".$json->bank->phone."\nCidade: ".$json->bank->city;
-}
+		$ch = curl_init();
+		$url = "https://lookup.binlist.net/".$bin;
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept-Version: 3"));
+		$resposta = curl_exec($ch);
+		$info = curl_getinfo($ch);
+		curl_close($ch);
+		$json = json_decode($resposta);
+		return "Bandeira: ".$json->scheme."\nTipo: ".$json->type."\nBrand: ".$json->brand."\nPaís: ".$json->country->name."(".$json->country->emoji.")"."\nLatitude: ".$json->country->latitude."\nLongitude: ".$json->country->longitude."\nBanco: ".$json->bank->name."\nWebsite: ".$json->bank->url."\nPhone: ".$json->bank->phone."\nCidade: ".$json->bank->city;
+	}
 }
 class Strings
 {
 	public $falas = [
-		"start"=>"Sou programado para fazer varias coisas legais. clique no comando /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
+		"start"=>"*Sou programado para fazer varias coisas legais. clique no comando* /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"Ferramentas:\nChecar Bin: /bin 404528\n\nGerar Cartão de Credito: /CCGen\n\nGerar Bin: /BinGen\n\nGeolocalizar ip: /ip 159.89.157.64",
-		"bandeiras"=>"/MasterCard\n\n/Visa\n\n/Maestro\n\n/Amex\n\n/Jcb/\n\n/Diners",
+		"bandeiras"=>[[["text"=>"/MasterCard", "visa"=>"/Visa" /*/Maestro\n\n/Amex\n\n/Jcb/\n\n/Diners"*/]]],
 		"sintaxes"=>[
-			"bin"=>"Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os números da bin que deseja checar"
+			"bin"=>"Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar"
 		]
 
 	];
