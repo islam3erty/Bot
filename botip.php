@@ -32,7 +32,7 @@ if ($opc["texto"] === "/start"){
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
 
-	if(empty($bin)==false && strlen($bin) < 6){
+	if(empty($bin)==true){
 		$motor->env($opc, $strings->falas["sintaxe"]["bin"]);
 	}else{
 		$motor->env($opc, $motor->bin($bin));
