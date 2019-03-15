@@ -72,7 +72,7 @@ class Engine {
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-		curl_setop($ch, CURLOPT_TIMEOUT, 10);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 		$resp = curl_exec($ch);
 		curl_close($ch);
 	
