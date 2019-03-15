@@ -29,7 +29,7 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
 
-}else if(substr($opc["texto"], 0, 4)==="/bin"){
+}else if(substr($opc["texto"], 0, 4)==="/bin" or "/bin@InformedBot"){
 	$bin = substr($opc["texto"], 5, 10);
 	
 	$motor->env($opc, $motor->bin($bin));
