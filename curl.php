@@ -93,7 +93,8 @@ class Engine {
 			"chat_id" => $opc["chat_id"],
 			"disable_web_page_preview"=> 1,
 			"parse_mode"=> "Markdown",
-			"reply_markup"=> array("keyboard" => $this->str->falas["bandeiras"]) 
+			"reply_markup"=> array("inline_keyboard" => $this->str->falas["bandeiras"])
+			"text"=>"Esse é o novo botão" 
 		];
 
 		$this->apiRequest("sendMessage", $param);
@@ -120,7 +121,7 @@ class Strings
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"Ferramentas:\nChecar Bin: /bin 404528\n\nGerar Cartão de Credito: /CCGen\n\nGerar Bin: /BinGen\n\nGeolocalizar ip: /ip 159.89.157.64",
-		"bandeiras"=>[["MasterCard", "Visa"], ["Maestro", "Diners"]],
+		"bandeiras"=>[[["text"=>"MasterCard", "url"=>"https://core.telegram.org/bots/api#callbackquery"]]],
 		"sintaxes"=>["bin"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar"
 		]
 
