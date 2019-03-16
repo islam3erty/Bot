@@ -89,11 +89,23 @@ class Engine {
 	}
 
 	public function keyboard($opc, $msg){
+		$inline_keyboard = [
+			['text' => 'inline', 'switch_inline_query' => 'true'],
+		    ['text' => 'callback', 'callback_data' => 'identifier'],
+		    ['text' => 'open url', 'url' => 'https://github.com/akalongman/php-telegram-bot'],
+		];
+
+		$data = [
+			'chat_id' => $opc["chat_id"],
+			'text' => 'Hello!!...',
+			'reply_markup' => ['inline_keyboard' => $inline_keyboard],
+		];
+
 		$param = [
 			"chat_id" => $opc["chat_id"],
 			"parse_mode"=> "Markdown",
-			'reply_markup' => array('keyboard' => array(array('Mega-Sena', 'Quina'),array('Lotofácil','Lotomania')),'one_time_keyboard' => true),
 			"text"=>"talvez funcione dessa vez"
+
 		];
     		
 
