@@ -93,7 +93,7 @@ class Engine {
 			"chat_id" => $opc["chat_id"],
 			"disable_web_page_preview"=> 1,
 			"parse_mode"=> "Markdown",
-			"reply_markup"=> array("inline_keyboard" => $this->str->falas["bandeiras"])
+			"reply_markup"=> array("inline_keyboard" => $this->str->falas["bandeiras"]),
 			"text"=>"Esse é o novo botão" 
 		];
 
