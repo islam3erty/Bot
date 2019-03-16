@@ -90,12 +90,12 @@ class Engine {
 
 	public function keyboard($opc, $msg){
 		$param = [
-			"text"=>"esse é o novo button",
 			"chat_id" => $opc["chat_id"],
 			"parse_mode"=> "Markdown",
-			"reply_markup"=> array("inline_keyboard" => $this->str->falas["bandeiras"]),
-			 
+			'reply_markup' => array('keyboard' => array(array('Mega-Sena', 'Quina'),array('Lotofácil','Lotomania')),'one_time_keyboard' => true),
+			"text"=>"talvez funcione dessa vez"
 		];
+    		
 
 		$this->apiRequest("sendMessage", $param);
 	}
@@ -114,61 +114,7 @@ class Engine {
 		return "*Bandeira:* ".$json->scheme."\n*Tipo:* ".$json->type."\n*Brand:* ".$json->brand."\n*País:* ".$json->country->name."(".$json->country->emoji.")"."\n*Latitude:* ".$json->country->latitude."\n*Longitude:* ".$json->country->longitude."\n*Banco:* ".$json->bank->name."\n*Website:* ".$json->bank->url."\n*Phone:* ".$json->bank->phone."\n*Cidade:* ".$json->bank->city;
 	}
 
-	protected function answerCallback($cbID, $alert, $time, $text){
-        $param = [
-            "callback_query_id" => $cbID,
-            "show_alert" => $alert,
-            "cache_time" => $time,
-            "text" => $text
-        ];
-        
-        $this->apiRequest("answerCallbackQuery", $param);
-    }
-        
-    public function Callback($cb){
-        $cb_chat_id = $cb["message"]["chat"]["id"];
-        $cb_msg_id  = $cb["message"]["message_id"];
-        $cb_id      = $cb["id"];
-        $cb_data    = $cb["data"];
-        
-        $opc = [
-            "chat_id" => $cb_chat_id,
-            "msg_id"  => $cb_msg_id
-        ];
-        
-        if($cb_data == "media_id"){
-            if(isset($cb["message"]["video"])){
-                $duration  = $cb["message"]["video"]["duration"];
-                $width     = $cb["message"]["video"]["width"];
-                $height    = $cb["message"]["video"]["height"];
-                $mime_type = $cb["message"]["video"]["mime_type"];
-                $file_id   = $cb["message"]["video"]["file_id"];
-                
-                $text = "\u{1F4C3} em breve!";
-                
-                $this->answerCallback($cb_id, false, 3, $text);
-            }
-            
-            if(isset($cb["message"]["photo"])){
-                $IDs = $cb["message"]["photo"];
-                
-                $text = "\u{1F4C3} *Telegram Media Info*\n\n\u{1F539} *Tipo:* `FOTO`\n\u{1F539} *Dimensões:*\n-------------------------------------------\n";
-                
-                foreach($IDs as $id => $field){
-                    $file_id   = $field["file_id"];
-                    $file_size = $field["file_size"];
-                    $width     = $field["width"];
-                    $height    = $field["height"];
-                    
-                    $text .= "\u{1F5BC} `$width x $height`\n\u{1F4BF} *FILE_ID:* `$file_id`\n\u{1F388} *Tamanho:* `$file_size`\n-------------------------------------------\n";
-                }
-                
-                $text .= "*Powered by* @Inst4Robot";
-                
-                $this->answerCallback($cb_id, false, 3, "\u{1F4C3} em breve!");
-            }
-        }
-    }
+
 }
 class Strings
 {
@@ -177,7 +123,7 @@ class Strings
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"Ferramentas:\nChecar Bin: /bin 404528\n\nGerar Cartão de Credito: /CCGen\n\nGerar Bin: /BinGen\n\nGeolocalizar ip: /ip 159.89.157.64",
-		"bandeiras"=>[[["text"=>"MasterCard", "call_back"=>"media_id"]]],
+		"bandeiras"=>[[["text"=>"MasterCard",]]],
 		"sintaxes"=>["bin"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar"
 		]
 
