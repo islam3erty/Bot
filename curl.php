@@ -100,16 +100,9 @@ class Engine {
 			'text' => 'Hello!!...',
 			'reply_markup' => ['inline_keyboard' => $inline_keyboard],
 		];
-
-		$param = [
-			"chat_id" => $opc["chat_id"],
-			"parse_mode"=> "Markdown",
-			"text"=>"talvez funcione dessa vez"
-
-		];
     		
 
-		$this->apiRequest("sendMessage", $param);
+		$this->apiRequest("sendMessage", $data);
 	}
 	
 	public function bin($bin){
