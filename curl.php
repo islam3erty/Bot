@@ -120,7 +120,7 @@ class Engine {
 		$info = curl_getinfo($ch);
 		curl_close($ch);
 		$json = json_decode($resposta);
-		return "*Bandeira:* ".$json->scheme."\n*Tipo:* ".$json->type."\n*Brand:* ".$json->brand."\n*País:* ".$json->country->name."(".$json->country->emoji.")"."\n*Latitude:* ".$json->country->latitude."\n*Longitude:* ".$json->country->longitude."\n*Banco:* ".$json->bank->name."\n*Website:* ".$json->bank->url."\n*Phone:* ".$json->bank->phone."\n*Cidade:* ".$json->bank->city;
+		return "*Bandeira:* ".$json->scheme."\n*Tipo:* ".$json->type."\n*Nivel:* ".$json->brand."\n*País:* ".$json->country->name."(".$json->country->emoji.")"."\n*Latitude:* ".$json->country->latitude."\n*Longitude:* ".$json->country->longitude."\n*Banco:* ".$json->bank->name."\n*Website:* ".$json->bank->url."\n*Phone:* ".$json->bank->phone."\n*Cidade:* ".$json->bank->city;
 	}
 
 
