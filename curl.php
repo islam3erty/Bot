@@ -98,9 +98,9 @@ class Engine {
 					[
 						"text"=>"Boton",
 						"callback_data"=>"botao_id"
-					],	
-				],
-			],
+					]	
+				]
+			]
 		];
 		
 		$data = [
