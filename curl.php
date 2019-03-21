@@ -92,20 +92,16 @@ class Engine {
 	}
 
 	public function keyboard($opc, $msg){
-		$data["reply_markup"]=[
-			"inline_keyboard"=>[
-				[
-					[
-						"text"=>"Boton",
-						"callback_data"=>"botao_id"
-					]	
-				]
-			]
+		$reply=[
+			"inline_keyboard"=>array("text"=>"Ola", "url"=>"google.com")
 		];
+
+		$encode=json_encode($reply, true);
 		
 		$data = [
 			'chat_id' => $opc["chat_id"],
 			'text' => $msg,
+			"reply_markup"=>$encode
 			
 		];
     		
