@@ -10,6 +10,11 @@ $mensagem = $update["message"];
 $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
+$data = [
+			'chat_id' => $opc["chat_id"],
+			'text' => 'Hello!!...',
+			'reply_markup' => ['inline_keyboard' => [$inline_keyboard]
+		]];
 //Metodo Get pra quem quiser simplicidade. Mais n faz quebra de linhas. by C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ 
 /*if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
@@ -52,7 +57,7 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/ccgen"){
 	
-	$motor->keyboard($opc, $strings->falas["bandeiras"]);
+	$motor->env($opc, $strings->falas["bandeiras"]);
 
 }else if($opc["texto"] === "/mastercard"){
 	$motor->env($opc, $motor->genCC("mastercard"));
@@ -73,7 +78,7 @@ if ($opc["texto"] === "/start"){
 	$motor->env($opc, $motor->genCC("jcb"));
 }else if($opc["texto"] === "/bingen"){
 	$motor->env($opc, $motor->binGen());
-}else{
-	$motor->env($opc, "Função desconhecida");
+}elseif($opc["texto"]==="/key"){
+	$motor->keyboard($opc, $strings->falas["sobre"]);
 }
 ?>
