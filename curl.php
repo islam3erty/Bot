@@ -97,7 +97,7 @@ class Engine {
 		$data = [
 			'chat_id' => $opc["chat_id"],
 			'text' => $msg,
-			"reply_markup" => array("inline_keyboard" => array(array(array($this->str->falas["inlineBTMedia"])))
+			"reply_markup" => array("inline_keyboard" => array(array(array($this->str->falas["inlineBTMedia"]))))
 		];
     		
 
