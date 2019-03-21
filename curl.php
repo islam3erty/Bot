@@ -97,7 +97,7 @@ class Engine {
 		$data = [
 			'chat_id' => $opc["chat_id"],
 			'text' => $msg,
-			"reply_markup" => array("inline_keyboard" => array(
+			'reply_markup' => array("inline_keyboard" => array(
 				array(
 					array("text"=>"Seu botao", "callback_data"=>"botao_id"),
 				),
