@@ -103,7 +103,7 @@ class Engine {
 			'chat_id' => $opc["chat_id"],
 			'text' => $msg,
 			"reply_markup" => array("inline_keyboard" => $this->str->falas["inlineBTMedia"])
-		]];
+		];
     		
 
 		$this->apiRequest("sendMessage", $data);
