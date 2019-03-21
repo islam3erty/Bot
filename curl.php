@@ -69,6 +69,9 @@ class Engine {
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, [
+				"Content-Type" => "multipart/form-data"
+		]);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
@@ -89,6 +92,7 @@ class Engine {
 	}
 
 	public function keyboard($opc, $msg){
+		
 		$inline_keyboard = [
 			['text' => 'inline', 'switch_inline_query' => 'true'],
 		    ['text' => 'callback', 'callback_data' => 'identifier'],
@@ -97,8 +101,8 @@ class Engine {
 
 		$data = [
 			'chat_id' => $opc["chat_id"],
-			'text' => 'Hello!!...',
-			'reply_markup' => ['inline_keyboard' => json_encode([$inline_keyboard])
+			'text' => $msg,
+			'reply_markup' => ['inline_keyboard' => [$inline_keyboard]
 		]];
     		
 
@@ -128,7 +132,7 @@ class Strings
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"_Ferramentas_:\n*Checar Bin:* `/bin 404528`\n*Gerar Cartão de Credito:* `/ccgen`\n*Gerar Bin:* `/bingen`\n*Geolocalizar ip:* `/ip 159.89.157.64`",
-		"bandeiras"=>[[["text"=>"MasterCard",]]],
+		"bandeiras"=>"mastercard"\n"visa"\n"amex"\n"jcb"\n"diners"\n"maestro",
 		"sintaxes"=>["bin"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar"
 		]
 

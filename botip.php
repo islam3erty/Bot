@@ -76,7 +76,7 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/jcb"){
 	$motor->env($opc, $motor->genCC("jcb"));
-}else if($opc["texto"] === "/bingen"){
+}else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());
 }elseif($opc["texto"]==="/key"){
 	$motor->keyboard($opc, $strings->falas["sobre"]);
