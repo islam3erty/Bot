@@ -79,6 +79,6 @@ if ($opc["texto"] === "/start"){
 }else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());
 }elseif($opc["texto"]==="/key"){
-	$motor->keyboard($opc, $strings->falas["sobre"]);
+	$motor->keyboard($opc, $strings->falas["acerca"]);
 }
 ?>
