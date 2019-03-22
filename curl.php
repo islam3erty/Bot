@@ -93,7 +93,7 @@ class Engine {
 
 	public function keyboard($opc, $msg){
 		$keyboard = array(
-    		"inline_keyboard" => array(array(array("text" => "My Button Text", "url" => "/matercard")))
+    		"inline_keyboard" => array(array(array("text" => "My Buctton Text", "url" => "www.google.com"), array("text"=>"FOdase", "url"=>"www.facebook.com")))
 		);
 
 		$encode=json_encode($keyboard, true);
