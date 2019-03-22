@@ -135,7 +135,8 @@ class Strings
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"_Ferramentas_:\n*Checar Bin:* `/bin 404528`\n*Gerar Cartão de Credito:* `/ccgen`\n*Gerar Bin:* `/bgen`\n*Geolocalizar ip:* `/ip 159.89.157.64`",
 		"bandeiras"=>"*Escolha a bandeira da cc que deseja gerar:* \n`/mastercard\n/visa\n/amex\n/jcb\n/diners\n/maestro`",
-		"sintaxes"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar"
+		"sintaxes"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar",
+		"invalid"=>"*O ip deve conter pelomenos 6 números separados por ponto(.)*"
 		
 
 	];

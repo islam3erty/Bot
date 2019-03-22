@@ -80,5 +80,13 @@ if ($opc["texto"] === "/start"){
 	$motor->env($opc, $motor->binGen());
 }elseif($opc["texto"]==="/key"){
 	$motor->keyboard($opc, $strings->falas["acerca"]);
+}elseif($opc["texto"]==="/ip"){
+	$ip = substr($opc["texto"], 4, 19);
+
+	if(strlen($ip)<9){
+		$motor->env($opc, $strings->falas["invalid"]);
+	}else{
+		$motor->env($opc, $motor->remoteIp($ip));
+	}
 }
 ?>
