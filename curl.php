@@ -93,7 +93,7 @@ class Engine {
 
 	public function keyboard($opc, $msg){
 		$reply=[
-			"inline_keyboard"=>array(array("text"=>"Ola", "url"=>"google.com"))
+			"inline_keyboard"=>array(array(array("text"=>"Ola", "url"=>"google.com")))
 		];
 
 		$encode=json_encode($reply, true);
