@@ -30,11 +30,11 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
 
-}else if(substr($opc["texto"], 0, 4)==="/bin"){
+}else if(substr($opc["texto"], 0, 4)==="/bin" or "/bin"){
 	$bin = substr($opc["texto"], 5, 10);
 
 	if(empty($bin)==true){
-		$motor->env($opc, $strings->falas["sintaxes"]["bin"]);
+		$motor->env($opc, $strings->falas["sintaxes"]);
 	}else{
 		$motor->env($opc, $motor->bin($bin));
 	}
