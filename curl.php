@@ -137,12 +137,12 @@ class Strings
 		
 		"bandeiras"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F528}Visa", "callback_data"=>"Visa")), 
-				array(array("text"=>"\u{1F528}Mastercard", "callback_data"=>"Mastercard")), 
-				array(array("text"=>"\u{1F528}Amex", "callback_data"=>"Amex")), 
-				array(array("text"=>"\u{1F528}Diners", "callback_data"=>"Diners")), 
-				array(array("text"=>"\u{1F528}Jcb", "callback_data"=>"Jcb")),
-				array(array("text"=>"\u{1F528}Maestro", "callback_data"=>"Maestro"))
+				array(array("text"=>"\u{1F527}Visa", "callback_data"=>"Visa")), 
+				array(array("text"=>"\u{1F527}Mastercard", "callback_data"=>"Mastercard")), 
+				array(array("text"=>"\u{1F527}Amex", "callback_data"=>"Amex")), 
+				array(array("text"=>"\u{1F527}Diners", "callback_data"=>"Diners")), 
+				array(array("text"=>"\u{1F527}Jcb", "callback_data"=>"Jcb")),
+				array(array("text"=>"\u{1F527}Maestro", "callback_data"=>"Maestro"))
 			)
 		)
 		
