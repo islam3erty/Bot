@@ -91,13 +91,10 @@ class Engine {
         $this->apiRequest("sendMessage", $param);
 	}
 
-	public function keyboard($opc, $msg){
-		$keyboard = array(
-   
-    		"inline_keyboard" => array(array(array("text" => "My Buctton Text", "url" => "www.google.com")), array(array("text"=>"buton 2", "url"=>"www.facebook.com")))
-		);
+	public function keyboard($opc, $msg, $botao= array()){
+		
 
-		$encode=json_encode($keyboard, true);
+		$encode=json_encode($botao, true);
 		
 		$data = [
 			'chat_id' => $opc["chat_id"],
@@ -130,13 +127,22 @@ class Engine {
 class Strings
 {
 	public $falas = [
-		"start"=>"*\u{1F3C2}Sou programado para fazer varias coisas legais. clique no comando* /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
+		"start"=>"*\u{1F528}Sou programado para fazer varias coisas legais. clique no comando* /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"_Ferramentas_:\n*Checar Bin:* `/bin 404528`\n*Gerar Cartão de Credito:* `/ccgen`\n*Gerar Bin:* `/bgen`\n*Geolocalizar ip:* `/ip 159.89.157.64`",
 		"bandeiras"=>"*Escolha a bandeira da cc que deseja gerar:* \n`/mastercard\n/visa\n/amex\n/jcb\n/diners\n/maestro`",
 		"sintaxes"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar",
-		"invalid"=>"*O ip deve conter pelomenos 6 números separados por ponto(.)*"
+		"invalid"=>"*O ip deve conter pelomenos 6 números separados por ponto(.)*",
+		"bandeiras"=>$keyboard=array(
+			"inline_keyboard"=>array(
+				array(array("text"=>"\u{1F528}Visa", "callback_data"=>"Visa")), 
+				array(array("text"=>"\u{1F528}Mastercard", "callback_data"=>"Mastercard")), 
+				array(array("text"=>"\u{1F528}Amex", "callback_data"=>"Amex")), 
+				array(array("text"=>"\u{1F528}Diners", "callback_data"=>"Diners")), 
+				array(array("text"=>"\u{1F528}Jcb", "callback_data"=>"Jcb"))
+				array(array("text"=>"\u{1F528}Maestro", "callback_data"=>"Maestro")))
+		)
 		
 
 	];
