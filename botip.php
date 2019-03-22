@@ -76,11 +76,14 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/jcb"){
 	$motor->env($opc, $motor->genCC("jcb"));
+
 }else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());
+
 }elseif($opc["texto"]==="/key"){
 	$motor->keyboard($opc, $strings->falas["acerca"]);
-}elseif($opc["texto"]==="/ip"){
+
+}elseif(strpos($opc["texto"]==="/ip")){
 	$ip = substr($opc["texto"], 4, 19);
 
 	if(strlen($ip)<9){
