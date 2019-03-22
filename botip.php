@@ -86,7 +86,7 @@ if ($opc["texto"] === "/start"){
 }elseif(strpos($opc["texto"]==="/ip")){
 	$ip = substr($opc["texto"], 4, 19);
 
-	if(strlen($ip)<9){
+	if(strlen($ip)<9 & strlen($ip)>16){
 		$motor->env($opc, $strings->falas["invalid"]);
 	}else{
 		$motor->env($opc, $motor->remoteIp($ip));
