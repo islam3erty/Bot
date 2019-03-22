@@ -83,7 +83,7 @@ if ($opc["texto"] === "/start"){
 }elseif($opc["texto"]==="/key"){
 	$motor->keyboard($opc, $strings->falas["acerca"]);
 
-}elseif(strpos($opc["texto"]==="/ip")){
+}elseif(substr($opc["texto"], 0, 3)==="/ip"){
 	$ip = substr($opc["texto"], 4, 19);
 
 	if(strlen($ip)<9 & strlen($ip)>16){
