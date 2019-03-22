@@ -101,7 +101,7 @@ class Engine {
 		$data = [
 			'chat_id' => $opc["chat_id"],
 			'text' => $msg,
-			"reply_markup"=>$reply,
+			"reply_markup"=>$encode,
 			"parse_mode"=>"Markdown"
 			
 		];
