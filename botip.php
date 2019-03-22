@@ -51,31 +51,13 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["sobre"]);
 
-}else if($opc["texto"] === "/ferramentas"){
+}else if($opc["texto"] === "/tools"){
 	
 	$motor->env($opc, $strings->falas["ferramentas"]);
 
 }else if($opc["texto"] === "/ccgen"){
 	
-	$motor->env($opc, $strings->falas["bandeiras"]);
-
-}else if($opc["texto"] === "/mastercard"){
-	$motor->env($opc, $motor->genCC("mastercard"));
-
-}else if($opc["texto"] === "/visa"){
-	$motor->env($opc, $motor->genCC("visa"));
-
-}else if($opc["texto"] === "/amex"){
-	$motor->env($opc, $motor->genCC("amex"));
-
-}else if($opc["texto"] === "/diners"){
-	$motor->env($opc, $motor->genCC("diners"));
-
-}else if($opc["texto"] === "/maestro"){
-	$motor->env($opc, $motor->genCC("maestro"));
-
-}else if($opc["texto"] === "/jcb"){
-	$motor->env($opc, $motor->genCC("jcb"));
+	$motor->env($opc, $strings->falas[]);
 
 }else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());
@@ -91,5 +73,7 @@ if ($opc["texto"] === "/start"){
 	}else{
 		$motor->env($opc, $motor->remoteIp($ip));
 	}
+}else{
+	$motor->env($opc, "Vai cagar eu n tenho essa funcão ainda");
 }
 ?>
