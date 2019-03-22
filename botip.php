@@ -31,7 +31,7 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
 
-}else if(substr($opc["texto"], 0, 4)==="/bin" or "/bin"){
+}else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
 
 	if(empty($bin)==true){
@@ -54,7 +54,7 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/ccgen"){
 	
-	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
+	$motor->keyboard($opc, "Escolha a sua bandeira", $strings->falas["bandeiras"]);
 
 }else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());

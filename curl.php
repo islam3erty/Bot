@@ -91,7 +91,7 @@ class Engine {
         $this->apiRequest("sendMessage", $param);
 	}
 
-	public function keyboard($opc, $msg, $botao= array()){
+	public function keyboard($opc, $msg, $botao){
 		
 
 		$encode=json_encode($botao, true);
