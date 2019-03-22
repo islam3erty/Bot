@@ -135,7 +135,7 @@ class Strings
 		"sintaxes"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar",
 		"invalid"=>"*O ip deve conter pelomenos 6 números separados por ponto(.)*",
 		
-		"bandeiras"=>$keyboard=array(
+		"bandeiras"=>array(
 			"inline_keyboard"=>array(
 				array(array("text"=>"\u{1F528}Visa", "callback_data"=>"Visa")), 
 				array(array("text"=>"\u{1F528}Mastercard", "callback_data"=>"Mastercard")), 
