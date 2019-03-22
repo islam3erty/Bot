@@ -11,6 +11,16 @@ $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
 
+$keyboard=array(
+			"inline_keyboard"=>array(
+				array(array("text"=>"\u{1F528}Visa", "callback_data"=>"Visa")), 
+				array(array("text"=>"\u{1F528}Mastercard", "callback_data"=>"Mastercard")), 
+				array(array("text"=>"\u{1F528}Amex", "callback_data"=>"Amex")), 
+				array(array("text"=>"\u{1F528}Diners", "callback_data"=>"Diners")), 
+				array(array("text"=>"\u{1F528}Jcb", "callback_data"=>"Jcb")),
+				array(array("text"=>"\u{1F528}Maestro", "callback_data"=>"Maestro"))
+			)
+		);
 //Metodo Get pra quem quiser simplicidade. Mais n faz quebra de linhas. by C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ 
 /*if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
