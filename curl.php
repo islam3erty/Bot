@@ -144,13 +144,14 @@ class Engine {
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id
 
+
 			];
 
 			if($cb_data == "Visa"){
-				$text = "visa";
+				$text = null;
 
-
-				$this->env($opc, "vai merda Bastardo");
+				$this->answercallback($cb_id, false, 3, $text);
+				$this->env($opc, "vai a merda Bastardo");
 
 			}
 	}
