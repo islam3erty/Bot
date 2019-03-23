@@ -4,6 +4,7 @@ $motor = new Engine();
 $strings = new Strings();
 define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
 define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
+define("WEBHOOK_URL", )
 $conteudo = file_get_contents("php://input");
 $update = json_decode($conteudo, TRUE);
 $mensagem = $update["message"];
@@ -71,8 +72,6 @@ if ($opc["texto"] === "/start"){
 	}else{
 		$motor->env($opc, $motor->remoteIp($ip));
 	}
-}else{
-	$motor->env($opc, "Vai cagar eu n tenho essa funcão ainda");
 }
 
 ?>

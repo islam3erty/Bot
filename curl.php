@@ -156,6 +156,22 @@ class Engine {
 			}
 	}
 
+	public function WebHook($wh){
+        if($wh == "on"){
+            $param = [
+                "url" => WEBHOOK_URL,
+                "max_connections" => 100,
+                "allowed_updates" => array("message", "callback_query")
+            ];
+            return $this->apiRequest("setWebhook", $param);
+        }elseif($wh == "off"){
+            $param = [ "url" => "delete" ];
+            return $this->apiRequest("setWebhook", $param);
+        }elseif($wh == "info"){
+            return $this->apiRequest("getWebhookInfo", array());
+        }
+    }
+
 
 }
 class Strings
