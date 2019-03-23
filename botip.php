@@ -34,6 +34,7 @@ if(isset($update["callback_query"])){
 if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
+	$motor->env($opc, $mensagem["text"]);
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
@@ -75,6 +76,4 @@ if ($opc["texto"] === "/start"){
 	$motor->env($opc, "Vai cagar eu n tenho essa funcão ainda");
 }
 
-return ($update["callback_query"]);
-//return $mensagem["text"];
 ?>
