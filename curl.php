@@ -146,7 +146,7 @@ class Engine {
 			];
 
 			if($cb_data == "Visa"){
-				$text = "visa"
+				$text = "visa";
 
 
 				$this->answercallback($cb_id, false, 3, $text);
