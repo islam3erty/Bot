@@ -147,9 +147,9 @@ class Engine {
 			];
 
 			if($cb_data == "Visa"){
-				$text ="Eu sou foda";
+				$text = ;
 
-				$this->answercallback($cb_id, false, 3,  $text);
+				$this->binGen();
 			}
 	}
 
