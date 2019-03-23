@@ -147,7 +147,7 @@ class Engine {
 			];
 
 			if($cb_data == "Visa"){
-				$text = ;
+				//$text = ;
 
 				$this->binGen();
 			}
