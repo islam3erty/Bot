@@ -133,7 +133,7 @@ class Engine {
 		$this->apiRequest("answerCallbackQuery", $param);
 	}
 
-	public function callback($callback){
+	public function callback($cb){
 		
 			$cb_chat_id = $cb["message"]["chat"]["id"];
 			$cb_message_id = $cb["message"]["id"];
