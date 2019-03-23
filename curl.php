@@ -149,7 +149,7 @@ class Engine {
 			if($cb_data == "Visa"){
 				//$text = ;
 
-				$this->env($opc ,$this->binGen());
+				$this->env($opc ,$this->genCC("visa"));
 			}
 	}
 
