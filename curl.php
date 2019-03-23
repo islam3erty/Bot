@@ -141,7 +141,7 @@ class Engine {
 			$cb_data = $cb["data"];
 
 			$opc = [
-				"chat_id"=>$cb_chat_id,
+				"chat_id"=>$opc["chat_id"],
 				"msg_id"=>$cb_message_id,
 				"parse_mode"=>"Markdown"
 			];
@@ -149,7 +149,7 @@ class Engine {
 			if($cb_data == "Visa"){
 				$text = "visa";
 
-				$this->env($opc ,$this->answercallback($cb_id, false, 3, $text));
+				$this->env($opc ,$this->answercallback($cb_id, false, 1, $text));
 			}
 	}
 
