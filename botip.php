@@ -4,7 +4,7 @@ $motor = new Engine();
 $strings = new Strings();
 define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
 define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
-define("WEBHOOK_URL", )
+define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
 $conteudo = file_get_contents("php://input");
 $update = json_decode($conteudo, TRUE);
 $mensagem = $update["message"];
