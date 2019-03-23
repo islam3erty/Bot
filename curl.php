@@ -147,9 +147,9 @@ class Engine {
 			];
 
 			if($cb_data == "Visa"){
-				$text = "visa";
+				$text = $this->env($opc, "Eu sou foda");
 
-				$this->answercallback($cb_id, false, 1, $this->env($opc, $text));
+				$this->answercallback($cb_id, false, 3,  $text);
 			}
 	}
 
