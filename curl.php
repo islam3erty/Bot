@@ -147,9 +147,9 @@ class Engine {
 			];
 
 			if($cb_data == "Visa"){
-				$text = "vamo ver como termina";
+				$text = "Visa";
 
-				$this->answercallback($cb_id, true, 3, $text);
+				$this->answercallback($cb_id, false, 3,  $text);
 			}
 	}
 
