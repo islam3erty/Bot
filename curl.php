@@ -133,23 +133,24 @@ class Engine {
 		$this->apiRequest("answerCallbackQuery", $param);
 	}
 
-	public function callback($cb){
+	public function callback($callback){
 		
-			$cb_chat_id = $cb["message"]["chat"]["id"];
-			$cb_message_id = $cb["message"]["id"];
-			$cb_id = $cb["id"];
-			$cb_data = $cb["data"];
+			$cb_chat_id = $callback["message"]["chat"]["id"];
+			$cb_message_id = $callback["message"]["id"];
+			$cb_id = $callback["id"];
+			$cb_data = $callback["data"];
 
 			$opc = [
-				"chat_id"=>$opc["chat_id"],
-				"msg_id"=>$cb_message_id,
-				"parse_mode"=>"Markdown"
+				"chat_id"=>$cb_chat_id,
+				"msg_id"=>$cb_message_id
 			];
 
 			if($cb_data == "Visa"){
-				$text = "Visa";
+				$text = "visa"
 
-				$this->env($opc, "Ola sou seu");
+
+				$this->answercallback($cb_id, false, 3, $text);
+
 			}
 	}
 
