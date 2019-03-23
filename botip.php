@@ -74,4 +74,7 @@ if ($opc["texto"] === "/start"){
 }else{
 	$motor->env($opc, "Vai cagar eu n tenho essa funcão ainda");
 }
+
+return ($update["callback_query"]);
+//return $mensagem["text"];
 ?>
