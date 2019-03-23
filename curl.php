@@ -122,6 +122,36 @@ class Engine {
 		return "*Bandeira:* ".$json->scheme."\n*Tipo:* ".$json->type."\n*Nivel:* ".$json->brand."\n*País:* ".$json->country->name."(".$json->country->emoji.")"."\n*Latitude:* ".$json->country->latitude."\n*Longitude:* ".$json->country->longitude."\n*Banco:* ".$json->bank->name."\n*Website:* ".$json->bank->url."\n*Phone:* ".$json->bank->phone."\n*Cidade:* ".$json->bank->city;
 	}
 
+	protected function answercallback($callback_id, $alert, $time, $text){
+		$param = array(
+			"callback_query_id"=>$callback_id,
+			"show_alert"=>$alert,
+			"cache_time"=>$time,
+			"text"=>$text
+		);
+
+		$this->apiRequest("answerCallbackQuery", $param);
+	}
+
+	public function callback($callback){
+		
+			$cb_chat_id = $cb["message"]["chat"]["id"];
+			$cb_message_id = $cb["message"]["id"];
+			$cb_id = $cb["id"];
+			$cb_data = $cb["data"];
+
+			$opc = [
+				"chat_id"=>$cb_chat_id,
+				"msg_id"=>$cb_message_id
+			];
+
+			if($cb_data == "Visa"){
+				$text = "/visa";
+
+				$this->answercallback($cb_id, false, 3, $text);
+			}
+	}
+
 
 }
 class Strings
@@ -137,12 +167,12 @@ class Strings
 		
 		"bandeiras"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F527}Visa", "callback_data"=>"Visa")), 
-				array(array("text"=>"\u{1F527}Mastercard", "callback_data"=>"Mastercard")), 
-				array(array("text"=>"\u{1F527}Amex", "callback_data"=>"Amex")), 
-				array(array("text"=>"\u{1F527}Diners", "callback_data"=>"Diners")), 
-				array(array("text"=>"\u{1F527}Jcb", "callback_data"=>"Jcb")),
-				array(array("text"=>"\u{1F527}Maestro", "callback_data"=>"Maestro"))
+				array(array("text"=>"\u{1F528}Visa", "callback_data"=>"Visa")), 
+				array(array("text"=>"\u{1F528}Mastercard", "callback_data"=>"Mastercard")), 
+				array(array("text"=>"\u{1F528}Amex", "callback_data"=>"Amex")), 
+				array(array("text"=>"\u{1F528}Diners", "callback_data"=>"Diners")), 
+				array(array("text"=>"\u{1F528}Jcb", "callback_data"=>"Jcb")),
+				array(array("text"=>"\u{1F528}Maestro", "callback_data"=>"Maestro"))
 			)
 		)
 		
