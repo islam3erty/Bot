@@ -34,7 +34,7 @@ if(isset($update["callback_query"])){
 if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
-	$motor->env($opc, $mensagem["text"]);
+	$motor->env($opc, $update["message"]);
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
