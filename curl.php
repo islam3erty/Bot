@@ -59,7 +59,7 @@ class Engine {
 
 		$json = json_decode($resposta);
 
-		return "BIN".$json->card."\n".substr($json->number, 0,6);
+		return "BIN ".$json->card."\n".substr($json->number, 0,6);
 	}
 
 
@@ -172,27 +172,60 @@ class Engine {
         }
     }
 
+    public function gerarValidar($doc){
+
+    	
+		$endpoint="http://geradorapp.com/api/v1/".$doc."/generate?token=72f87a0206bce9b1cd3d18038808345d";
+    	
+    	$ch = curl_init();
+
+    	curl_setopt($ch, CURLOPT_URL, $endpoint);
+    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 120);
+    	curl_setopt($ch, CURLOPT_TIMEOUT, 120); 
+    	$resposta = curl_exec($ch);
+    	curl_close($ch);
+
+    	$decode = json_decode($resposta);
+
+    	return '*$doc:* '.$decode->data->number_formatted."\n\n".$decode->data->message;
+
+
+
+    }
+
 
 }
 class Strings
 {
 	public $falas = [
-		"start"=>"*\u{1F528}Sou programado para fazer varias coisas legais. clique no comando* /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
+		"start"=>"*Sou programado para fazer varias coisas legais. clique no comando* /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
-		"ferramentas"=>"_Ferramentas_:\n*Checar Bin:* `/bin 404528`\n*Gerar Cartão de Credito:* `/ccgen`\n*Gerar Bin:* `/bgen`\n*Geolocalizar ip:* `/ip 159.89.157.64`",
+		"ferramentas"=>"_Ferramentas_:\n*\u{1F449}Checar Bin:* `/bin 404528`\n*\u{1F449}Gerar Cartão de Credito:* `/ccgen`\n*\u{1F449}Gerar Bin:* `/bgen`\n*\u{1F449}Geolocalizar ip:* `/ip 159.89.157.64`\n\u{1F449} ",
 		"bandeiras"=>"*Escolha a bandeira da cc que deseja gerar:* \n`/mastercard\n/visa\n/amex\n/jcb\n/diners\n/maestro`",
 		"sintaxes"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar",
 		"invalid"=>"*O ip deve conter pelomenos 6 números separados por ponto(.)*",
 		
 		"bandeiras"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F528}Visa", "callback_data"=>"Visa")), 
-				array(array("text"=>"\u{1F528}Mastercard", "callback_data"=>"Mastercard")), 
-				array(array("text"=>"\u{1F528}Amex", "callback_data"=>"Amex")), 
-				array(array("text"=>"\u{1F528}Diners", "callback_data"=>"Diners")), 
-				array(array("text"=>"\u{1F528}Jcb", "callback_data"=>"Jcb")),
-				array(array("text"=>"\u{1F528}Maestro", "callback_data"=>"Maestro"))
+				array(array("text"=>"\u{1F4B3}Visa", "callback_data"=>"Visa")), 
+				array(array("text"=>"\u{1F4B3}Mastercard", "callback_data"=>"Mastercard")), 
+				array(array("text"=>"\u{1F4B3}Amex", "callback_data"=>"Amex")), 
+				array(array("text"=>"\u{1F4B3}Diners", "callback_data"=>"Diners")), 
+				array(array("text"=>"\u{1F4B3}Jcb", "callback_data"=>"Jcb")),
+				array(array("text"=>"\u{1F4B3}Maestro", "callback_data"=>"Maestro"))
+			)
+		),
+
+		"documentos"=>array(
+			"inline_keyboard"=>array(
+				array(array("text=>"=>"\u{1F4CE}Gerar CPF", "callback_data"=>"cpf")),
+				array(array("text=>"=>"\u{1F4CE}Gerar CNPJ", "callback_data"=>"cnpj")),
+				array(array("text=>"=>"\u{1F4CE}Gerar CNS", "callback_data"=>"cns")),
+				array(array("text=>"=>"\u{1F4CE}Dados do CEP", "callback_data"=>"cep")),
 			)
 		)
 		
