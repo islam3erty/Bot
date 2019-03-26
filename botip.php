@@ -56,7 +56,7 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/ccgen"){
 	
-	$motor->keyboard($opc, "Escolha a sua bandeira", $strings->falas["bandeiras"]);
+	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
 
 }else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());
@@ -72,6 +72,8 @@ if ($opc["texto"] === "/start"){
 	}else{
 		$motor->env($opc, $motor->remoteIp($ip));
 	}
+}elseif($opc["texto"] === "/doc"){
+	$motor->keyboard($opc, "*O que deseja gerar?*", $strings->falas["documentos"]);
 }
 
 ?>

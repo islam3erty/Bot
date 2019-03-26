@@ -182,7 +182,29 @@ class Engine {
 
 				$this->answercallback($cb_id, false, 3, $text);
 				$this->env($opc, $this->genCC("jcb"));
+			
+			}elseif($cb_data == "cpf"){
+				$text = null;
+
+				$this->answercallback($cb_id, false, 3, $text);
+				$this->env($opc, $this->gerarValidar("cpf"));
+			
+			}elseif($cb_data == "cnpj"){
+				$text = null;
+
+				$this->answercallback($cb_id, false, 3, $text);
+				$this->env($opc, $this->gerarValidar("cnpj"));
+			
+			}elseif($cb_data == "cns"){
+				$text = null;
+
+				$this->answercallback($cb_id, false, 3, $text);
+				$this->env($opc, $this->gerarValidar("cns"));
+			
 			}
+
+
+
 	}
 
 	public function WebHook($wh){
@@ -233,7 +255,7 @@ class Strings
 		"start"=>"*Sou programado para fazer varias coisas legais. clique no comando* /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
-		"ferramentas"=>"_Ferramentas_:\n*\u{1F449}Checar Bin:* `/bin 404528`\n*\u{1F449}Gerar Cartão de Credito:* `/ccgen`\n*\u{1F449}Gerar Bin:* `/bgen`\n*\u{1F449}Geolocalizar ip:* `/ip 159.89.157.64`\n\u{1F449} ",
+		"ferramentas"=>"\u{1F5C3}_Ferramentas_:\n\n*\u{1F449}Checar Bin:* `/bin 404528`\n*\u{1F449}Gerar Cartão de Credito:* `/ccgen`\n*\u{1F449}Gerar Bin:* `/bgen`\n*\u{1F449}Geolocalizar ip:* `/ip 159.89.157.64`\n\u{1F449}*Gerar(CEP, CPF,...):* `/doc`",
 		"bandeiras"=>"*Escolha a bandeira da cc que deseja gerar:* \n`/mastercard\n/visa\n/amex\n/jcb\n/diners\n/maestro`",
 		"sintaxes"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar",
 		"invalid"=>"*O ip deve conter pelomenos 6 números separados por ponto(.)*",
