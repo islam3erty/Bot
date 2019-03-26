@@ -153,31 +153,31 @@ class Engine {
 				$this->answercallback($cb_id, false, 3, $text);
 				$this->env($opc, $this->genCC("visa"));
 
-			}elseif($cb_data == "mastercard"){
+			}elseif($cb_data == "Mastercard"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
 				$this->env($opc, $this->genCC("mastercard"));
 			
-			}elseif($cb_data == "amex"){
+			}elseif($cb_data == "Amex"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
 				$this->env($opc, $this->genCC("amex"));
 			
-			}elseif($cb_data == "diners"){
+			}elseif($cb_data == "Diners"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
 				$this->env($opc, $this->genCC("diners"));
 			
-			}elseif($cb_data == "maestro"){
+			}elseif($cb_data == "Maestro"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
 				$this->env($opc, $this->genCC("maestro"));
 			
-			}elseif($cb_data == "jcb"){
+			}elseif($cb_data == "Jcb"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
