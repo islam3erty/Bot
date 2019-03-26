@@ -151,7 +151,7 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, "vai a merda Bastardo");
+				$this->env($opc, $this->genCC("visa"));
 
 			}
 	}
@@ -211,12 +211,12 @@ class Strings
 		
 		"bandeiras"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F4B3}Visa", "callback_data"=>"Visa")), 
-				array(array("text"=>"\u{1F4B3}Mastercard", "callback_data"=>"Mastercard")), 
-				array(array("text"=>"\u{1F4B3}Amex", "callback_data"=>"Amex")), 
-				array(array("text"=>"\u{1F4B3}Diners", "callback_data"=>"Diners")), 
-				array(array("text"=>"\u{1F4B3}Jcb", "callback_data"=>"Jcb")),
-				array(array("text"=>"\u{1F4B3}Maestro", "callback_data"=>"Maestro"))
+				array(array("text"=>"\u{1F4B3} Visa", "callback_data"=>"Visa")), 
+				array(array("text"=>"\u{1F4B3} Mastercard", "callback_data"=>"Mastercard")), 
+				array(array("text"=>"\u{1F4B3} Amex", "callback_data"=>"Amex")), 
+				array(array("text"=>"\u{1F4B3} Diners", "callback_data"=>"Diners")), 
+				array(array("text"=>"\u{1F4B3} Jcb", "callback_data"=>"Jcb")),
+				array(array("text"=>"\u{1F4B3} Maestro", "callback_data"=>"Maestro"))
 			)
 		),
 
