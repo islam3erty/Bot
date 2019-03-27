@@ -278,7 +278,7 @@ class Strings
 				array(array("text=>"=>"\u{1F4CE}Gerar CNS", "callback_data"=>"cns")),
 				array(array("text=>"=>"\u{1F4CE}Dados do CEP", "callback_data"=>"cep")),
 			)
-		)
+		),
 		
 
 	];
