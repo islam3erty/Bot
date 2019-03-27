@@ -56,7 +56,7 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/ccgen"){
 	
-	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
+	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["docs"]);
 
 }else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());
