@@ -204,6 +204,8 @@ class Engine {
 			
 			}elseif($cb_data == "cep"){
 				$this->env($opc, $this->str->falas["cep"]);
+				$text = null;
+				$this->answercallback($cb_id, false, 3, $text);
 			}
 
 
