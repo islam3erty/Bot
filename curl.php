@@ -255,12 +255,10 @@ class Strings
 		
 		"doc"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F4B3} Primary", "callback_data"=>"Visa")), 
-				array(array("text"=>"\u{1F4B3} secondary", "callback_data"=>"Mastercard")), 
-				array(array("text"=>"\u{1F4B3} six", "callback_data"=>"Amex")), 
-				array(array("text"=>"\u{1F4B3} five", "callback_data"=>"Diners")), 
-				array(array("text"=>"\u{1F4B3} fourty", "callback_data"=>"Jcb")),
-				array(array("text"=>"\u{1F4B3} third", "callback_data"=>"Maestro"))
+				array(array("text"=>"\u{1F4B3} CPF", "callback_data"=>"Visa")), 
+				array(array("text"=>"\u{1F4B3} CNPJ", "callback_data"=>"Mastercard")), 
+				array(array("text"=>"\u{1F4B3} CNS", "callback_data"=>"Amex")), 
+				array(array("text"=>"\u{1F4B3} CEP", "callback_data"=>"Diners")) 
 			)
 		),
 
