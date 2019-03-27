@@ -288,7 +288,7 @@ class Strings
 			)
 		),
 
-		"start"=>"*Sou programado para fazer varias coisas legais. clique no comando* /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
+		"start"=>"*Sou programado para fazer varias coisas legais. clique no comando* /tools para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
 		"ferramentas"=>"\u{1F5C3}_Ferramentas_:\n\n*\u{1F449}Checar Bin:* `/bin 404528`\n*\u{1F449}Gerar Cartão de Credito:* `/ccgen`\n*\u{1F449}Gerar Bin:* `/bgen`\n*\u{1F449}Geolocalizar ip:* `/ip 159.89.157.64`\n\u{1F449}*Gerar(CEP, CPF,...):* `/doc`",
