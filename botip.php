@@ -73,7 +73,12 @@ if ($opc["texto"] === "/start"){
 		$motor->env($opc, $motor->remoteIp($ip));
 	}
 }elseif($opc["texto"] === "/doc"){
-	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["doc"]);
+	$motor->keyboard($opc, "*O que deseja gerar:*", $strings->falas["doc"]);
+
+}elseif(substr($opc["texto"], 0, 4) === "/cep"){
+	$cep = substr($opc["texto"], 5, 15);
+	
+	$motor->env($opc, $motor->cep($cep));
 }
 
 ?>

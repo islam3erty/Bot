@@ -1,5 +1,6 @@
 <?php
 class Engine {
+	public $str;
 	public function __construct(){
 		$this->str = new Strings();
 	}
@@ -201,6 +202,8 @@ class Engine {
 				$this->answercallback($cb_id, false, 3, $text);
 				$this->env($opc, $this->gerarValidar("cns"));
 			
+			}elseif($cb_data == "cep"){
+				$this->env($opc, $this->str->falas["cep"]);
 			}
 
 
@@ -241,10 +244,31 @@ class Engine {
 
     	$decode = json_decode($resposta);
 
-    	return '*$doc:* '.$decode->data->number_formatted."\n\n".$decode->data->message;
+    	return "*".$doc.": *".$decode->data->number_formatted."\n\n"."\u{1F5A8}".$decode->data->message;
 
 
 
+    }
+
+    public function cep($cep){
+
+    	$ch = curl_init("http://geradorapp.com/api/v1/cep/search/".$cep."?token=72f87a0206bce9b1cd3d18038808345d");
+
+    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 120);
+    	curl_setopt($ch, CURLOPT_TIMEOUT, 120); 
+    	$resposta = curl_exec($ch);
+    	curl_close($ch);
+
+    	$decode = json_decode($resposta);
+
+    	if($decode->status == 0){
+    		return $decode->data->message;
+    	}else{
+    		return "*CEP:* ".$decode->data->number."*Estado:* ".$decode->data->state_name."(".$decode->data->state.")"."\n*Cidade:* ".$decode->data->city."\n*Bairro:* ".$decode->data->district."\n*Rua/Avenida:* ".$decode->data->address."\n*Nome do local:* ".$decode->data->address_name."\n*Codigo da cidade:* ".$decode->data->city_code;
+    	}
     }
 
 
@@ -255,10 +279,10 @@ class Strings
 		
 		"doc"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F4B3} CPF", "callback_data"=>"cpf")), 
-				array(array("text"=>"\u{1F4B3} CNPJ", "callback_data"=>"cnpj")), 
-				array(array("text"=>"\u{1F4B3} CNS", "callback_data"=>"cns")), 
-				array(array("text"=>"\u{1F4B3} CEP", "callback_data"=>"cep")) 
+				array(array("text"=>"\u{1F39F} CPF", "callback_data"=>"cpf")), 
+				array(array("text"=>"\u{1F39F} CNPJ", "callback_data"=>"cnpj")), 
+				array(array("text"=>"\u{1F39F} CNS", "callback_data"=>"cns")), 
+				array(array("text"=>"\u{1F39F} Localizar CEP", "callback_data"=>"cep")) 
 			)
 		),
 
@@ -269,6 +293,7 @@ class Strings
 		"bandeiras"=>"*Escolha a bandeira da cc que deseja gerar:* \n`/mastercard\n/visa\n/amex\n/jcb\n/diners\n/maestro`",
 		"sintaxes"=>"Formato incoreto. Insira o comando no seguinte formato:\n\n/bin xxxxxx\n\n em que:\n\n/bin é o comando\n\n xxxxxx são os 6 números da bin que deseja checar",
 		"invalid"=>"*O ip deve conter pelomenos 6 números separados por ponto(.)*",
+		"cep"=>"*Para Localizar CEP introduza o comando com a seguinte sintaxe: /cep 37435-971 ou /cep 37435971*",
 		
 		"bandeiras"=>array(
 			"inline_keyboard"=>array(
