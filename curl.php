@@ -267,7 +267,7 @@ class Engine {
     	if($decode->status == 0){
     		return $decode->data->message;
     	}else{
-    		return "*CEP:* ".$decode->data->number."*Estado:* ".$decode->data->state_name."(".$decode->data->state.")"."\n*Cidade:* ".$decode->data->city."\n*Bairro:* ".$decode->data->district."\n*Rua/Avenida:* ".$decode->data->address."\n*Nome do local:* ".$decode->data->address_name."\n*Codigo da cidade:* ".$decode->data->city_code;
+    		return "*CEP:* ".$decode->data->number."\n*Estado:* ".$decode->data->state_name."(".$decode->data->state.")"."\n*Cidade:* ".$decode->data->city."\n*Bairro:* ".$decode->data->district."\n*Rua/Avenida:* ".$decode->data->address."\n*Nome do local:* ".$decode->data->address_name."\n*Codigo da cidade:* ".$decode->data->city_code;
     	}
     }
 
