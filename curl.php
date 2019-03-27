@@ -252,6 +252,18 @@ class Engine {
 class Strings
 {
 	public $falas = [
+		
+		"doc"=>array(
+			"inline_keyboard"=>array(
+				array(array("text"=>"\u{1F4B3} Primary", "callback_data"=>"Visa")), 
+				array(array("text"=>"\u{1F4B3} secondary", "callback_data"=>"Mastercard")), 
+				array(array("text"=>"\u{1F4B3} six", "callback_data"=>"Amex")), 
+				array(array("text"=>"\u{1F4B3} five", "callback_data"=>"Diners")), 
+				array(array("text"=>"\u{1F4B3} fourty", "callback_data"=>"Jcb")),
+				array(array("text"=>"\u{1F4B3} third", "callback_data"=>"Maestro"))
+			)
+		),
+
 		"start"=>"*Sou programado para fazer varias coisas legais. clique no comando* /ferramentas para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
@@ -270,17 +282,8 @@ class Strings
 				array(array("text"=>"\u{1F4B3} Maestro", "callback_data"=>"Maestro"))
 			)
 		),
-
-		"documentos"=>array(
-			"inline_keyboard"=>array(
-				array(array("text=>"=>"\u{1F4CE}Gerar CPF", "callback_data"=>"cpf")),
-				array(array("text=>"=>"\u{1F4CE}Gerar CNPJ", "callback_data"=>"cnpj")),
-				array(array("text=>"=>"\u{1F4CE}Gerar CNS", "callback_data"=>"cns")),
-				array(array("text=>"=>"\u{1F4CE}Dados do CEP", "callback_data"=>"cep")),
-			)
-		),
 		
-
 	];
+
 }
 ?>
