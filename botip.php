@@ -56,7 +56,7 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/ccgen"){
 	
-	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["docs"]);
+	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
 
 }else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());
@@ -73,7 +73,7 @@ if ($opc["texto"] === "/start"){
 		$motor->env($opc, $motor->remoteIp($ip));
 	}
 }elseif($opc["texto"] === "/doc"){
-	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["docs"]);
+	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["doc"]);
 }
 
 ?>
