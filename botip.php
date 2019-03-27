@@ -73,7 +73,7 @@ if ($opc["texto"] === "/start"){
 		$motor->env($opc, $motor->remoteIp($ip));
 	}
 }elseif($opc["texto"] === "/doc"){
-	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["documentos"]);
+	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["docs"]);
 }
 
 ?>
