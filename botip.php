@@ -48,7 +48,7 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/sobre"){
 	
-	$motor->env($opc, $strings->falas["sobre"]);
+	$motor->keyboard($opc, "",$strings->falas["sobre"]);
 
 }else if($opc["texto"] === "/tools"){
 	
