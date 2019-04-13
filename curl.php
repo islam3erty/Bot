@@ -19,7 +19,7 @@ class Engine {
 		return "ip: ".$json->ip."\ncidade: ".$json->city."\nRegião: ".$json->region."\nPais: ".$json->country."\nLatitude e Longitude: ".$json->loc."\nCodigo postal: ".@$json->postal."\nServidor da: ".$json->org;
 	}
 
-	public function genCC($tipo){
+	/*public function genCC($tipo){
 		
 		$ch= curl_init();
 		$url = "https://api.bincodes.com/cc-gen/json/e09351d196aa31f07d053f3571fef571/".$tipo."/";
@@ -34,7 +34,7 @@ class Engine {
 		$json = json_decode($resposta);
 
 		return $json->card."\n".$json->number;
-	}
+	}*/
 	//Tive que repetir esse metodo porque n achei uma logica para fazer atraves do genCC...
 	public function binGen(){
 
@@ -148,41 +148,55 @@ class Engine {
 
 			];
 
+			$bandeiras = [
+					"amex"=>1,
+					"visa"=>12,
+					"mastercard"=>10,
+					"discover"=>4,
+					"diners"=>3,
+					"interPayment"=>5,
+					"Jcb"=>6,
+					"laser"=>7,
+					"dankfort"=>8,
+					"maestro"=>9,
+
+			];
+
 			if($cb_data == "Visa"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->genCC("visa"));
+				$this->editMessage($opc, $this->card($bandeiras["visa"], "|"), $this->str->falas["bandeiras"]);
 
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->genCC("mastercard"));
+				$this->editMessage($opc, $this->card($bandeiras["mastercard"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Amex"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->genCC("amex"));
+				$this->editMessage($opc, $this->card($bandeiras["amex"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Diners"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->genCC("diners"));
+				$this->editMessage($opc, $this->card($bandeiras["diners"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Maestro"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->genCC("maestro"));
+				$this->editMessage($opc, $this->card($bandeiras["maestro"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Jcb"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->genCC("jcb"));
+				$this->editMessage($opc, $this->card($bandeiras["Jcb"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "cpf"){
 				$text = null;
@@ -206,6 +220,10 @@ class Engine {
 				$this->env($opc, $this->str->falas["cep"]);
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
+			
+			}elseif($cb_data == "Discover"){
+				$text = null;
+				
 			}
 
 
@@ -273,6 +291,91 @@ class Engine {
     	}
     }
 
+    public function card($bandeira, $separador){
+		
+
+		for($i=0; $i<4; $i++){
+
+			$ch = curl_init("https://www.treinaweb.com.br/ferramentas-para-desenvolvedores/gerador/cartao?bandeira=".$bandeira);
+
+			//curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			"authority: www.treinaweb.com.br",
+			"method: GET",
+			"path: /ferramentas-para-desenvolvedores/gerador/cartao?bandeira=".$bandeira,
+			"scheme: https",
+			"accept: */*",
+			"accept-encoding: gzip, deflate, br",
+			"accept-language: en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7",
+			"content-type: application/json",
+			"cookie: mtc_id=113145; mtc_sid=8pl1hd33skjwxaiji90dlyd; mautic_device_id=8pl1hd33skjwxaiji90dlyd; _ga=GA1.3.1469496684.1554298472; _gid=GA1.3.309158319.1554298472; _fbp=fb.2.1554298482952.1381182531; cto_lwid=9142dbec-4c38-468c-beb1-0016bef062ac; mtc_id=113145; mtc_sid=8pl1hd33skjwxaiji90dlyd; mautic_device_id=8pl1hd33skjwxaiji90dlyd; treinaweb-site=eyJpdiI6Im93UzdER3dKK0g1MEpYdmtUc3NqS3c9PSIsInZhbHVlIjoiMnZWc1pQVUdSVlROQklncDlCR1NlTTduRkg1V25RVFlQS2tKYlBDY2dkeVRUb0VMcTRnd1A0UXdadDBnYTZaRyIsIm1hYyI6IjA3ZTNlMTQ2ZTczYjdkOGJlOWU0ZWI5MjQ2YTBlOTJhNTdiYzYxZTQ0MWJhYmIzOGY2MmIzNmRmOGJhYTNjMjIifQ%3D%3D",
+			"referer: https://www.treinaweb.com.br/ferramentas-para-desenvolvedores/gerador/cartao",
+			"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36",
+			"x-requested-with: XMLHttpRequest"
+		));
+		//curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($query));
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+			$res = curl_exec($ch);
+			curl_close($ch);
+			
+		
+				
+				$mes = rand(1,12);
+				$mes1 = rand(1,12);
+				$mes2 = rand(1,12);
+				
+				if($mes < 10 ){
+					$mes = "0$mes";
+					
+				}
+
+				if($mes1 < 10){
+					$mes1 = "0$mes1";
+				}
+
+				if($mes2 < 10){
+					$mes2 = "0$mes2";
+				}
+
+				
+				$ano = rand(2020, 2025);
+				$ano2 = rand(2020, 2025);
+				$ano3 = rand(2020, 2025);
+
+				$cvv=rand(100,999);
+				$cvv2 = rand(100,999);
+				$cvv3 = rand(100,999);
+				
+				$ex = explode('"', $res);
+				$replace1 = str_replace(" ", "", $ex["1"]);
+				$replace2 = str_replace(" ", "", $ex["5"]);
+				$replace3 = str_replace(" ", "", $ex["9"]);
+				 
+				return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."<br/>".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."<br/>".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."<br/>";
+			
+		}
+
+	}
+
+	public function editMessage($param, $msg, $botao){
+		
+		$encode = json_encode($botao, true);
+		$param = [
+			"chat_id"=>$opc["chat_id"],
+			"message_id"=>$opc["message_id"],
+			"reply_markup"=>$encode,
+			"text"=>$msg,
+			"disable_web_page_preview"=>1,
+			"parse_mode"=> "Markdown",
+
+		];
+
+		$this->apiRequest("editMessageText", $param);
+	}
+		
+
 
 }
 class Strings
@@ -304,7 +407,11 @@ class Strings
 				array(array("text"=>"\u{1F4B3} Amex", "callback_data"=>"Amex")), 
 				array(array("text"=>"\u{1F4B3} Diners", "callback_data"=>"Diners")), 
 				array(array("text"=>"\u{1F4B3} Jcb", "callback_data"=>"Jcb")),
-				array(array("text"=>"\u{1F4B3} Maestro", "callback_data"=>"Maestro"))
+				array(array("text"=>"\u{1F4B3} Maestro", "callback_data"=>"Maestro")),
+				array(array("text"=>"\u{1F4B3} Laser", "callback_data"=>"Laser")),
+				array(array("text"=>"\u{1F4B3} InterPayment", "callback_data"=>"Interpayment")),
+				array(array("text"=>"\u{1F4B3} Dankfort", "callback_data"=>"Dankfort")),
+				array(array("text"=>"\u{1F4B3} Discover", "callback_data"=>"Discover"))
 			)
 		),
 		

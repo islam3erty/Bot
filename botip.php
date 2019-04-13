@@ -11,6 +11,7 @@ $mensagem = $update["message"];
 $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
+$opc["message_id"] = $mensagem["message"]["id"];
 
 if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
@@ -60,9 +61,6 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/bgen"){
 	$motor->env($opc, $motor->binGen());
-
-}elseif($opc["texto"]==="/key"){
-	$motor->keyboard($opc, $strings->falas["acerca"]);
 
 }elseif(substr($opc["texto"], 0, 3)==="/ip"){
 	$ip = substr($opc["texto"], 4, 19);
