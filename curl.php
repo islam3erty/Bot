@@ -166,7 +166,7 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, "Go to shit motherfucker", $this->str->falas["bandeiras"]);
+				$this->editMessage($opc, "Go to shit motherfucker", $this->str->falas["doc"]);
 
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
