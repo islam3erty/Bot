@@ -365,7 +365,7 @@ class Engine {
 		$param = [
 			"chat_id"=>$opc["chat_id"],
 			"message_id"=>$opc["message_id"],
-			"text"=>$msg,
+			"input_message_content"=>$msg,
 			"disable_web_page_preview"=>1,
 			"parse_mode"=> "Markdown",
 			"reply_markup"=>$encode
