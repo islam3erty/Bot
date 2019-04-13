@@ -1,4 +1,5 @@
 <?php
+require "botip.php";
 class Engine {
 	public $str;
 	public function __construct(){
