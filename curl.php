@@ -166,7 +166,7 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->str->falas["doc"]);
+				$this->editMessage($opc, "vagabaaaa",$this->str->falas["doc"]);
 
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
@@ -359,7 +359,7 @@ class Engine {
 
 	}
 
-	public function editMessage($param, $botao){
+	public function editMessage($param, $msg, $botao){
 		
 		$encode = json_encode($botao, true);
 		$param = [
