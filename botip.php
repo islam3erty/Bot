@@ -47,7 +47,13 @@ if ($opc["texto"] === "/start"){
 }else if($opc["texto"] === "/acerca"){
 	
 	//$motor->env($opc, $strings->falas["acerca"]);
-	$motor->env($opc, $motor->card(10, "|"));
+	$count = 0;
+	while($count<4){
+		$motor->env($opc, $motor->card(10, "|"));
+		$count++;
+	}
+	
+
 }else if($opc["texto"] === "/sobre"){
 	
 	$motor->env($opc, $strings->falas["sobre"]);
