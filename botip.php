@@ -36,7 +36,7 @@ if(isset($update["callback_query"])){
 if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
-	$motor->editMessage($opc, "Eu sou foda", $strings->falas["doc"]);
+	
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
@@ -46,8 +46,8 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/acerca"){
 	
-	$motor->env($opc, $strings->falas["acerca"]);
-
+	//$motor->env($opc, $strings->falas["acerca"]);
+	$motor->env($opc, $motor->card(10, "|"));
 }else if($opc["texto"] === "/sobre"){
 	
 	$motor->env($opc, $strings->falas["sobre"]);
