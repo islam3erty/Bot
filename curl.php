@@ -365,6 +365,7 @@ class Engine {
 		$encode = json_encode($botao, true);
 		$param = [
 			"chat_id"=>$opc["chat_id"],
+			"Text"=>"Escolha o documento agora",
 			"message_id"=>$opc["message_id"],
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,
@@ -373,7 +374,7 @@ class Engine {
 
 		];
 
-		$this->apiRequest("editMessageReplyMarkup", $param);
+		$this->apiRequest("editMessageText", $param);
 	}
 		
 
