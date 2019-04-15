@@ -360,12 +360,12 @@ class Engine {
 
 	}
 
-	public function editMessage($opc, $botao){
+	public function editMessage($opc, $msg,$botao){
 		
 		$encode = json_encode($botao, true);
 		$param = [
 			"chat_id"=>$opc["chat_id"],
-			"text"=>"Escolha o documento agora",
+			"text"=>$msg,
 			"message_id"=>$opc["message_id"],
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,

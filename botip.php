@@ -11,7 +11,7 @@ $mensagem = $update["message"];
 $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
-$opc["message_id"] = $mensagem["message_id"]-1;
+$opc["message_id"] = $mensagem["message_id"];
 
 if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
@@ -36,7 +36,7 @@ if(isset($update["callback_query"])){
 if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
-	$motor->editMessage($opc, $strings->falas["doc"]);
+	$motor->editMessage($opc, "Eu sou foda", $strings->falas["doc"]);
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
