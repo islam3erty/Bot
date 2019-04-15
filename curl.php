@@ -295,8 +295,7 @@ class Engine {
     public function card($bandeira, $separador){
 		
 
-		for($i=0; $i<4; $i++){
-
+		
 			$ch = curl_init("https://www.treinaweb.com.br/ferramentas-para-desenvolvedores/gerador/cartao?bandeira=".$bandeira);
 
 			//curl_setopt($ch, CURLOPT_POST, 1);
@@ -354,12 +353,8 @@ class Engine {
 				$replace2 = str_replace(" ", "", $ex["5"]);
 				$replace3 = str_replace(" ", "", $ex["9"]);
 				 
-				//return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."\n".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."\n".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."\n";
+				return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."\n".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."\n".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."\n";
 			
-		}
-
-		return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."\n".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."\n".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."\n";
-
 	}
 
 	public function editMessage($opc, $msg, $botao){
