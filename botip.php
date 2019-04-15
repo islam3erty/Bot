@@ -1,5 +1,5 @@
 <?php
-require "curl.php";
+
 $motor = new Engine();
 $strings = new Strings();
 define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
@@ -36,6 +36,7 @@ if(isset($update["callback_query"])){
 if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
+	$motor->env($opc, $opc["chat_id"]);
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
