@@ -1,5 +1,5 @@
 <?php
-
+require "curl.php";
 $motor = new Engine();
 $strings = new Strings();
 define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
