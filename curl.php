@@ -354,7 +354,7 @@ class Engine {
 				$replace2 = str_replace(" ", "", $ex["5"]);
 				$replace3 = str_replace(" ", "", $ex["9"]);
 				 
-				return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."<br/>".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."<br/>".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."<br/>";
+				return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."\n".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."\n".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."\n";
 			
 		}
 
