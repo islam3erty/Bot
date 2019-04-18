@@ -11,7 +11,7 @@ $mensagem = $update["message"];
 $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
-$opc["message_id"] = $mensagem["message_id"]+2;
+$opc["message_id"] = $mensagem["message_id"]+1;
 
 if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
