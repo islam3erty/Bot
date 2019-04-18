@@ -7,7 +7,7 @@ define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
 define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
 $conteudo = file_get_contents("php://input");
 $update = json_decode($conteudo, TRUE);
-$mensagem = $update["message"];
+$mensagem = $update["message"]-1;
 $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
