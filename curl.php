@@ -167,7 +167,7 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->str->falas["doc"]);
+				$this->editMessage($opc, $this->card($bandeiras["visa"], "|"), $this->str->falas["bandeiras"]);
 
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
@@ -294,8 +294,7 @@ class Engine {
 
     public function card($bandeira, $separador){
 		
-    	$count = 0;
-		while($count<4){
+    	
 			$ch = curl_init("https://www.treinaweb.com.br/ferramentas-para-desenvolvedores/gerador/cartao?bandeira=".$bandeira);
 
 			//curl_setopt($ch, CURLOPT_POST, 1);
@@ -354,8 +353,7 @@ class Engine {
 				$replace3 = str_replace(" ", "", $ex["9"]);
 				 
 				return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."\n".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."\n".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."\n";
-				$count++;
-			}
+				
 	}
 
 	public function editMessage($opc, $msg, $botao){
