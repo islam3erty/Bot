@@ -37,7 +37,7 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
 	$motor->env($opc, $opc["message_id"]);
-	$motor->editMessage($opc, "Ola eu modifiquei a mensagem", null);
+	$motor->editMessage($opc, "Ola eu modifiquei a mensagem", $strings->falas["bandeiras"]);
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
