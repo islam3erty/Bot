@@ -52,18 +52,18 @@ if ($opc["texto"] === "/start"){
 
 }else if($opc["texto"] === "/sobre"){
 	
-	$motor->env($opc, $strings->falas["sobre"]);
+	$motor->editMessage($opc, $strings->falas["sobre"]);
 
 }else if($opc["texto"] === "/tools"){
 	
-	$motor->env($opc, $strings->falas["ferramentas"]);
+	$motor->editMessage($opc, $strings->falas["ferramentas"]);
 
 }else if($opc["texto"] === "/ccgen"){
 	
 	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
 
 }else if($opc["texto"] === "/bgen"){
-	$motor->env($opc, $motor->binGen());
+	$motor->editMessage($opc, $motor->binGen());
 
 }elseif(substr($opc["texto"], 0, 3)==="/ip"){
 	$ip = substr($opc["texto"], 4, 19);
