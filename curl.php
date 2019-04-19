@@ -360,9 +360,9 @@ class Engine {
 		
 		//$encode = json_encode($botao, true);
 		$param = [
-			"chat_id"=>$opc["chat_id"],
+			"chat_id"=>$callback["message"]["chat"]["id"],
 			"text"=>$msg,
-			"message_id"=>$opc["message_id"],
+			"message_id"=>$callback["message"]["id"],
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,
 			//"parse_mode"=> "Markdown",
