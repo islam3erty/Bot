@@ -167,13 +167,13 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, "Porra menorrrr");
+				$this->editReply($opc);
 
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["mastercard"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($opc, "Vai a merda");
 			
 			}elseif($cb_data == "Amex"){
 				$text = null;
@@ -371,6 +371,17 @@ class Engine {
 		];
 
 		$this->apiRequest("editMessageText", $param);
+	}
+
+	public function editReply($opc){
+
+		$param = [
+			"chat_id"=>$opc["chat_id"],
+			"message_id"=>$opc["message_id"],
+			"reply_markup"=>$this->str->falas["doc"]
+		];
+
+		$this->apiRequest("editMessageReplymarkup", $param);
 	}
 		
 
