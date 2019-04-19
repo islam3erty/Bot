@@ -142,12 +142,12 @@ class Engine {
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
 
-			$opc = [
+			/*$opc = [
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id
 
 
-			];
+			];*/
 
 			$bandeiras = [
 					"amex"=>1,
@@ -167,7 +167,7 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($callback, "affff eu sou um merda mermao");
+				$this->editMessage($opc, "affff eu sou um merda mermao");
 
 
 			}elseif($cb_data == "Mastercard"){
