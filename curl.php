@@ -363,7 +363,7 @@ class Engine {
 		$param = [
 			"chat_id"=>$callback["message"]["chat"]["id"],
 			"text"=>$msg,
-			"message_id"=>$callback["message"]["id"],
+			"message_id"=>$callback["id"],
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,
 			//"parse_mode"=> "Markdown",
