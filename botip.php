@@ -17,7 +17,7 @@ if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
 }
 
-$callback[];
+$callback = [];
 $cb_chat_id = $callback["message"]["chat"]["id"];
 $cb_message_id = $callback["message"]["id"];
 $cb_id = $callback["id"];
