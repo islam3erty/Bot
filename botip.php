@@ -17,6 +17,10 @@ if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
 }
 
+$callback[];
+$cb_chat_id = $callback["message"]["chat"]["id"];
+$cb_message_id = $callback["message"]["id"];
+$cb_id = $callback["id"];
 
 //Metodo Get pra quem quiser simplicidade. Mais n faz quebra de linhas. by C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ 
 /*if ($texto === "/start"){
