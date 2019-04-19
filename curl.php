@@ -167,7 +167,7 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editReply($opc);
+				$this->editMessageText($opc);
 
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
