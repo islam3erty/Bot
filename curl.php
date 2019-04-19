@@ -167,7 +167,7 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, "Porra menorrrr", $this->str->falas["bandeiras"]);
+				$this->editMessage($opc, "Porra menorrrr");
 
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
@@ -356,9 +356,9 @@ class Engine {
 				
 	}
 
-	public function editMessage($opc, $msg, $botao){
+	public function editMessage($opc, $msg){
 		
-		$encode = json_encode($botao, true);
+		//$encode = json_encode($botao, true);
 		$param = [
 			"chat_id"=>$opc["chat_id"],
 			"text"=>$msg,
@@ -366,7 +366,7 @@ class Engine {
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,
 			//"parse_mode"=> "Markdown",
-			"reply_markup"=>$encode
+			//"reply_markup"=>$encode
 
 		];
 
