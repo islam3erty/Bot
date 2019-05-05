@@ -167,7 +167,7 @@ class Engine {
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $cb_message_id);
+				$this->env($opc, $this->card($badeiras["amex"]));
 
 
 			}elseif($cb_data == "Mastercard"){
