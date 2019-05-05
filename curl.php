@@ -142,12 +142,12 @@ class Engine {
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
 
-			/*$opc = [
+			$opc = [
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id
 
 
-			];*/
+			];
 
 			$bandeiras = [
 					"amex"=>1,
