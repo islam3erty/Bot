@@ -135,18 +135,18 @@ class Engine {
 		$this->apiRequest("answerCallbackQuery", $param);
 	}
 
-	public function callback($opc ,$callback){
+	public function callback($callback){
 		
 			$cb_chat_id = $callback["message"]["chat"]["id"];
 			$cb_message_id = $callback["message"]["id"];
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
 
-			/*$opc = [
+			$opc = [
 				"chat_id"=>$cb_chat_id,
-				"msg_id"=>$cb_message_id,
+				"msg_id"=>$cb_message_id
 
-			];*/
+			];
 
 			$bandeiras = [
 					"amex"=>1,
