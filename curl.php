@@ -164,7 +164,6 @@ class Engine {
 
 			if($cb_data == "Visa"){
 				$text = null;
-				$go = $opc["message_id"];
 				$this->answercallback($cb_id, false, 3, $text);
 				$this->editMessage("eu sou foda");
 				
@@ -364,7 +363,7 @@ class Engine {
 		$param = [
 			"chat_id"=>"600217408",
 			"text"=>$msg,
-			"message_id"=>"2083",
+			"message_id"=>$opc["message_id"],
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,
 			//"parse_mode"=> "Markdown",
