@@ -36,6 +36,7 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
 	$motor->env($opc, $opc["chat_id"]);
+	$motor->env($opc, "Rabo");
 	sleep(3);
 	$motor->editMessage($opc, "Ola eu modifiquei a mensagem");
 
