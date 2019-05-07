@@ -164,9 +164,10 @@ class Engine {
 
 			if($cb_data == "Visa"){
 				$text = null;
-
+				$go = $opc["messge_id"];
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, 1516);
+				$this->env($opc, "Ola sou eu");
+				$this->env($opc, $go);
 
 
 			}elseif($cb_data == "Mastercard"){
