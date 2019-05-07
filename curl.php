@@ -166,7 +166,7 @@ class Engine {
 				$text = null;
 				$go = $opc["message_id"];
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $go);
+				$this->editMessage("eu sou foda")
 				
 
 
@@ -358,13 +358,13 @@ class Engine {
 				
 	}
 
-	public function editMessage($opc, $msg){
+	public function editMessage($msg){
 		
 		//$encode = json_encode($botao, true);
 		$param = [
-			"chat_id"=>$opc["chat_id"],
+			"chat_id"=>"600217408",
 			"text"=>$msg,
-			"message_id"=>$opc["message_id"],
+			"message_id"=>"2083",
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,
 			//"parse_mode"=> "Markdown",
