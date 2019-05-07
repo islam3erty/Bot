@@ -166,7 +166,7 @@ class Engine {
 				$text = null;
 				$go = $opc["message_id"];
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage("eu sou foda")
+				$this->editMessage("eu sou foda");
 				
 
 
