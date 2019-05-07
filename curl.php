@@ -144,7 +144,7 @@ class Engine {
 
 			$opc = [
 				"chat_id"=>$cb_chat_id,
-				"msg_id"=>$cb_message_id
+				"message_id"=>$cb_message_id
 
 			];
 
@@ -165,7 +165,7 @@ class Engine {
 			if($cb_data == "Visa"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage("eu sou foda");
+				$this->editMessage($opc, "eu sou foda");
 				
 
 
@@ -357,11 +357,11 @@ class Engine {
 				
 	}
 
-	public function editMessage($msg){
+	public function editMessage($opc, $msg){
 		
 		//$encode = json_encode($botao, true);
 		$param = [
-			"chat_id"=>"600217408",
+			"chat_id"=>$opc["chat_id"],
 			"text"=>$msg,
 			"message_id"=>$opc["message_id"],
 			//"input_message_content"=>$msg,
