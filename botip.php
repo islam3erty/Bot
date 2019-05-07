@@ -35,10 +35,9 @@ if(isset($update["callback_query"])){
 if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
-	$motor->env($opc, $opc["chat_id"]);
-	$motor->env($opc, "Rabo");
+	$motor->env($opc, $opc["message_id"]);
 	sleep(3);
-	$motor->editMessage($opc, "Ola eu modifiquei a mensagem");
+	
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
