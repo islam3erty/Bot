@@ -166,8 +166,8 @@ class Engine {
 				$text = null;
 				$go = $opc["message_id"];
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, "Ola sou eu");
 				$this->env($opc, $go);
+				
 
 
 			}elseif($cb_data == "Mastercard"){
