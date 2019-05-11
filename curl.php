@@ -1,5 +1,20 @@
 <?php
 
+define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
+define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
+define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
+$conteudo = file_get_contents("php://input");
+$update = json_decode($conteudo, TRUE);
+$mensagem = $update["message"];
+$opc = [];
+$opc["chat_id"]=$mensagem["chat"]["id"];
+$opc["texto"] = $mensagem["text"];
+$opc["message_id"] = $mensagem["message_id"]-1;
+
+if(isset($update["callback_query"])){
+	$motor->callback($update["callback_query"]);
+}
+
 class Engine {
 	public $str;
 	public function __construct(){
@@ -144,7 +159,6 @@ class Engine {
 
 			$opc = [
 				"chat_id"=>$cb_chat_id,
-				"message_id"=>$opc["message_id"],
 				"msg_id"=>$cb_message_id
 
 			];
@@ -166,7 +180,7 @@ class Engine {
 			if($cb_data == "Visa"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, "eu sou foda");
+				$this->env($opc, $opc["message_id"]);
 				
 
 

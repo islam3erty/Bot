@@ -2,20 +2,7 @@
 require "curl.php";
 $motor = new Engine();
 $strings = new Strings();
-define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
-define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
-define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
-$conteudo = file_get_contents("php://input");
-$update = json_decode($conteudo, TRUE);
-$mensagem = $update["message"];
-$opc = [];
-$opc["chat_id"]=$mensagem["chat"]["id"];
-$opc["texto"] = $mensagem["text"];
-$opc["message_id"] = $mensagem["message_id"]-1;
 
-if(isset($update["callback_query"])){
-	$motor->callback($update["callback_query"]);
-}
 
 //Metodo Get pra quem quiser simplicidade. Mais n faz quebra de linhas. by C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ 
 /*if ($texto === "/start"){
