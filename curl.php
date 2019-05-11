@@ -1,6 +1,6 @@
 <?php
 
-define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
+/*define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
 define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
 define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
 $conteudo = file_get_contents("php://input");
@@ -13,12 +13,30 @@ $opc["message_id"] = $mensagem["message_id"]-1;
 
 if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
-}
+}*/
 
 class Engine {
 	public $str;
+	public $opc;
+	private $update;
+	private $conteudo;
+	public $mensagem;
+	const BOT_TOKEN = "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE";
+	const API_URL = "https://api.telegram.org/bot765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE/";
+	const WEBHOOK_URL = "https://botip.herokuapp.com/botip.php";
+
 	public function __construct(){
 		$this->str = new Strings();
+		$this->conteudo = file_get_contents("php://input");
+		$this->update = json_decode($this->conteudo, true);
+		$this->mensagem = $this->update["message"];
+		$this->opc["chat_id"] = $this->mensagem["chat"]["id"];
+		$this->opc["texto"] = $this->mensagem["text"];
+		$this->opc["message_id"] = $this->mensagem["message_id"]-1;
+
+		if(isset($this->update["callback_query"])){
+			$this->callback($this->update["callback_query"]);
+		}		
 	}
 	//public function getNews(){
 		//$json = file_get_contents("https://newsapi.org/      v2/top-headlines?sources=google-news-br&apiKey=9f8c49a46a4d457082730c4b8d9e2a9a");
@@ -97,9 +115,9 @@ class Engine {
 		curl_close($ch);
 	
 }
-	public function env($opc, $msg){
+	public function env($msg){
         $param = [
-            "chat_id" => $opc["chat_id"],
+            "chat_id" => $this->opc["chat_id"],
             "disable_web_page_preview" => 1,
             "parse_mode" => "Markdown",
             "text" => $msg
@@ -108,13 +126,13 @@ class Engine {
         $this->apiRequest("sendMessage", $param);
 	}
 
-	public function keyboard($opc, $msg, $botao){
+	public function keyboard($msg, $botao){
 		
 
 		$encode=json_encode($botao, true);
 		
 		$data = [
-			'chat_id' => $opc["chat_id"],
+			'chat_id' => $this->opc["chat_id"],
 			'text' => $msg,
 			"reply_markup"=>$encode,
 			"parse_mode"=>"Markdown"
@@ -157,11 +175,6 @@ class Engine {
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
 
-			$opc = [
-				"chat_id"=>$cb_chat_id,
-				"msg_id"=>$cb_message_id
-
-			];
 
 			$bandeiras = [
 					"amex"=>1,
@@ -180,7 +193,7 @@ class Engine {
 			if($cb_data == "Visa"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $opc["message_id"]);
+				$this->env($this->opc, $this->opc["message_id"]);
 				
 
 
@@ -189,52 +202,52 @@ class Engine {
 
 				$this->answercallback($cb_id, false, 3, $text);
 				sleep(2);
-				$this->editMessage($opc, "Vai a merda");
+				$this->editMessage($this->opc, "Vai a merda");
 			
 			}elseif($cb_data == "Amex"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["amex"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($this->opc, $this->card($bandeiras["amex"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Diners"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["diners"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($this->opc, $this->card($bandeiras["diners"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Maestro"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["maestro"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($this->opc, $this->card($bandeiras["maestro"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Jcb"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["Jcb"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($this->opc, $this->card($bandeiras["Jcb"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "cpf"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->gerarValidar("cpf"));
+				$this->env($this->opc, $this->gerarValidar("cpf"));
 			
 			}elseif($cb_data == "cnpj"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->gerarValidar("cnpj"));
+				$this->env($this->opc, $this->gerarValidar("cnpj"));
 			
 			}elseif($cb_data == "cns"){
 				$text = null;
 
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->gerarValidar("cns"));
+				$this->env($this->opc, $this->gerarValidar("cns"));
 			
 			}elseif($cb_data == "cep"){
-				$this->env($opc, $this->str->falas["cep"]);
+				$this->env($this->opc, $this->str->falas["cep"]);
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
 			
@@ -372,13 +385,13 @@ class Engine {
 				
 	}
 
-	public function editMessage($opc, $msg){
+	public function editMessage($msg){
 		
 		//$encode = json_encode($botao, true);
 		$param = [
-			"chat_id"=>$opc["chat_id"],
+			"chat_id"=>$this->opc["chat_id"],
 			"text"=>$msg,
-			"message_id"=>$opc["message_id"],
+			"message_id"=>$this->opc["message_id"],
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,
 			//"parse_mode"=> "Markdown",
@@ -389,19 +402,8 @@ class Engine {
 		$this->apiRequest("editMessageText", $param);
 	}
 
-	public function editReply($opc){
-
-		$param = [
-			"chat_id"=>$opc["chat_id"],
-			"message_id"=>$opc["message_id"],
-			"reply_markup"=>$this->str->falas["doc"]
-		];
-
-		$this->apiRequest("editMessageReplymarkup", $param);
-	}
+	
 		
-
-
 }
 class Strings
 {

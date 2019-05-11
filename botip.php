@@ -3,71 +3,55 @@ require "curl.php";
 $motor = new Engine();
 $strings = new Strings();
 
-
-//Metodo Get pra quem quiser simplicidade. Mais n faz quebra de linhas. by C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ 
-/*if ($texto === "/start"){
-	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
-}else if(substr($texto, 0, 4)==="/bin"){
-	$bin = substr($texto, 5, 10);
-	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$motor->bin($bin));
-}else if($texto === "/acerca"){
-	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["acerca"]);
-}else if($texto === "/sobre"){
-	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["sobre"]);
-}else if($texto === "/ferramentas"){
-	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["ferramentas"]);
-}else{
-	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=Função desconhecida");
-}*/
-if ($opc["texto"] === "/start"){
+if ($motor->opc["texto"] === "/start"){
 	
-	$motor->env($opc, $strings->falas["start"]);
-	$motor->env($opc, $opc["message_id"]);
+	$motor->env($motor->opc, $strings->falas["start"]);
+	$motor->env($motor->opc, $motor->opc["message_id"]);
 	sleep(3);
 	
 
-}else if(substr($opc["texto"], 0, 4)==="/bin"){
-	$bin = substr($opc["texto"], 5, 10);
+}else if(substr($motor->opc["texto"], 0, 4)==="/bin"){
+	$bin = substr($motor->opc["texto"], 5, 10);
 
-	$motor->env($opc, $motor->bin($bin));
+	$motor->env($motor->opc, $motor->bin($bin));
 	
 
-}else if($opc["texto"] === "/acerca"){
+}else if($motor->opc["texto"] === "/acerca"){
 	
-	//$motor->env($opc, $strings->falas["acerca"]);
+	//$motor->env($motor->opc, $strings->falas["acerca"]);
 	
-	$motor->env($opc, $motor->card(10, "|"));
+	$motor->env($motor->opc, $motor->card(10, "|"));
 
-}else if($opc["texto"] === "/sobre"){
+}else if($motor->opc["texto"] === "/sobre"){
 	
-	$motor->editMessage($opc, $strings->falas["sobre"]);
+	$motor->editMessage($motor->opc, $strings->falas["sobre"]);
 
-}else if($opc["texto"] === "/tools"){
+}else if($motor->opc["texto"] === "/tools"){
 	
-	$motor->editMessage($opc, $strings->falas["ferramentas"]);
+	$motor->editMessage($motor->opc, $strings->falas["ferramentas"]);
 
-}else if($opc["texto"] === "/ccgen"){
+}else if($motor->opc["texto"] === "/ccgen"){
 	
-	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
+	$motor->keyboard($motor->opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
 
-}else if($opc["texto"] === "/bgen"){
-	$motor->editMessage($opc, $motor->binGen());
+}else if($motor->opc["texto"] === "/bgen"){
+	$motor->editMessage($motor->opc, $motor->binGen());
 
-}elseif(substr($opc["texto"], 0, 3)==="/ip"){
-	$ip = substr($opc["texto"], 4, 19);
+}elseif(substr($motor->opc["texto"], 0, 3)==="/ip"){
+	$ip = substr($motor->opc["texto"], 4, 19);
 
 	if(strlen($ip)<9 & strlen($ip)>16){
-		$motor->env($opc, $strings->falas["invalid"]);
+		$motor->env($motor->opc, $strings->falas["invalid"]);
 	}else{
-		$motor->env($opc, $motor->remoteIp($ip));
+		$motor->env($motor->opc, $motor->remoteIp($ip));
 	}
-}elseif($opc["texto"] === "/doc"){
-	$motor->keyboard($opc, "*O que deseja gerar:*", $strings->falas["doc"]);
+}elseif($motor->opc["texto"] === "/doc"){
+	$motor->keyboard($motor->opc, "*O que deseja gerar:*", $strings->falas["doc"]);
 
-}elseif(substr($opc["texto"], 0, 4) === "/cep"){
-	$cep = substr($opc["texto"], 5, 15);
+}elseif(substr($motor->opc["texto"], 0, 4) === "/cep"){
+	$cep = substr($motor->opc["texto"], 5, 15);
 	
-	$motor->env($opc, $motor->cep($cep));
+	$motor->env($motor->opc, $motor->cep($cep));
 }
 
 ?>
