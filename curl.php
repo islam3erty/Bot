@@ -10,7 +10,7 @@ global $opc;
 $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
-$opc["message_id"] = $mensagem["message_id"]-1;
+$opc["message_id"] = $mensagem["message_id"];
 
 if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
@@ -20,7 +20,6 @@ class Engine {
 	public $str;
 	public function __construct(){
 		$this->str = new Strings();
-		global $opc;
 	}
 	//public function getNews(){
 		//$json = file_get_contents("https://newsapi.org/      v2/top-headlines?sources=google-news-br&apiKey=9f8c49a46a4d457082730c4b8d9e2a9a");
@@ -143,9 +142,11 @@ class Engine {
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
 			
+			global $opc
+			
 			$opc = [
 				"chat_id"=>$cb_chat_id,
-				"msg_id"=>$cb_message_id
+				"message_id"=>$opc["message_id"]
 			];
 			
 			$bandeiras = [
@@ -345,6 +346,7 @@ class Engine {
 		];
 		$this->apiRequest("editMessageReplymarkup", $param);
 	}
+
 		
 }
 class Strings
@@ -386,3 +388,4 @@ class Strings
 	];
 }
 ?>
+
