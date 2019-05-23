@@ -1,42 +1,8 @@
 <?php
-
-/*define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
-define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
-define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
-$conteudo = file_get_contents("php://input");
-$update = json_decode($conteudo, TRUE);
-$mensagem = $update["message"];
-$opc = [];
-$opc["chat_id"]=$mensagem["chat"]["id"];
-$opc["texto"] = $mensagem["text"];
-$opc["message_id"] = $mensagem["message_id"]-1;
-
-if(isset($update["callback_query"])){
-	$motor->callback($update["callback_query"]);
-}*/
-
 class Engine {
 	public $str;
-	public $opc;
-	private $update;
-	private $conteudo;
-	public $mensagem;
-	const BOT_TOKEN = "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE";
-	const API_URL = "https://api.telegram.org/bot765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE/";
-	const WEBHOOK_URL = "https://botip.herokuapp.com/botip.php";
-
 	public function __construct(){
 		$this->str = new Strings();
-		$this->conteudo = file_get_contents("php://input");
-		$this->update = json_decode($this->conteudo, true);
-		$this->mensagem = $this->update["message"];
-		$this->opc["chat_id"] = $this->mensagem["chat"]["id"];
-		$this->opc["texto"] = $this->mensagem["text"];
-		$this->opc["message_id"] = $this->mensagem["message_id"]-1;
-
-		if(isset($this->update["callback_query"])){
-			$this->callback($this->update["callback_query"]);
-		}		
 	}
 	//public function getNews(){
 		//$json = file_get_contents("https://newsapi.org/      v2/top-headlines?sources=google-news-br&apiKey=9f8c49a46a4d457082730c4b8d9e2a9a");
@@ -52,26 +18,21 @@ class Engine {
 		$json = json_decode($output);
 		return "ip: ".$json->ip."\ncidade: ".$json->city."\nRegião: ".$json->region."\nPais: ".$json->country."\nLatitude e Longitude: ".$json->loc."\nCodigo postal: ".@$json->postal."\nServidor da: ".$json->org;
 	}
-
 	/*public function genCC($tipo){
 		
 		$ch= curl_init();
 		$url = "https://api.bincodes.com/cc-gen/json/e09351d196aa31f07d053f3571fef571/".$tipo."/";
-
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$resposta = curl_exec($ch);
 		$info = curl_getinfo($ch);
 		curl_close($ch);
-
 		$json = json_decode($resposta);
-
 		return $json->card."\n".$json->number;
 	}*/
 	//Tive que repetir esse metodo porque n achei uma logica para fazer atraves do genCC...
 	public function binGen(){
-
 		$bandeiras=[
 			"mastercard",
 			"visa",
@@ -84,20 +45,15 @@ class Engine {
 		
 		$ch= curl_init();
 		$url = "https://api.bincodes.com/cc-gen/json/e09351d196aa31f07d053f3571fef571/".$bandeiras[$chose]."/";
-
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$resposta = curl_exec($ch);
 		$info = curl_getinfo($ch);
 		curl_close($ch);
-
 		$json = json_decode($resposta);
-
 		return "BIN ".$json->card."\n".substr($json->number, 0,6);
 	}
-
-
 	public function apiRequest($metodo, $param){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, API_URL.$metodo."?");
@@ -115,9 +71,9 @@ class Engine {
 		curl_close($ch);
 	
 }
-	public function env($msg){
+	public function env($opc, $msg){
         $param = [
-            "chat_id" => $this->opc["chat_id"],
+            "chat_id" => $opc["chat_id"],
             "disable_web_page_preview" => 1,
             "parse_mode" => "Markdown",
             "text" => $msg
@@ -125,21 +81,18 @@ class Engine {
         
         $this->apiRequest("sendMessage", $param);
 	}
-
-	public function keyboard($msg, $botao){
+	public function keyboard($opc, $msg, $botao){
 		
-
 		$encode=json_encode($botao, true);
 		
 		$data = [
-			'chat_id' => $this->opc["chat_id"],
+			'chat_id' => $opc["chat_id"],
 			'text' => $msg,
 			"reply_markup"=>$encode,
 			"parse_mode"=>"Markdown"
 			
 		];
     		
-
 		$this->apiRequest("sendMessage", $data);
 	}
 	
@@ -156,7 +109,6 @@ class Engine {
 		$json = json_decode($resposta);
 		return "*Bandeira:* ".$json->scheme."\n*Tipo:* ".$json->type."\n*Nivel:* ".$json->brand."\n*País:* ".$json->country->name."(".$json->country->emoji.")"."\n*Latitude:* ".$json->country->latitude."\n*Longitude:* ".$json->country->longitude."\n*Banco:* ".$json->bank->name."\n*Website:* ".$json->bank->url."\n*Phone:* ".$json->bank->phone."\n*Cidade:* ".$json->bank->city;
 	}
-
 	protected function answercallback($callback_id, $alert, $time, $text){
 		$param = array(
 			"callback_query_id"=>$callback_id,
@@ -164,18 +116,18 @@ class Engine {
 			"cache_time"=>$time,
 			"text"=>$text
 		);
-
 		$this->apiRequest("answerCallbackQuery", $param);
 	}
-
 	public function callback($callback){
 		
 			$cb_chat_id = $callback["message"]["chat"]["id"];
 			$cb_message_id = $callback["message"]["id"];
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
-
-
+			$opc = [
+				"chat_id"=>$cb_chat_id,
+				"msg_id"=>$cb_message_id
+			];
 			$bandeiras = [
 					"amex"=>1,
 					"visa"=>12,
@@ -187,67 +139,56 @@ class Engine {
 					"laser"=>7,
 					"dankfort"=>8,
 					"maestro"=>9,
-
 			];
-
 			if($cb_data == "Visa"){
 				$text = null;
+				$go = $opc["message_id"];
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($this->opc, $this->opc["message_id"]);
+				$this->env($opc, $go);
 				
-
-
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
-
 				$this->answercallback($cb_id, false, 3, $text);
 				sleep(2);
-				$this->editMessage($this->opc, "Vai a merda");
+				$this->editMessage($opc, "Vai a merda");
 			
 			}elseif($cb_data == "Amex"){
 				$text = null;
-
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($this->opc, $this->card($bandeiras["amex"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($opc, $this->card($bandeiras["amex"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Diners"){
 				$text = null;
-
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($this->opc, $this->card($bandeiras["diners"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($opc, $this->card($bandeiras["diners"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Maestro"){
 				$text = null;
-
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($this->opc, $this->card($bandeiras["maestro"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($opc, $this->card($bandeiras["maestro"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Jcb"){
 				$text = null;
-
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($this->opc, $this->card($bandeiras["Jcb"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($opc, $this->card($bandeiras["Jcb"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "cpf"){
 				$text = null;
-
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($this->opc, $this->gerarValidar("cpf"));
+				$this->env($opc, $this->gerarValidar("cpf"));
 			
 			}elseif($cb_data == "cnpj"){
 				$text = null;
-
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($this->opc, $this->gerarValidar("cnpj"));
+				$this->env($opc, $this->gerarValidar("cnpj"));
 			
 			}elseif($cb_data == "cns"){
 				$text = null;
-
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($this->opc, $this->gerarValidar("cns"));
+				$this->env($opc, $this->gerarValidar("cns"));
 			
 			}elseif($cb_data == "cep"){
-				$this->env($this->opc, $this->str->falas["cep"]);
+				$this->env($opc, $this->str->falas["cep"]);
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
 			
@@ -255,11 +196,7 @@ class Engine {
 				$text = null;
 				
 			}
-
-
-
 	}
-
 	public function WebHook($wh){
         if($wh == "on"){
             $param = [
@@ -275,14 +212,11 @@ class Engine {
             return $this->apiRequest("getWebhookInfo", array());
         }
     }
-
     public function gerarValidar($doc){
-
     	
 		$endpoint="http://geradorapp.com/api/v1/".$doc."/generate?token=72f87a0206bce9b1cd3d18038808345d";
     	
     	$ch = curl_init();
-
     	curl_setopt($ch, CURLOPT_URL, $endpoint);
     	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -291,19 +225,11 @@ class Engine {
     	curl_setopt($ch, CURLOPT_TIMEOUT, 120); 
     	$resposta = curl_exec($ch);
     	curl_close($ch);
-
     	$decode = json_decode($resposta);
-
     	return "*".$doc.": *".$decode->data->number_formatted."\n\n"."\u{1F5A8}".$decode->data->message;
-
-
-
     }
-
     public function cep($cep){
-
     	$ch = curl_init("http://geradorapp.com/api/v1/cep/search/".$cep."?token=72f87a0206bce9b1cd3d18038808345d");
-
     	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -311,21 +237,17 @@ class Engine {
     	curl_setopt($ch, CURLOPT_TIMEOUT, 120); 
     	$resposta = curl_exec($ch);
     	curl_close($ch);
-
     	$decode = json_decode($resposta);
-
     	if($decode->status == 0){
     		return $decode->data->message;
     	}else{
     		return "*CEP:* ".$decode->data->number."\n*Estado:* ".$decode->data->state_name."(".$decode->data->state.")"."\n*Cidade:* ".$decode->data->city."\n*Bairro:* ".$decode->data->district."\n*Rua/Avenida:* ".$decode->data->address."\n*Nome do local:* ".$decode->data->address_name."\n*Codigo da cidade:* ".$decode->data->city_code;
     	}
     }
-
     public function card($bandeira, $separador){
 		
     	
 			$ch = curl_init("https://www.treinaweb.com.br/ferramentas-para-desenvolvedores/gerador/cartao?bandeira=".$bandeira);
-
 			//curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 			"authority: www.treinaweb.com.br",
@@ -358,20 +280,16 @@ class Engine {
 					$mes = "0$mes";
 					
 				}
-
 				if($mes1 < 10){
 					$mes1 = "0$mes1";
 				}
-
 				if($mes2 < 10){
 					$mes2 = "0$mes2";
 				}
-
 				
 				$ano = rand(2020, 2025);
 				$ano2 = rand(2020, 2025);
 				$ano3 = rand(2020, 2025);
-
 				$cvv=rand(100,999);
 				$cvv2 = rand(100,999);
 				$cvv3 = rand(100,999);
@@ -384,25 +302,28 @@ class Engine {
 				return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."\n".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."\n".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."\n";
 				
 	}
-
-	public function editMessage($msg){
+	public function editMessage($opc, $msg){
 		
 		//$encode = json_encode($botao, true);
 		$param = [
-			"chat_id"=>$this->opc["chat_id"],
+			"chat_id"=>$opc["chat_id"],
 			"text"=>$msg,
-			"message_id"=>$this->opc["message_id"],
+			"message_id"=>$opc["message_id"],
 			//"input_message_content"=>$msg,
 			//"disable_web_page_preview"=>1,
 			//"parse_mode"=> "Markdown",
 			//"reply_markup"=>$encode
-
 		];
-
 		$this->apiRequest("editMessageText", $param);
 	}
-
-	
+	public function editReply($opc){
+		$param = [
+			"chat_id"=>$opc["chat_id"],
+			"message_id"=>$opc["message_id"],
+			"reply_markup"=>$this->str->falas["doc"]
+		];
+		$this->apiRequest("editMessageReplymarkup", $param);
+	}
 		
 }
 class Strings
@@ -417,7 +338,6 @@ class Strings
 				array(array("text"=>"\u{1F39F} Localizar CEP", "callback_data"=>"cep")) 
 			)
 		),
-
 		"start"=>"*Sou programado para fazer varias coisas legais. clique no comando* /tools para saber todas minhas funcionalidades e introduza os comandos de acordo como está exemplificado.\nSe ainda n sabe o que é uma BIN clique no comando /acerca.\n Tem Duvidas? clique no comando /sobre.",
 		"acerca"=>"bin são os primeiros seis números de um cartão do banco que identificam a bandeira do cartão, o tipo, o país, o número de telefone do banco entre outras informações.BIN quer dizer Bank Identification Number.\n\nUm Endereço de Protocolo da Internet (Endereço IP), do inglês Internet Protocol address (IP address), é um rótulo numérico atribuído a cada dispositivo (computador, impressora, smartphone etc.) conectado a uma rede de computadores que utiliza o Protocolo de Internet para comunicação.[1] Um endereço IP serve a duas funções principais: identificação de interface de hospedeiro ou de rede e endereçamento de localização ex: 159.89.157.64.",
 		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP Wsociety@",
@@ -443,6 +363,5 @@ class Strings
 		),
 		
 	];
-
 }
 ?>
