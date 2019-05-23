@@ -88,7 +88,7 @@ class Engine {
 		curl_close($ch);
 	
 }
-	public function env($opc, $msg){
+	public function env($op, $msg){
         $param = [
             "chat_id" => $opc["chat_id"],
             "disable_web_page_preview" => 1,
@@ -98,7 +98,7 @@ class Engine {
         
         $this->apiRequest("sendMessage", $param);
 	}
-	public function keyboard($opc, $msg, $botao){
+	public function keyboard($op, $msg, $botao){
 		
 		$encode=json_encode($botao, true);
 		
@@ -322,7 +322,7 @@ class Engine {
 				return $replace1.$separador.$mes.$separador.$ano.$separador.$cvv."\n".$replace2.$separador.$mes1.$separador.$ano2.$separador.$cvv2."\n".$replace3.$separador.$mes2.$separador.$ano3.$separador.$cvv3."\n";
 				
 	}
-	public function editMessage($opc, $msg){
+	public function editMessage($op, $msg){
 		
 		//$encode = json_encode($botao, true);
 		$param = [
@@ -336,7 +336,7 @@ class Engine {
 		];
 		$this->apiRequest("editMessageText", $param);
 	}
-	public function editReply($opc){
+	public function editReply($op){
 		$param = [
 			"chat_id"=>$opc["chat_id"],
 			"message_id"=>$opc["message_id"],
