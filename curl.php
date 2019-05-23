@@ -142,7 +142,7 @@ class Engine {
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
 			
-			global $opc
+			global $opc;
 			
 			$opc = [
 				"chat_id"=>$cb_chat_id,
