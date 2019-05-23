@@ -17,48 +17,6 @@ if(isset($update["callback_query"])){
 }
 
 
-if ($opc["texto"] === "/start"){
-	
-	$this->env($opc, $this->str->falas["start"]);
-	$this->env($opc, $opc["message_id"]);
-	sleep(3);
-	
-}else if(substr($opc["texto"], 0, 4)==="/bin"){
-	$bin = substr($opc["texto"], 5, 10);
-	$this->env($opc, $this->bin($bin));
-	
-}else if($opc["texto"] === "/acerca"){
-	
-	//$this->env($opc, $this->str->falas["acerca"]);
-	
-	$this->env($opc, $this->card(10, "|"));
-}else if($opc["texto"] === "/sobre"){
-	
-	$this->editMessage($opc, $this->str->falas["sobre"]);
-}else if($opc["texto"] === "/tools"){
-	
-	$this->editMessage($opc, $this->str->falas["ferramentas"]);
-}else if($opc["texto"] === "/ccgen"){
-	
-	$this->keyboard($opc, "*Escolha a sua bandeira*", $this->str->falas["bandeiras"]);
-}else if($opc["texto"] === "/bgen"){
-	$this->editMessage($opc, $this->binGen());
-}elseif(substr($opc["texto"], 0, 3)==="/ip"){
-	$ip = substr($opc["texto"], 4, 19);
-	if(strlen($ip)<9 & strlen($ip)>16){
-		$this->env($opc, $this->str->falas["invalid"]);
-	}else{
-		$this->env($opc, $this->remoteIp($ip));
-	}
-}elseif($opc["texto"] === "/doc"){
-	$this->keyboard($opc, "*O que deseja gerar:*", $this->str->falas["doc"]);
-}elseif(substr($opc["texto"], 0, 4) === "/cep"){
-	$cep = substr($opc["texto"], 5, 15);
-	
-	$this->env($opc, $this->cep($cep));
-}
-
-
 class Engine {
 	public $str;
 	public function __construct(){
@@ -427,4 +385,48 @@ class Strings
 		
 	];
 }
+
+
+
+if ($opc["texto"] === "/start"){
+	
+	$this->env($opc, $this->str->falas["start"]);
+	$this->env($opc, $opc["message_id"]);
+	sleep(3);
+	
+}else if(substr($opc["texto"], 0, 4)==="/bin"){
+	$bin = substr($opc["texto"], 5, 10);
+	$this->env($opc, $this->bin($bin));
+	
+}else if($opc["texto"] === "/acerca"){
+	
+	//$this->env($opc, $this->str->falas["acerca"]);
+	
+	$this->env($opc, $this->card(10, "|"));
+}else if($opc["texto"] === "/sobre"){
+	
+	$this->editMessage($opc, $this->str->falas["sobre"]);
+}else if($opc["texto"] === "/tools"){
+	
+	$this->editMessage($opc, $this->str->falas["ferramentas"]);
+}else if($opc["texto"] === "/ccgen"){
+	
+	$this->keyboard($opc, "*Escolha a sua bandeira*", $this->str->falas["bandeiras"]);
+}else if($opc["texto"] === "/bgen"){
+	$this->editMessage($opc, $this->binGen());
+}elseif(substr($opc["texto"], 0, 3)==="/ip"){
+	$ip = substr($opc["texto"], 4, 19);
+	if(strlen($ip)<9 & strlen($ip)>16){
+		$this->env($opc, $this->str->falas["invalid"]);
+	}else{
+		$this->env($opc, $this->remoteIp($ip));
+	}
+}elseif($opc["texto"] === "/doc"){
+	$this->keyboard($opc, "*O que deseja gerar:*", $this->str->falas["doc"]);
+}elseif(substr($opc["texto"], 0, 4) === "/cep"){
+	$cep = substr($opc["texto"], 5, 15);
+	
+	$this->env($opc, $this->cep($cep));
+}
+
 ?>
