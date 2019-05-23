@@ -44,18 +44,23 @@ if ($opc["texto"] === "/start"){
 	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
 }else if($opc["texto"] === "/bgen"){
 	$motor->editMessage($opc, $motor->binGen());
+
 }elseif(substr($opc["texto"], 0, 3)==="/ip"){
+	
 	$ip = substr($opc["texto"], 4, 19);
 	if(strlen($ip)<9 & strlen($ip)>16){
 		$motor->env($opc, $strings->falas["invalid"]);
 	}else{
 		$motor->env($opc, $motor->remoteIp($ip));
 	}
+
 }elseif($opc["texto"] === "/doc"){
 	$motor->keyboard($opc, "*O que deseja gerar:*", $strings->falas["doc"]);
+
 }elseif(substr($opc["texto"], 0, 4) === "/cep"){
 	$cep = substr($opc["texto"], 5, 15);
 	
 	$motor->env($opc, $motor->cep($cep));
 }
-?>
+
+$motor->show();
