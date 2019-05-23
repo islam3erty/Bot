@@ -8,10 +8,17 @@ define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
 $conteudo = file_get_contents("php://input");
 $update = json_decode($conteudo, TRUE);
 $mensagem = $update["message"];
+global $opc;
 $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
-$opc["message_id"] = $mensagem["message_id"]-1;
+$opc["message_id"] = $mensagem["message_id"];
+
+$nome = "id.txt";
+$abertura = fopen($nome, "w+");
+$escreve = fwrite($abertura, $opc["message_id"]);
+fclose($abertura);
+
 if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
 }

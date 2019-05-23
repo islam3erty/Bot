@@ -124,10 +124,12 @@ class Engine {
 			$cb_message_id = $callback["message"]["id"];
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
+			
 			$opc = [
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id
 			];
+			
 			$bandeiras = [
 					"amex"=>1,
 					"visa"=>12,
@@ -140,6 +142,7 @@ class Engine {
 					"dankfort"=>8,
 					"maestro"=>9,
 			];
+			
 			if($cb_data == "Visa"){
 				$text = null;
 				$go = $opc["message_id"];
