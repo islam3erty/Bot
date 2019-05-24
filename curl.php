@@ -344,6 +344,13 @@ class Engine {
 		$this->apiRequest("editMessageReplymarkup", $param);
 	}
 
+	public function show(){
+
+		global $opc;
+
+		echo $opc["chat_id"];
+	}
+
 		
 }
 class Strings
