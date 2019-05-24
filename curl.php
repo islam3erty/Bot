@@ -139,7 +139,6 @@ class Engine {
 			$cb_data = $callback["data"];
 			
 			global $opc;
-			$opa = 2314;
 			$param = [
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id,
@@ -147,7 +146,7 @@ class Engine {
 
 			$edit = [
 				"chat_id"=>$cb_chat_id,
-				"message_id"=>$opa,
+				"message_id"=>,
 			];
 			
 			$bandeiras = [
@@ -166,12 +165,12 @@ class Engine {
 			if($cb_data == "Visa"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($param, "vai a merda");
+				$this->env($param, $opc["chat_id"]);
 				
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($edit, "Vai a merda");
+				$this->editMessage($param, "Vai a merda");
 			
 			}elseif($cb_data == "Amex"){
 				$text = null;
@@ -346,6 +345,10 @@ class Engine {
 		$this->apiRequest("editMessageReplymarkup", $param);
 	}
 
+	public function show(){
+		global $opc
+		return $opc["message_id"];
+	}
 
 	
 }

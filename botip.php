@@ -26,7 +26,8 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
 	$motor->env($opc, $opc["message_id"]);
-	sleep(3);
+	sleep(10);
+	$motor->show();
 	
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
