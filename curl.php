@@ -139,15 +139,15 @@ class Engine {
 			$cb_data = $callback["data"];
 			
 			global $opc;
-			
+			$opa = 2314;
 			$param = [
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id,
 			];
 
 			$edit = [
-				"chat_id"=>$opc["chat_id"],
-				"message_id"=>$opc["message_id"],
+				"chat_id"=>$cb_chat_id,
+				"message_id"=>$opa,
 			];
 			
 			$bandeiras = [
@@ -166,7 +166,7 @@ class Engine {
 			if($cb_data == "Visa"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($param, $edit["chat_id"]);
+				$this->env($param, "vai a merda");
 				
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
