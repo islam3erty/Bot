@@ -169,7 +169,7 @@ class Engine {
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
 				sleep(2);
-				$this->editMessage($param, "Vai a merda");
+				$this->editMessage($opc, "Vai a merda");
 			
 			}elseif($cb_data == "Amex"){
 				$text = null;
@@ -194,7 +194,7 @@ class Engine {
 			}elseif($cb_data == "cpf"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($param, $this->gerarValidar("cpf"));
+				$this->env($param, $opc["chat_id"]);
 			
 			}elseif($cb_data == "cnpj"){
 				$text = null;
