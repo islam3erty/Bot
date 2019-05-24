@@ -349,7 +349,7 @@ class Engine {
 
 		global $opc;
 
-		echo $opc["chat_id"];
+		return $opc["chat_id"];
 	}
 
 		
