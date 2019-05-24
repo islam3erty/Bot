@@ -345,12 +345,7 @@ class Engine {
 		$this->apiRequest("editMessageReplymarkup", $param);
 	}
 
-	public function show(){
-		global $opc;
-		return $opc["message_id"];
-	}
 
-	
 }
 class Strings
 {

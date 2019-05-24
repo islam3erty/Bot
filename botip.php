@@ -7,6 +7,7 @@ if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
 }
 
+
 //Metodo Get pra quem quiser simplicidade. Mais n faz quebra de linhas. by C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ 
 /*if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
@@ -26,7 +27,7 @@ if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
 	sleep(10);
-	$motor->show();
+	$motor->env($opc, $opc["message_id"]);
 
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
