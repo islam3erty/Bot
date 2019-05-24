@@ -16,6 +16,7 @@ class Engine {
 	public $str;
 	public function __construct(){
 		$this->str = new Strings();
+		global $opc;
 	}
 	//public function getNews(){
 		//$json = file_get_contents("https://newsapi.org/      v2/top-headlines?sources=google-news-br&apiKey=9f8c49a46a4d457082730c4b8d9e2a9a");
