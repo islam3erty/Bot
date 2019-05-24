@@ -67,5 +67,4 @@ if ($opc["texto"] === "/start"){
 	$motor->env($opc, $motor->cep($cep));
 }
 
-$motor->show();
 ?>
