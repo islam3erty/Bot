@@ -146,7 +146,7 @@ class Engine {
 
 			$edit = [
 				"chat_id"=>$cb_chat_id,
-				"message_id"=>,
+				"message_id"=>$opc["message_id"],
 			];
 			
 			$bandeiras = [
@@ -346,7 +346,7 @@ class Engine {
 	}
 
 	public function show(){
-		global $opc
+		global $opc;
 		return $opc["message_id"];
 	}
 
