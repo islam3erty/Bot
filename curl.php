@@ -166,7 +166,7 @@ class Engine {
 			if($cb_data == "Visa"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($param, $edit["message_id"]);
+				$this->env($param, $edit["chat_id"]);
 				
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
