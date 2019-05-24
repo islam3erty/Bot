@@ -147,7 +147,7 @@ class Engine {
 			$param = [
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id,
-				"message_id"=>$opc["message_id"]
+				//"message_id"=>$opc["message_id"]
 			];
 			
 			$bandeiras = [
