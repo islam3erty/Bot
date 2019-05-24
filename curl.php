@@ -144,8 +144,9 @@ class Engine {
 			
 			global $opc;
 			
-			$opc = [
+			$param = [
 				"chat_id"=>$cb_chat_id,
+				"msg_id"=>$cb_message_id,
 				"message_id"=>$opc["message_id"]
 			];
 			
@@ -166,51 +167,51 @@ class Engine {
 				$text = null;
 				$go = $opc["message_id"];
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $go);
+				$this->env($param, $go);
 				
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
 				sleep(2);
-				$this->editMessage($opc, "Vai a merda");
+				$this->editMessage($param, "Vai a merda");
 			
 			}elseif($cb_data == "Amex"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["amex"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($param, $this->card($bandeiras["amex"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Diners"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["diners"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($param, $this->card($bandeiras["diners"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Maestro"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["maestro"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($param, $this->card($bandeiras["maestro"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "Jcb"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->editMessage($opc, $this->card($bandeiras["Jcb"], "|"), $this->str->falas["bandeiras"]);
+				$this->editMessage($param, $this->card($bandeiras["Jcb"], "|"), $this->str->falas["bandeiras"]);
 			
 			}elseif($cb_data == "cpf"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->gerarValidar("cpf"));
+				$this->env($param, $this->gerarValidar("cpf"));
 			
 			}elseif($cb_data == "cnpj"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->gerarValidar("cnpj"));
+				$this->env($param, $this->gerarValidar("cnpj"));
 			
 			}elseif($cb_data == "cns"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($opc, $this->gerarValidar("cns"));
+				$this->env($param, $this->gerarValidar("cns"));
 			
 			}elseif($cb_data == "cep"){
-				$this->env($opc, $this->str->falas["cep"]);
+				$this->env($param, $this->str->falas["cep"]);
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
 			
