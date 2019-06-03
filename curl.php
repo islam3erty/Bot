@@ -1,5 +1,4 @@
 <?php
-
 define("BOT_TOKEN", "765733425:AAGoczJFfcw23Uv-tLI7yWhTeh77oxKCKSE");
 define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
 define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
@@ -11,7 +10,6 @@ $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
 $opc["message_id"] = $mensagem["message_id"];
-
 class Engine {
 	public $str;
 	public function __construct(){
@@ -143,7 +141,6 @@ class Engine {
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id,
 			];
-
 			$edit = [
 				"chat_id"=>$cb_chat_id,
 				"message_id"=>$opc["message_id"],
@@ -344,8 +341,6 @@ class Engine {
 		];
 		$this->apiRequest("editMessageReplymarkup", $param);
 	}
-
-
 }
 class Strings
 {
@@ -386,5 +381,3 @@ class Strings
 	];
 }
 ?>
-
-

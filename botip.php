@@ -2,12 +2,9 @@
 require "curl.php";
 $motor = new Engine();
 $strings = new Strings();
-
 if(isset($update["callback_query"])){
 	$motor->callback($update["callback_query"]);
 }
-
-
 //Metodo Get pra quem quiser simplicidade. Mais n faz quebra de linhas. by C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ 
 /*if ($texto === "/start"){
 	file_get_contents(API_URL."sendmessage?chat_id=".$chat_id."&text=".$strings->falas["start"]);
@@ -28,7 +25,6 @@ if ($opc["texto"] === "/start"){
 	$motor->env($opc, $strings->falas["start"]);
 	sleep(10);
 	$motor->env($opc, $opc["message_id"]);
-
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
 	$motor->env($opc, $motor->bin($bin));
@@ -49,7 +45,6 @@ if ($opc["texto"] === "/start"){
 	$motor->keyboard($opc, "*Escolha a sua bandeira*", $strings->falas["bandeiras"]);
 }else if($opc["texto"] === "/bgen"){
 	$motor->editMessage($opc, $motor->binGen());
-
 }elseif(substr($opc["texto"], 0, 3)==="/ip"){
 	
 	$ip = substr($opc["texto"], 4, 19);
@@ -58,14 +53,11 @@ if ($opc["texto"] === "/start"){
 	}else{
 		$motor->env($opc, $motor->remoteIp($ip));
 	}
-
 }elseif($opc["texto"] === "/doc"){
 	$motor->keyboard($opc, "*O que deseja gerar:*", $strings->falas["doc"]);
-
 }elseif(substr($opc["texto"], 0, 4) === "/cep"){
 	$cep = substr($opc["texto"], 5, 15);
 	
 	$motor->env($opc, $motor->cep($cep));
 }
-
 ?>
