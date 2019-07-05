@@ -9,7 +9,7 @@ global $opc;
 $opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
-$opc["message_id"] = $mensagem["message_id"];
+$opc["message_id"] = $mensagem["message_id"]+2;
 class Engine {
 	public $str;
 	public function __construct(){
@@ -348,7 +348,7 @@ class Strings
 		
 		"doc"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F39F} CPF", "callback_data"=>"cpf")), 
+				array("text"=>"\u{1F39F} CPF", "callback_data"=>"cpf"), 
 				array(array("text"=>"\u{1F39F} CNPJ", "callback_data"=>"cnpj")), 
 				array(array("text"=>"\u{1F39F} CNS", "callback_data"=>"cns")), 
 				array(array("text"=>"\u{1F39F} Localizar CEP", "callback_data"=>"cep")) 
