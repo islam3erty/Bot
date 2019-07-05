@@ -348,7 +348,7 @@ class Strings
 		
 		"doc"=>array(
 			"inline_keyboard"=>array(
-				array("text"=>"\u{1F39F} CPF", "callback_data"=>"cpf"), 
+				array(array("text"=>"\u{1F39F} CPF", "callback_data"=>"cpf"), array("text"=>"\u{1F39F} Gemeo", "callback_data"=>"various")), 
 				array(array("text"=>"\u{1F39F} CNPJ", "callback_data"=>"cnpj")), 
 				array(array("text"=>"\u{1F39F} CNS", "callback_data"=>"cns")), 
 				array(array("text"=>"\u{1F39F} Localizar CEP", "callback_data"=>"cep")) 
