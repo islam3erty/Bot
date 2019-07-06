@@ -5,11 +5,11 @@ define("WEBHOOK_URL", "https://botip.herokuapp.com/botip.php");
 $conteudo = file_get_contents("php://input");
 $update = json_decode($conteudo, TRUE);
 $mensagem = $update["message"];
-global $opc;
-$opc = [];
 $opc["chat_id"]=$mensagem["chat"]["id"];
 $opc["texto"] = $mensagem["text"];
 $opc["message_id"] = $mensagem["message_id"]+2;
+$_SESSION["message"]= $opc["message_id"];
+
 class Engine {
 	public $str;
 	public function __construct(){
