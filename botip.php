@@ -1,4 +1,8 @@
 <?php
+
+if(session_id() == ""){
+	session_start();
+}
 require "curl.php";
 $motor = new Engine();
 $strings = new Strings();
