@@ -341,6 +341,15 @@ class Engine {
 		];
 		$this->apiRequest("editMessageReplymarkup", $param);
 	}
+	
+	public function set_id($msg_id){
+
+		$this->id = $msg_id;
+	}
+
+	public function get_id(){
+		return $this->id;
+	}
 }
 class Strings
 {
