@@ -343,9 +343,9 @@ class Engine {
 
 	public function get_id($update){
 		if(isset($update["callback_query"])){
-			return $update["callback_query"]["message"]["message_id"];
+			return $update["callback_query"]["message"]["message_id"]+1;
 		}
-		return $update["message"]["message_id"];
+		return $update["message"]["message_id"]+1;
 	}
 	
 }
