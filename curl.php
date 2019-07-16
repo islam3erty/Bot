@@ -80,7 +80,8 @@ class Engine {
 		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 		$resp = curl_exec($ch);
 		curl_close($ch);
-	
+		$result = $resp["message"];
+		return print_r($result);
 }
 	public function env($opc, $msg){
         $param = [
@@ -90,8 +91,7 @@ class Engine {
             "text" => $msg
         ];
         
-        $result = $this->apiRequest("sendMessage", $param);
-	return $result;
+        $this->apiRequest("sendMessage", $param);
 	}
 	public function keyboard($opc, $msg, $botao){
 		
