@@ -33,7 +33,7 @@ if ($opc["texto"] === "/start"){
 	$motor->env($opc, $motor->bin($bin));
 	
 }else if($opc["texto"] === "/acerca"){
-	$this->get_id($update);
+	$motor->get_id($update);
 }else if($opc["texto"] === "/sobre"){
 	
 	$motor->editMessage($opc, $strings->falas["sobre"]);
