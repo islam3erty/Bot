@@ -90,7 +90,8 @@ class Engine {
             "text" => $msg
         ];
         
-        $this->apiRequest("sendMessage", $param);
+        $result = $this->apiRequest("sendMessage", $param);
+	return $result;
 	}
 	public function keyboard($opc, $msg, $botao){
 		
