@@ -341,9 +341,13 @@ class Engine {
 		$this->id = $msg_id;
 	}
 
-	public function get_id(){
-		return $this->id;
+	public function get_id($update){
+		if(isset($update["callback_query"])){
+			return $update["callback_query"]["message"]["message_id"];
+		}
+		return $update["message"]["message_id"];
 	}
+	
 }
 class Strings
 {
