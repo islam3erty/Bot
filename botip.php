@@ -27,17 +27,13 @@ if(isset($update["callback_query"])){
 if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
-	sleep(10);
-	$motor->env($opc, $opc["message_id"]);
+	
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
 	$motor->env($opc, $motor->bin($bin));
 	
 }else if($opc["texto"] === "/acerca"){
-	
-	//$motor->env($opc, $strings->falas["acerca"]);
-	
-	$motor->env($opc, $motor->card(10, "|"));
+	$this->get_id($update);
 }else if($opc["texto"] === "/sobre"){
 	
 	$motor->editMessage($opc, $strings->falas["sobre"]);
