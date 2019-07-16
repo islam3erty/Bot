@@ -27,7 +27,8 @@ if(isset($update["callback_query"])){
 if ($opc["texto"] === "/start"){
 	
 	$motor->env($opc, $strings->falas["start"]);
-	
+	sleep(2);
+	$motor->get_id($update);
 }else if(substr($opc["texto"], 0, 4)==="/bin"){
 	$bin = substr($opc["texto"], 5, 10);
 	$motor->env($opc, $motor->bin($bin));
