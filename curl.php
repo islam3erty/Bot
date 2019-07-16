@@ -80,8 +80,6 @@ class Engine {
 		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 		$resp = curl_exec($ch);
 		curl_close($ch);
-		$result = $resp["message"];
-		return print_r($result);
 }
 	public function env($opc, $msg){
         $param = [
@@ -137,14 +135,9 @@ class Engine {
 			$cb_id = $callback["id"];
 			$cb_data = $callback["data"];
 			
-			global $opc;
 			$param = [
 				"chat_id"=>$cb_chat_id,
 				"msg_id"=>$cb_message_id,
-			];
-			$edit = [
-				"chat_id"=>$cb_chat_id,
-				"message_id"=>$opc["message_id"],
 			];
 			
 			$bandeiras = [
@@ -163,7 +156,7 @@ class Engine {
 			if($cb_data == "Visa"){
 				$text = null;
 				$this->answercallback($cb_id, false, 3, $text);
-				$this->env($param, $opc["chat_id"]);
+				$this->env($param, $param["chat_id"]);
 				
 			}elseif($cb_data == "Mastercard"){
 				$text = null;
