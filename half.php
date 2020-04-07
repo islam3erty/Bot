@@ -23,6 +23,7 @@ $opc["message_id"] = $mensagem["message_id"]+2;;
 $motor = new Luce();
 
 if($opc["texto"] === "/start"){
-  $motor->pensador($opc);
+  $date = new datetime();
+  $motor->sendMessage($opc, $date->format("H:i:s"));
 }
 ?>
