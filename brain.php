@@ -43,7 +43,7 @@ public function editMessage($opc, $msg, $button=null){
 	
 	$encode = json_encode($button, true);
 	$parametro = [
-		"chat_id"=>$opc["chat_id"];,
+		"chat_id"=>$opc["chat_id"],
 		"message_id"=>$opc["message_id"],
 		"text"=>$msg,
 		"parse_mode"=>"Markdown",
