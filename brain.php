@@ -108,9 +108,9 @@ public function pensador($opc){
 		$html = file_get_html($url);
 
 		$array['frase'] = $html->find('div[class=thought-card] p', $div)->plaintext;
-		$array['autor'] = $html->find('div[class=thought-card span', $div)->plaintext;
+		//$array['autor'] = $html->find('div[class=thought-card span', $div)->plaintext;
 
-		$message = $falou.$array['frase']."\n\n".$array['autor']."\n\n*A tua hora Dona: $change*";		
+		$message = $falou.$array['frase']./*"\n\n".$array['autor'].*/"\n\n*A tua hora Dona: $change*";		
 		$this->sendChatAction($opc, 'typing');
 		$this->sendMessage($opc, $message);
 
