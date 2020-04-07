@@ -63,7 +63,7 @@ public function sendChatAction($opc, $action){
 	$this->apiRequest("sendChatAction", $parametro);
 }
 
-protected function pensador($opc){
+public function pensador($opc){
 
 		$pagina = rand(0, 10);
 		$div = rand(0,20);
@@ -100,7 +100,10 @@ protected function pensador($opc){
 		$array['autor'] = $html->find('div[class=thought-card span', $div)->plaintext;
 
 		$message = $array['frase']."\n\n".$array['autor'];		
-		return $message;
+		$this->sendChatAction($opc, 'typing');
+		$this->sendMessage($opc, $message);
+
+		return true;
 	}
 
 }
