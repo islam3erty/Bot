@@ -22,6 +22,6 @@ $opc["message_id"] = $mensagem["message_id"]+2;;
 }*/
 $motor = new Luce();
 if($opc["texto"] === "/start"){
-  $motor->sendMessage($opc, "viagem meu amigo");
+  $motor->sendMessage($opc, $opc["chat_id"]);
 }
 ?>
