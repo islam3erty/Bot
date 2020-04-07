@@ -47,6 +47,8 @@ public function sendMessage($opc, $msg, $button = null){
 				"text"=>$msg,
 			);
 		}
+	
+	$this->apiRequest("sendMessage", $parametro);
 }
 
 protected function pensador($opc){
