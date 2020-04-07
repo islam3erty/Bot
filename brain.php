@@ -113,7 +113,7 @@ public function pensador($opc){
 		$message = $falou.$array['frase']."\n\n".$array['autor']."\n".$this->str->falas["Eu"];		
 		$this->sendChatAction($opc, 'typing');
 		$this->sendMessage($opc, $message);
-
+		$this->sendMessage($opc, $explode[0]);
 		return true;
 	}
 
