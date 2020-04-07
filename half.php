@@ -22,5 +22,7 @@ $opc["message_id"] = $mensagem["message_id"]+2;;
 }*/
 $motor = new Luce();
 
-$motor->pensador($opc);
+if($opc["texto"] === "/start"){
+  $motor->pensador($opc);
+}
 ?>
