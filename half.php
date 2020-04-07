@@ -13,7 +13,7 @@ $update = json_decode($conteudo, true);
 $mensagem = $update['message'];
 
 $opc = [];
-$opc["chat_id"] = 600217408;
+$opc["chat_id"] = 1096756738;
 $opc["texto"] = $mensagem['text'];
 $opc["message_id"] = $mensagem["message_id"]+2;;
 
