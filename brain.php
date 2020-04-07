@@ -99,16 +99,13 @@ protected function pensador($opc){
 		$array['frase'] = $html->find('div[class=thought-card] p', $div)->plaintext;
 		$array['autor'] = $html->find('div[class=thought-card span', $div)->plaintext;
 
-		$message = $array['frase']."\n\n".$array['autor'];
-		$this->sendChatAction($opc, 'typing');
-		$this->editMessage($opc, $message, $this->str->falas['pensador']);
-
-		return true;
+		$message = $array['frase']."\n\n".$array['autor'];		
+		return $message;
 	}
 
 }
 
-class strings {
+class strings extends Luce{
 
 	public $falas = [
 
