@@ -14,7 +14,7 @@ $mensagem = $update['message'];
 
 $opc = [];
 $opc["chat_id"] = $mensagem["chat"]["id"];
-$opc["texto"] = "/start";
+$opc["texto"] = $mensagem["text"];
 $opc["message_id"] = $mensagem["message_id"]+2;;
 
 /*if(isset($update['callback_query'])){
@@ -22,7 +22,6 @@ $opc["message_id"] = $mensagem["message_id"]+2;;
 }*/
 $motor = new Luce();
 
-if($opc["texto"] === "/start"){
-  $motor->pensador($opc);
-}
+  $motor->sendMessage($opc, "viado");
+
 ?>
