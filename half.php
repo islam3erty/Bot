@@ -21,5 +21,5 @@ $opc["message_id"] = $mensagem["message_id"]+2;;
 	$engine->callback($update["callback_query"]);
 }*/
 $motor = new Luce();
-$motor->sendMessage($opc, "Valeu broo");
+$motor->sendMessage($opc, $opc["chat_id"]);
 ?>
