@@ -28,27 +28,39 @@ protected function apiRequest($metodo, $parametro){
 		curl_close($ch);
 }
 
-public function sendMessage($opc, $msg, $button = null){
+public function sendMessage($opc, $msg){
 
-		if($button != null){
-			$encode = json_encode($button, true);
 			$parametro = array(
 				"chat_id"=>$opc["chat_id"],
 				"parse_mode"=>"Markdown",
 				"text"=>$msg,
-				'reply_markup'=>$encode
 			);
 		
-		}else{
+		$this->apiRequest("sendMessage", $parametro);
+}
 
-			$parametro = array(
-				"chat_id"=>$opc["chat_id"],
-				"parse_mode"=>"Markdown",
-				"text"=>$msg,
-			);
-		}
+public function editMessage($opc, $msg, $button=null){
 	
-	        $this->apiRequest("sendMessage", $parametro);
+	$encode = json_encode($button, true);
+	$parametro = [
+		"chat_id"=>$opc["chat_id"];,
+		"message_id"=>$opc["message_id"],
+		"text"=>$msg,
+		"parse_mode"=>"Markdown",
+		"reply_markup"=>$encode,
+	];
+
+	$this->apiRequest("editMessageText", $parametro);
+}
+
+public function sendChatAction($opc, $action){
+
+	$parametro = array(
+		"chat_id"=>$opc["chat_id"],
+		"action"=>$action
+	);
+
+	$this->apiRequest("sendChatAction", $parametro);
 }
 
 protected function pensador($opc){
@@ -105,6 +117,7 @@ class strings {
 		"noite"=>"Boa noite Safada, sou eu Luce. Mentira não sou.\nA Frase que o meu criador me programaou pra mandar essa noite:\n\n",
 	];
 }
+
 
 
 ?>
