@@ -105,7 +105,4 @@ class strings {
 }
 
 
-$motor = new Luce();
-$motor->sendMessage($opc, $opc['chat_id']);
-
 ?>
