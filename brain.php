@@ -105,7 +105,7 @@ protected function pensador($opc){
 
 }
 
-class strings{
+class strings extends Luce{
 
 	public $falas = [
 
