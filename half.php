@@ -21,7 +21,6 @@ $opc["message_id"] = $mensagem["message_id"]+2;;
 	$engine->callback($update["callback_query"]);
 }*/
 $motor = new Luce();
-
-$motor->pensador($opc);
+$motor->sendMessage($opc, "Viadao");
 
 ?>
