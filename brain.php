@@ -110,7 +110,7 @@ public function pensador($opc){
 		$array['frase'] = $html->find('div[class=thought-card] p', $div)->plaintext;
 		$array['autor'] = $html->find('div[class=thought-card span', $div)->plaintext;
 
-		$message = $falou."*$array['frase']*"."\n\n".$array['autor']."\n\n"$this->str->falas["Eu"];		
+		$message = $falou."*$array['frase']*"."\n\n".$array['autor']."\n\n".$this->str->falas["Eu"];		
 		$this->sendChatAction($opc, 'typing');
 		$this->sendMessage($opc, $message);
 
