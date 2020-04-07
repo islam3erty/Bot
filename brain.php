@@ -110,13 +110,9 @@ public function pensador($opc){
 		$array['frase'] = $html->find('div[class=thought-card] p', $div)->plaintext;
 		$array['autor'] = $html->find('div[class=thought-card span', $div)->plaintext;
 
-		$message = $array['frase']."\n\n".$array['autor'];		
+		$message = $falou."*$array['frase']*"."\n\n".$array['autor']."\n\n"$this->str->falas["Eu"];		
 		$this->sendChatAction($opc, 'typing');
-		$this->sendMessage($opc, $falou);
-		$this->sendChatAction($opc, "typing");
 		$this->sendMessage($opc, $message);
-		sleep(1);
-		$this->sendMessage($opc, $this->str->falas["Eu"]);
 
 		return true;
 	}
@@ -127,10 +123,10 @@ class strings{
 
 	public $falas = [
 
-		"dia"=>"*Bom dia Menina Lasse\u{1F604}\nComo está lindissíma Dona do meu Criador?\u{1F60D}\n Como já deve saber vim deixar-lhe a frase das manhãs.\u{2709}\u{270F}*",
+		"dia"=>"*Bom dia Menina Lasse\u{1F604}\nComo está lindissíma Dona do meu Criador?\u{1F60D}\nComo já deve saber vim deixar-lhe a frase das manhãs.\u{2709}\u{270F}*",
 		"tarde"=>"*Boa Tarde Senhorita\u{1F60C}\nComo está? Eu estou bem, espero que a senhora também.\u{1F606}\nVim trazer-lhe a frase da tarde.\u{2709}\u{270F}*",
 		"noite"=>"*Boa noite Safada, sou eu Luce. Mentira não sou\u{1F60E}.\nA Frase que o meu criador me programou pra mandar essa noite\u{2709}\u{270F}:*",
-		"Eu"=>"*_Já sabe né? __Ele te ama__ _*\u{27648}"
+		"Eu"=>"*_Já sabe né? Ele te ama_*",
 	];
 }
 

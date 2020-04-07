@@ -13,8 +13,8 @@ $update = json_decode($conteudo, true);
 $mensagem = $update['message'];
 
 $opc = [];
-$opc["chat_id"] = $mensagem["chat"]["id"];
-$opc["texto"] = $mensagem["text"];
+$opc["chat_id"] = 600217408;
+$opc["texto"] = $mensagem['text'];
 $opc["message_id"] = $mensagem["message_id"]+2;;
 
 /*if(isset($update['callback_query'])){
@@ -22,7 +22,6 @@ $opc["message_id"] = $mensagem["message_id"]+2;;
 }*/
 $motor = new Luce();
 
-if($opc["texto"] === "/start"){
-  $motor->sendMessage($opc, $opc["chat_id"]);
-}
+$motor->pensador($opc);
+
 ?>
