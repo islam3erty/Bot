@@ -69,9 +69,9 @@ public function pensador($opc){
 		$change = $hora->format("H:i:s");
 		$explode = explode(":", $change);
 		$falou;
-		if(intval($explode[0])+1 < 12){
+		if(intval($explode[0])+3 < 12){
 			$falou = $this->str->falas["dia"];
-		}elseif (intval($explode[0])+1 >= 12 && intval($explode[0])+1 <= 18) {
+		}elseif (intval($explode[0])+3 >= 12 && intval($explode[0])+3 <= 18) {
 			$falou = $this->str->falas["tarde"];
 		}else{
 			$falou = $this->str->falas["noite"];
@@ -113,7 +113,7 @@ public function pensador($opc){
 		$message = $falou.$array['frase']."\n\n".$array['autor']."\n".$this->str->falas["Eu"];		
 		$this->sendChatAction($opc, 'typing');
 		$this->sendMessage($opc, $message);
-		$this->sendMessage($opc, $explode[0]);
+
 		return true;
 	}
 
