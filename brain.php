@@ -69,9 +69,9 @@ public function pensador($opc){
 		$change = $hora->format("H:i:s");
 		$explode = explode(":", $change);
 		$falou;
-		if(intval($change[0])+1 < 12){
+		if(intval($explode[0])+1 < 12){
 			$falou = $this->str->falas["dia"];
-		}elseif (intval($change[0])+1 > 12 && intval($change[0])+1 <= 18) {
+		}elseif (intval($explode[0])+1 > 12 && intval($explode[0])+1 <= 18) {
 			$falou = $this->str->falas["tarde"];
 		}else{
 			$falou = $this->str->falas["noite"];
@@ -126,7 +126,7 @@ class strings{
 		"dia"=>"*Bom dia Menina Lasse\u{1F604}\nComo está lindissíma Dona do meu Criador?\u{1F60D}\nComo já deve saber vim deixar-lhe a frase das manhãs.\u{2709}\u{270F}*\n\n",
 		"tarde"=>"*Boa Tarde Senhorita\u{1F60C}\nComo está? Eu estou bem, espero que a senhora também.\u{1F606}\nVim trazer-lhe a frase da tarde.\u{2709}\u{270F}*\n\n",
 		"noite"=>"*Boa noite Safada, sou eu Luce. Mentira não sou\u{1F60E}.\nA Frase que o meu criador me programou pra mandar essa noite\u{2709}\u{270F}:*\n\n",
-		"Eu"=>"*Já sabe né? Ele te ama_",
+		"Eu"=>"*_Já sabe né? Ele te ama_*",
 	];
 }
 
