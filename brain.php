@@ -65,6 +65,17 @@ public function sendChatAction($opc, $action){
 
 public function pensador($opc){
 
+		$hora = new datetime();
+		$change = $hora->format("H:i:s");
+		$explode = explode(":", $change);
+		$falou;
+		if(intval($change[0])+1 < 12){
+			$falou = $this->str->falas["dia"];
+		}elseif (intval($change[0])+1 > 12 && intval($change[0])+1 <= 18) {
+			$falou = $this->str->falas["tarde"];
+		}else{
+			$falou = $this->str->falas["noite"];
+		}
 		$pagina = rand(0, 10);
 		$div = rand(0,20);
 
@@ -99,7 +110,7 @@ public function pensador($opc){
 		$array['frase'] = $html->find('div[class=thought-card] p', $div)->plaintext;
 		$array['autor'] = $html->find('div[class=thought-card span', $div)->plaintext;
 
-		$message = $array['frase']."\n\n".$array['autor'];		
+		$message = $falou.$array['frase']."\n\n".$array['autor']."\n\n*A tua hora Dona: $change*";		
 		$this->sendChatAction($opc, 'typing');
 		$this->sendMessage($opc, $message);
 
@@ -112,9 +123,10 @@ class strings{
 
 	public $falas = [
 
-		"dia"=>"Bom dia Menina Lasse\nComo está lindissíma Dona do meu Criador?\n Como já deve saber vim deixar-lhe a frase das manhãs.\n\n",
-		"tarde"=>"Boa Tarde Senhorita\nComo está? Eu estou bem, espero que a senhora também.\nVim trazer-lhe a frase da tarde\n\n",
-		"noite"=>"Boa noite Safada, sou eu Luce. Mentira não sou.\nA Frase que o meu criador me programaou pra mandar essa noite:\n\n",
+		"dia"=>"*Bom dia Menina Lasse\u{1F604}\nComo está lindissíma Dona do meu Criador?\u{1F60D}\n Como já deve saber vim deixar-lhe a frase das manhãs.\u{2709}\u{270F}\n\n*",
+		"tarde"=>"*Boa Tarde Senhorita\u{1F60C}\nComo está? Eu estou bem, espero que a senhora também.\u{1F606}\nVim trazer-lhe a frase da tarde.\u{2709}\u{270F}\n\n*",
+		"noite"=>"*Boa noite Safada, sou eu Luce. Mentira não sou\u{1F60E}.\nA Frase que o meu criador me programou pra mandar essa noite\u{2709}\u{270F}\n\n*",
+		"Eu"=>"*_Já sabe né? __Ele te ama__ _*\u{27648}"
 	];
 }
 
