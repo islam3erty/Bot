@@ -21,7 +21,5 @@ $opc["message_id"] = $mensagem["message_id"]+2;;
 	$engine->callback($update["callback_query"]);
 }*/
 $motor = new Luce();
-if($opc["texto"] === "/start"){
-  $motor->sendMessage($opc, $opc["chat_id"]);
-}
+$motor->sendMessage($opc, "Valeu broo");
 ?>
