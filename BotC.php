@@ -801,7 +801,7 @@ class Divulga{
 
 		$this->saveEdited('', 'sugestion'.$opc['chat_id']);
 		$this->sendChatAction($opc, 'typing');
-	    $this->sendMessage($opc, '*Obrigado por deixar ficar a sua opinião. Será lida dentro de 48 horas.*', $this->str->falas['primeira']);
+	    $this->sendMessage($opc, '*Thank You.*', $this->str->falas['primeira']);
 
 		return true;
 	}
@@ -815,35 +815,35 @@ class Strings{
 		"primeira"=>array(
 			'inline_keyboard'=>array(
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 			)
 		),
 
 		"menu"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F4F0}Notícias", "callback_data"=>"news")),
-				array(array("text"=>"\u{00AE}Grupos e Canais", "callback_data"=>"group"), array("text"=>"\u{1F910} Você", "callback_data"=>"parser")),
-				array(array("text"=>"Projectos", "callback_data"=>"log"), array("text"=>"\u{1F527}Ferramentas", "callback_data"=>"tools")),
-				array(array("text"=>"\u{260E}Contacto", "callback_data"=>"me")),
-				array(array("text"=>"\u{2753}Sobre", "callback_data"=>"about")),
+				array(array("text"=>"\u{1F4F0}News", "callback_data"=>"news")),
+				array(array("text"=>"\u{00AE}Groups and Channels", "callback_data"=>"group"), array("text"=>"\u{1F910} YOU", "callback_data"=>"parser")),
+				array(array("text"=>"Projects", "callback_data"=>"log"), array("text"=>"\u{1F527}tools", "callback_data"=>"tools")),
+				array(array("text"=>"\u{260E}Contact my Creator", "callback_data"=>"me")),
+				array(array("text"=>"\u{2753}About", "callback_data"=>"about")),
 			),
 		),
 
-		"sugestion"=>"*Deixe ficar uma dica, critica, agradecimento ou sugestão. Caso não pode falar directamente com meu criador.\nPara deixar a sua opinião apenas escreva como uma mensagem normal, estou programado para direcionar a sua opinião ao servidor e guarda-la até que o meu criador veja(Isso leva um tempo máximo de 48 horas).*",
+		"sugestion"=>"*Leave a tip, criticism, thanks or suggestion. In case you cannot speak directly to my creator. \n To leave your opinion just write as a normal message, I am programmed to direct your opinion to the server and save it until my creator sees it (This takes a maximum of 48 hours ). * ",
 		//tools
 		"pensador"=>array(
 			'inline_keyboard'=>array(
-				array(array('text'=>"Outra Frase", 'callback_data'=>'another')),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array('text'=>"Another Sentence", 'callback_data'=>'another')),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 			)
 		),
 		"Ferramentas"=>array(
 			"inline_keyboard"=>array(
 				array(array("text"=>"\u{1F9EC} Proxy", "callback_data"=>"proxys")),
-				array(array("text"=>"Sugestão", "callback_data"=>"project"), array("text"=>"wSociety", "callback_data"=>"wsociety")),
+				array(array("text"=>"Sugestion", "callback_data"=>"project"), array("text"=>"wSociety", "callback_data"=>"wsociety")),
 				array(array("text"=>"\u{1F4A1} Pensador", "callback_data"=>"frases")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 
 			)
@@ -852,7 +852,7 @@ class Strings{
 		"quant"=>array(
 			"inline_keyboard"=>array(
 				array(array("text"=>"5", "callback_data"=>"5") ,array("text"=>"10", "callback_data"=>"10")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 			)
 		),
@@ -861,12 +861,12 @@ class Strings{
 
 			'inline_keyboard'=>array(
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
-				array(array('text'=>"\u{270D} \u{2B07}\u{2B07}\u{2B07}Envie sua sugestão", 'callback_data'=>'hehe')),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
+				array(array('text'=>"\u{270D} \u{2B07}\u{2B07}\u{2B07}Send Sugestion", 'callback_data'=>'hehe')),
 			)
 		),
 
-		"groupal"=>"*Lista de Grupos Actual.\nPara adicionar o seu canal ou grupo a lista contacte o meu criador*",
+		"groupal"=>"*Current Group List. \n To add your channel or group to the list contact my creator*",
 		"grupos"=>array(
 			'inline_keyboard'=>array(
 				array(array("text"=>"Hakspace", "url"=>"https://t.me/hakspace")),
@@ -897,13 +897,13 @@ class Strings{
 		),
 
 		"welcome"=>"*Bem vindo.\n Desfrute das ferramentas que eu forneço para ti.*",
-		"quantidade"=>"*Escolha a quantidade de proxys que deseja*",
+		"quantidade"=>"*Choose the number of proxies you want*",
 		//testar
 		"testar"=>array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"\u{1F9EC} Mais Proxys", "callback_data"=>"proxys")),
-				array(array("text"=>"\u{1F489} Testar", "callback_data"=>"test")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>"\u{1F9EC} More Proxys", "callback_data"=>"proxys")),
+				array(array("text"=>"\u{1F489} Test", "callback_data"=>"test")),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 			)
 		),
@@ -913,16 +913,16 @@ class Strings{
 				array(array("text"=>"\u{1F535} HTTP", "callback_data"=>"http")),
 				array(array("text"=>"\u{1F537} SOCKS4", "callback_data"=>"sock4")),
 				array(array("text"=>"\u{1F53A} SOCKS5", "callback_data"=>"sock5")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 			)
 		),
 		//testado
 		'mais'=>array(
 			'inline_keyboard'=>array(
-				array(array("text"=>"\u{1F9EC} Mais Proxys...", "callback_data"=>"proxys")),
-				array(array("text"=>"\u{1F527} Ferramentas", "callback_data"=>"tools")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>"\u{1F9EC} More Proxys...", "callback_data"=>"proxys")),
+				array(array("text"=>"\u{1F527} Tools", "callback_data"=>"tools")),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 			)
 		),
@@ -930,25 +930,25 @@ class Strings{
 		"tipo_proxy"=>"*Escolha o tipo*",
 		"espere"=>array(
 			'inline_keyboard'=>array(
-				array(array("text"=>"Aguarde", "callback_data"=>"espera"))
+				array(array("text"=>"Wait...", "callback_data"=>"espera"))
 			)
 		),
 		//Tipo_Jornal
 		"Noticiario"=>array(
 			'inline_keyboard'=>array(
-				array(array("text"=>"\u{1F525}Última Hora", "callback_data"=>'last')),
+				array(array("text"=>"\u{1F525}Last Hour", "callback_data"=>'last')),
 				array(array("text"=>"O País", "callback_data"=>'pais'), array("text"=>"Verdade", "callback_data"=>"really")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 			)
 		),
 		//categoria
-		"categorias"=>"*Escolha a categória da notícia que deseja ver*",
-		"Jornal"=>"*Escolha o Jornal que deseja ler*",
+		"categorias"=>"*Choose the category of the news you want to see*",
+		"Jornal"=>"*Choose the Newspaper you want read*",
 		"more" => array(
 			'inline_keyboard'=>array(
-				array(array("text"=>'Mais Notícias', "callback_data"=>'...')),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>'More News', "callback_data"=>'...')),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 			)
 		),
@@ -966,12 +966,12 @@ class Strings{
 
 		'tec'=>array(
 			'inline_keyboard'=>array(
-				array(array("text"=>'Novidades', "callback_data"=>"novidades"), array("text"=>"Software", "callback_data"=>'software'), array("text"=>'Segurança', "callback_data"=>'seguranca')),
+				array(array("text"=>'New', "callback_data"=>"novidades"), array("text"=>"Software", "callback_data"=>'software'), array("text"=>'Segurança', "callback_data"=>'seguranca')),
 				array(array("text"=>'Internet', 'callback_data'=>"internet"), array("text"=>'Produto', "callback_data"=>"Produto")),
 				array(array("text"=>"Celular", "callback_data"=>'celular'), array("text"=>"Tutorial", "callback_data"=>'tutorial'), array("text"=>'Review', "callback_data"=>'review')),
-				array(array('text'=>'Dispositivos', 'callback_data'=>'dispositivos')),
-				array(array("text"=>"Mais Lidas", "callback_data"=>'popular')),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array('text'=>'Devices', 'callback_data'=>'dispositivos')),
+				array(array("text"=>"Most Read", "callback_data"=>'popular')),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 			)
 		),
@@ -980,14 +980,14 @@ class Strings{
 			'inline_keyboard'=>array(
 				array(array("text"=>"\u{0031}", "callback_data"=>"1"), array("text"=>"\u{0032}", "callback_data"=>"2"), array("text"=>"\u{0033}", "callback_data"=>"3"), array("text"=>"\u{0034}", "callback_data"=>"4"), array("text"=>"\u{0035}", "callback_data"=>"quinto")),
 				array(array("text"=>"\u{0036}", "callback_data"=>"6"), array("text"=>"\u{0037}", "callback_data"=>"7"), array("text"=>"\u{0038}", "callback_data"=>"8"), array("text"=>"\u{0039}", "callback_data"=>"9")),
-				array(array("text"=>"\u{2B05} Voltar", "callback_data"=>"back")),
+				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>'main')),
 			)
 		),
 
 		"wSociety"=>"*A wSociety é um grupo privado de programadores, actualmente constituido por 4 programadores: Underline(Firebox), Tomás Queface, Comentador(Bastardo) e Yale.\nÉ um Grupo focado essencialmente na programação em linguagens de alto nível.\nNenhum dos membros passou por uma formação especializada em programação, sendo todos autodidatas.*",
-		"Contacto"=>"*Qualquer Dúvida, Relatório, Sugestão e assuntos de café e código contacte @Comentered\n\nhttps://t.me/Comentered*",
-		"sobre"=>"Criador: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLinguagem: PHP \nVersão: 1.0\n\nAgradecimentos: Wsociety || Moz Developers 🇲🇿",
+		"Contacto"=>"*Any questions, reports, suggestions and coffee and code issues please contact @Comentered \n\n https://t.me/Comentered*",
+		"sobre"=>"Creator: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLanguage: PHP \nVersão: 1.0\n\nGreetings: Wsociety || Moz Developers 🇲🇿",
 
 
 	);
