@@ -350,7 +350,7 @@ class Divulga{
 				$this->saveEdited('tutorial', 'categoria'.$opc['chat_id']);
 				break;
 			case 'log':
-				$text = 'Essa funcão ainda está em desenvolvimento...';
+				$text = 'This function is in development...';
 				$this->answerCallbackQuery($cb_id, false, 4, $text);
 				break;
 			case 'review':
