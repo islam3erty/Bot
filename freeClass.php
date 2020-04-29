@@ -13,11 +13,13 @@ class Bot {
 	public function api_Request($metodo, $parametro){
 
 		curl_setopt($this->ch, CURLOPT_URL, API_URL.$metodo."?");
+		curl_setopt($this->ch, CURLOPT_POST, 1);
 		curl_setopt($this->ch, CURLOPT_HTTPHEADER, [
 			"Content_Type" => "multipart/form-data"
 		]);
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($this->ch, CURLOPT_POSTFIELDS, http_build_query($parametro));
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
 		$resultado = curl_exec($this->ch);
 		$info = curl_getinfo($this->ch);
@@ -67,7 +69,7 @@ class Bot {
 			];
 		}
 
-		$this->api_Request("sendmessage", $parametro);
+		$this->api_Request("sendMessage", $parametro);
 	}
 
 	public function callbackQuery($callback){
