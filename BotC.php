@@ -829,7 +829,7 @@ class Strings{
 			),
 		),
 
-		"sugestion"=>"*Leave a tip, criticism, thanks or suggestion. In case you cannot speak directly to my creator. \n To leave your opinion just write as a normal message, I am programmed to direct your opinion to the server and save it until my creator sees it (This takes a maximum of 48 hours ). * ",
+		"sugestion"=>"*Leave a tip, criticism, thanks or suggestion. In case you cannot speak directly to my creator. \n To leave your opinion just write as a normal message, I am programmed to direct your opinion to the server and save it until my creator sees it (This takes a maximum of 48 hours ).*",
 		//tools
 		"pensador"=>array(
 			'inline_keyboard'=>array(
@@ -862,11 +862,11 @@ class Strings{
 			'inline_keyboard'=>array(
 				array(array("text"=>"\u{1F3E1} Menu", "callback_data"=>"main")),
 				array(array("text"=>"\u{2B05} Back", "callback_data"=>"back")),
-				array(array('text'=>"\u{270D} \u{2B07}\u{2B07}\u{2B07}Send Sugestion", 'callback_data'=>'hehe')),
+				array(array('text'=>"\u{270D}\u{2B07}\u{2B07}\u{2B07}Send Sugestion", 'callback_data'=>'hehe')),
 			)
 		),
 
-		"groupal"=>"*Current Group List. \n To add your channel or group to the list contact my creator*",
+		"groupal"=>"*Current Group List.\n To add your channel or group to the list contact my creator*",
 		"grupos"=>array(
 			'inline_keyboard'=>array(
 				array(array("text"=>"Hakspace", "url"=>"https://t.me/hakspace")),
@@ -985,9 +985,9 @@ class Strings{
 			)
 		),
 
-		"wSociety"=>"*A wSociety é um grupo privado de programadores, actualmente constituido por 4 programadores: Underline(Firebox), Tomás Queface, Comentador(Bastardo) e Yale.\nÉ um Grupo focado essencialmente na programação em linguagens de alto nível.\nNenhum dos membros passou por uma formação especializada em programação, sendo todos autodidatas.*",
+		"wSociety"=>"*A wSociety é um grupo privado de programadores, actualmente constituido por 4 programadores: Underline(Firebox), Tomás Queface, Comentador(Bastardo) e Yale.\n É um Grupo focado essencialmente na programação em linguagens de alto nível.\n Nenhum dos membros passou por uma formação especializada em programação, sendo todos autodidatas.*",
 		"Contacto"=>"*Any questions, reports, suggestions and coffee and code issues please contact @Comentered \n\n https://t.me/Comentered*",
-		"sobre"=>"Creator: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\nLanguage: PHP \nVersão: 1.0\n\nGreetings: Wsociety || Moz Developers 🇲🇿",
+		"sobre"=>"Creator: ̶C̶o̶m̶e̶n̶t̶a̶d̶o̶r̶ | https://t.me/Comentered.\n\n Language: PHP \nVersão: 1.0\n\n Greetings: Wsociety || Moz Developers 🇲🇿",
 
 
 	);
