@@ -48,6 +48,27 @@ class Bot {
 		$this->api_Request("editMessageText", $parametro);
 	}
 
+	public function sendMessage($opc, $msg, $button=null){
+
+
+		if($button == null){
+			$parametro = [
+				"chat_id"=>$opc["chat-id"],
+				"parse_mode"=>"Markdown",
+				"text"=>$msg,
+			];
+		}else{
+			$button = json_encode($button, true);
+			$parametro = [
+				"chat_id"=>$opc["chat-id"],
+				"parse_mode"=>"Markdown",
+				"text"=>$msg,
+				"reply_markup"=>$button,
+			];
+		}
+
+		$this->api_Request("sendmessage", $parametro);
+	}
 
 	public function callbackQuery($callback){
 		
