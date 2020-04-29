@@ -18,7 +18,7 @@
 	$start = new Bot();
 	$buttons = new Strings();
 
-	$final_markup = array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
+	//$final_markup = array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
 
 	if(isset($decode["callback_query"])){
 		$start->callback($update["callback_query"]);
