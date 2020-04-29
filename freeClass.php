@@ -29,7 +29,7 @@ class Bot {
 
 		if($button == null){
 			$parametro = [
-				"chat_id"=>$opc["chat-id"],
+				"chat_id"=>$opc["chat_id"],
 				"parse_mode"=>"Markdown",
 				"message_id"=>$opc["message_id"],
 				"text"=>$msg,
@@ -37,7 +37,7 @@ class Bot {
 		}else{
 			$button = json_encode($button, true);
 			$parametro = [
-				"chat_id"=>$opc["chat-id"],
+				"chat_id"=>$opc["chat_id"],
 				"parse_mode"=>"Markdown",
 				"message_id"=>$opc["message_id"],
 				"text"=>$msg,
@@ -53,14 +53,14 @@ class Bot {
 
 		if($button == null){
 			$parametro = [
-				"chat_id"=>$opc["chat-id"],
+				"chat_id"=>$opc["chat_id"],
 				"parse_mode"=>"Markdown",
 				"text"=>$msg,
 			];
 		}else{
 			$button = json_encode($button, true);
 			$parametro = [
-				"chat_id"=>$opc["chat-id"],
+				"chat_id"=>$opc["chat_id"],
 				"parse_mode"=>"Markdown",
 				"text"=>$msg,
 				"reply_markup"=>$button,

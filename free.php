@@ -13,12 +13,12 @@
 	$opc["chat_id"]=600217408;
 	$opc["texto"] = $mensagem['text'];
 	$opc["message_id"] = $mensagem["message_id"]+2;
-	//$opc["reply_markup"] = $mensagem["reply_markup"];
+	$opc["reply_markup"] = $mensagem["reply_markup"];
 
 	$start = new Bot();
 	$buttons = new Strings();
 
-	//$final_markup = array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
+	$final_markup = array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
 
 	if(isset($decode["callback_query"])){
 		$start->callback($update["callback_query"]);
