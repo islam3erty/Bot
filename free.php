@@ -26,7 +26,7 @@
 
 	switch ($opc["texto"]) {
 		case 'start':
-			$start->sendMessage($opc, "Eai Viado Como vai?", $buttons->falas["inline"]);
+			$start->sendMessage($opc, "Eai Viado Como vai?");
 			break;
 		
 		case "edit":
