@@ -11,9 +11,9 @@
     $mensagem = $update["message"];
     $opc;
     if($mensagem["chat"]["type"] == "channel"){
-      $opc["chat_id"] = "@".$mensagem["chat"]["username"];
+      $opc["chat_id"] = "@latitudeDell";
     }else{
-     $opc["chat_id"]=$mensagem["chat"]["id"]; 
+     $opc["chat_id"]="@latitudeDell";
     }
     $opc["texto"]=$mensagem["text"];
     $opc["message_id"]=$mensagem["message_id"];
