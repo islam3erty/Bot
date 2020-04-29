@@ -115,7 +115,7 @@ class Strings{
 		"contact" => array(array("text"=>"Contact Me", "url"=>"t.me/Comentered")),
 		"inline" => array(
 			"inline_keyboard"=>array(
-				array(array("text"=>"Like", "callback"=>"like")),
+				array(array("text"=>"Like", "callback_data"=>"like")),
 			)
 		)
 	];
