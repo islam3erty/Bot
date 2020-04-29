@@ -10,7 +10,11 @@
     $update = json_decode($conteudo, true);
     $mensagem = $update["message"];
     $opc;
-    $opc["chat_id"]=$mensagem["chat"]["id"];
+    if(isset($mensagem["chat"]["type"]) && !empty($mensagem["chat"]["type"]){
+      $opc["chat_id"] = $mensagem["chat"]["username"];
+    }else{
+     $opc["chat_id"]=$mensagem["chat"]["id"]; 
+    }
     $opc["texto"]=$mensagem["text"];
     $opc["message_id"]=$mensagem["message_id"];
     $opc["user_id"]= $mensagem["from"]["id"];
@@ -30,7 +34,8 @@
 
     if($opc['texto'] === "/start"){
 
-        $motor->sendMessage($opc, $strings->falas["welcome"], $strings->falas["menu"]);  
+        $motor->sendMessage($opc, $strings->falas["welcome"], $strings->falas["menu"]);
+        $motor->sendMessage($opc, $opc["chat_id"]);
     }
     elseif($opc['texto'] === '/porra'){
 
