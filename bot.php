@@ -10,7 +10,7 @@
     $update = json_decode($conteudo, true);
     $mensagem = $update["message"];
     $opc;
-    if(isset($mensagem["chat"]["type"]) && !empty($mensagem["chat"]["type"]){
+    if($mensagem["chat"]["type"] == "channel"){
       $opc["chat_id"] = $mensagem["chat"]["username"];
     }else{
      $opc["chat_id"]=$mensagem["chat"]["id"]; 
