@@ -27,6 +27,8 @@
 	switch ($opc["texto"]) {
 		case 'start':
 			$start->sendMessage($opc, "Eai Viado Como vai?", $buttons->falas["inline"]);
+			sleep(2);
+			$start->editReply_Markup($opc, $final_markup);
 			break;
 		
 		case "edit":
