@@ -10,7 +10,7 @@
 	$decode = json_decode($receive, true);
 	$mensagem = $decode["message"];
 
-	$opc["chat_id"]=""; //pendente;
+	$opc["chat_id"]=600217408;
 	$opc["texto"] = $mensagem['text'];
 	$opc["message_id"] = $mensagem["message_id"]+2;
 	$opc["reply_markup"] = $mensagem["reply_markup"];
