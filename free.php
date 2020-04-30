@@ -1,5 +1,5 @@
 <?php
-	sleep(4);
+	sleep(2);
 	require "freeClass.php";
 
 	define("BOT_TOKEN", "833445680:AAGjpwc2TMP2RMXv0G04meBpdluL-qRmKsU");
@@ -30,7 +30,7 @@
 	}
 
 	$start->deleteMessage($opc);
-	sleep(2);
+	sleep(1);
         $start->sendMessage($opc, $opc["texto"], $buttons->falas["inline"]);
 	
 ?>
