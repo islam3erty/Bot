@@ -31,6 +31,7 @@
 	$start->deleteMessage($opc);
 	sleep(2);
 	$start->sendMessage($opc, $opc["texto"], $opc["reply_markup"]);
+	die;
 	
 		
 	
