@@ -26,7 +26,7 @@
 	}
 
 	//$start->editMessage($opc, "Mudei a porra toda vei", $buttons->falas["inline"]);
-	$start->sendMessage($opc, $opc["message_id"]);	
+	
 	if($opc["texto"] == "start"){
 		$start->editMessage($opc, "Fuck you");
 	}
