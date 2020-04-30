@@ -23,12 +23,12 @@
 	$start = new Bot();
 	$buttons = new Strings();
 
-	$final_markup = array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
+	array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
 
 	if(isset($decode["callback_query"])){
 		$start->callback($update["callback_query"]);
 	}
 
-	$start->sendMessage($opc, $opc["message_id"], $final_markup);
+	$start->sendMessage($opc, $opc["message_id"], $opc["reply_markup"]);
 	
 ?>
