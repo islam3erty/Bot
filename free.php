@@ -1,6 +1,6 @@
 <?php
 	
-	//sleep(5);
+	sleep(4);
 	require "freeClass.php";
 
 	define("BOT_TOKEN", "833445680:AAGjpwc2TMP2RMXv0G04meBpdluL-qRmKsU");
@@ -26,8 +26,8 @@
 	}
 
 	//$start->editMessage($opc, "Mudei a porra toda vei", $buttons->falas["inline"]);
-	
+		
 	if($opc["texto"] == "start"){
-		$start->editMessage($opc, "Fuck you");
+		$start->editMessage($opc, "Fuck you", $buttons->falas["inline"]);
 	}
 ?>
