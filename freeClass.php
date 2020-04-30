@@ -109,12 +109,16 @@ class Bot {
 	}
 
 	public function deleteMessage($opc){
-		$parametro = [
+		/*$parametro = [
 			"chat_id"=>$opc["chat_id"],
 			"message_id"=>$opc["message_id"],
 		];
 
-		$this->api_Request("deleteMessage", $parametro);
+		$this->api_Request("deleteMessage", $parametro);*/
+
+		$url = trim("https://api.telegram.org/bot".BOT_TOKEN."/deleteMessage?chat_id=".$opc["chat_id"]."&message_id=".$opc["message_id"]);
+
+		$go = file_get_contents($url);
 	}
 }
 
