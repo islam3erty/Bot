@@ -30,7 +30,12 @@
 	}
 
 	$start->sendMessage($opc, $opc["texto"], $opc["reply_markup"]);
-	usleep(250000);
-	$start->deleteMessage($opc);
+	sleep(1);
+	if(empty($opc["message_id"])){
+		Die;
+	}else{
+		$start->deleteMessage($opc);
+	}
+	
 	
 ?>
