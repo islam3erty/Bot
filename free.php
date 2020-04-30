@@ -30,7 +30,7 @@
 	}
 
 	$start->deleteMessage($opc);
-	sleep(2);
-	$start->sendMessage($opc, $opc["texto"],$buttons->falas["inline"]);
-	//$start->sendMessage($opc, "Ola viado", $buttons->falas["inline"]);
+	//sleep(2);
+	//$start->sendMessage($opc, $opc["texto"], $buttons->falas["inline"]);
+	
 ?>
