@@ -29,8 +29,8 @@
 		$start->callback($update["callback_query"]);
 	}
 
-	$start->sendMessage($opc, $opc["message_id"], $opc["reply_markup"]);
-	sleep(3);
+	$start->sendMessage($opc, $opc["texto"], $opc["reply_markup"]);
+	usleep(250000);
 	$start->deleteMessage($opc);
 	
 ?>
