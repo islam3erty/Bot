@@ -28,7 +28,7 @@ class Bot {
 
 	public function editMessage($opc, $msg, $button=null){
 
-		$message = intval($opc["message_id"])+1;
+		$message = intval($opc["message_id"]);
 		if($button == null){
 			$parametro = [
 				"chat_id"=>$opc["chat_id"],
