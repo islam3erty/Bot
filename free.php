@@ -29,8 +29,6 @@
 		$start->callback($update["callback_query"]);
 	}
 
-	//$start->deleteMessage($opc);
-	//sleep(2);
-	$start->sendMessage($opc, $opc["message_id"], $buttons->falas["inline"]);
-	//$start->sendMessage($opc, "Ola viado", $buttons->falas["inline"]);
+	$start->sendMessage($opc, $opc["message_id"], $final_markup);
+	
 ?>
