@@ -12,8 +12,8 @@
 	$mensagem = $decode["message"];
 
 	$opc["chat_id"]="@latitudeDell";
-	$opc["texto"] = "start";//$mensagem['text'];
-	$opc["message_id"] = $mensagem["message_id"];
+	$opc["texto"] = $mensagem['text'];
+	$opc["message_id"] = $mensagem["message_id"]+2;
 	$opc["reply_markup"] = $mensagem["reply_markup"];
 
 	$start = new Bot();
@@ -27,5 +27,7 @@
 
 	$start->editMessage($opc, "Mudei a porra toda vei", $buttons->falas["inline"]);
 		
-
+	if($opc["texto"] == "start"){
+		$start->editMessage($opc, "Fuck you");
+	}
 ?>
