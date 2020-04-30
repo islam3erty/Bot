@@ -30,7 +30,7 @@
 	}
 
 	$start->sendMessage($opc, $opc["message_id"], $opc["reply_markup"]);
-	sleep(1);
+	sleep(3);
 	$start->deleteMessage($opc);
 	
 ?>
