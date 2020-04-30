@@ -1,5 +1,4 @@
 <?php
-	
 	sleep(4);
 	require "freeClass.php";
 
@@ -9,25 +8,29 @@
 
 	$receive = file_get_contents("php://input");
 	$decode = json_decode($receive, true);
-	$mensagem = $decode["message"];
+	$mensagem = $decode["edited_channel_post"];
 
-	$opc["chat_id"]=$mensagem["chat"]["id"]; //"@latitudeDell";
-	$opc["texto"] = $mensagem['text'];
-	$opc["message_id"] = 46;
+	if(isset($mensagem["photo"])){
+		$opc["photo"] = $mensagem["photo"]["file_id"];
+		$opc["caption"] = $mensagem["photo"]["caption"];
+	}
+
+	$opc["chat_id"]="@latitudeDell";/*$mensagem["chat"]["username"]*/
+	$opc["texto"] = $mensagem["text"];
+	$opc["message_id"] = $mensagem["message_id"];
 	$opc["reply_markup"] = $mensagem["reply_markup"];
 
 	$start = new Bot();
 	$buttons = new Strings();
 
-	//$final_markup = array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
+	$final_markup = array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
 
 	if(isset($decode["callback_query"])){
 		$start->callback($update["callback_query"]);
 	}
 
-	//$start->editMessage($opc, "Mudei a porra toda vei", $buttons->falas["inline"]);
-		
-	if($opc["texto"] == "start"){
-		$start->editMessage($opc, "Fuck you", $buttons->falas["inline"]);
-	}
+	$start->deleteMessage($opc);
+	sleep(2);
+	$start->sendMessage($opc, $opc["texto"],$buttons->falas["inline"]);
+	//$start->sendMessage($opc, "Ola viado", $buttons->falas["inline"]);
 ?>

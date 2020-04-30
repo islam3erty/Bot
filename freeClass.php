@@ -106,6 +106,15 @@ class Bot {
 
 		$this->api_Request("editMessageReplyMarkup", $parametro);
 	}
+
+	public function deleteMessage($opc){
+		$parametro = [
+			"chat_id"=>$opc["chat_id"],
+			"message_id"=>$opc["message_id"],
+		];
+
+		$this->api_Request("deleteMessage", $parametro);
+	}
 }
 
 
@@ -116,6 +125,12 @@ class Strings{
 		"inline" => array(
 			"inline_keyboard"=>array(
 				array(array("text"=>"Like", "callback_data"=>"like")),
+			)
+		),
+
+		"back"=>array(
+			"inline_keyboard"=>array(
+				array(array("text"=>"viadagem", "callback_data"=>"How")),
 			)
 		)
 	];
