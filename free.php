@@ -1,5 +1,4 @@
 <?php
-	sleep(2);
 	require "freeClass.php";
 
 	define("BOT_TOKEN", "833445680:AAGjpwc2TMP2RMXv0G04meBpdluL-qRmKsU");
@@ -28,14 +27,11 @@
 	if(isset($decode["callback_query"])){
 		$start->callback($update["callback_query"]);
 	}
-
-	$start->sendMessage($opc, $opc["texto"], $opc["reply_markup"]);
-	sleep(1);
-	if(empty($opc["message_id"])){
-		Die;
-	}else{
-		$start->deleteMessage($opc);
-	}
 	
+	$start->deleteMessage($opc);
+	sleep(2);
+	$start->sendMessage($opc, $opc["texto"], $opc["reply_markup"]);
+	
+		
 	
 ?>
