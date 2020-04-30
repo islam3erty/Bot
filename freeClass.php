@@ -6,6 +6,7 @@ class Bot {
 	public $str;
 	private $ch;
 	function __construct(){
+		set_time_limit(0);
 		$this->str = new Strings();
 		$this->ch = curl_init();
 	}
