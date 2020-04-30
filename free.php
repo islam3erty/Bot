@@ -1,5 +1,5 @@
 <?php
-	sleep(2);
+	
 	require "freeClass.php";
 
 	define("BOT_TOKEN", "833445680:AAGjpwc2TMP2RMXv0G04meBpdluL-qRmKsU");
@@ -15,7 +15,7 @@
 		$opc["caption"] = $mensagem["photo"]["caption"];
 	}
 
-	$opc["chat_id"]="@latitudeDell";/*$mensagem["chat"]["username"]*/
+	$opc["chat_id"]=$mensagem["chat"]["username"];
 	$opc["texto"] = $mensagem["text"];
 	$opc["message_id"] = $mensagem["message_id"];
 	$opc["reply_markup"] = $mensagem["reply_markup"];
@@ -23,14 +23,14 @@
 	$start = new Bot();
 	$buttons = new Strings();
 
-	$final_markup = array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
+	array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
 
 	if(isset($decode["callback_query"])){
 		$start->callback($update["callback_query"]);
 	}
 
 	$start->deleteMessage($opc);
-	sleep(2);
-	$start->sendMessage($opc, $opc["message_id"], $buttons->falas["inline"]);
+	sleep(1);
+	$start->sendMessage($opc, $opc["texto"], $opc["reply_markup"]);
 	
 ?>
