@@ -25,7 +25,7 @@
 		$start->callback($update["callback_query"]);
 	}
 
-	$start->editMessage($opc, "Mudei a porra toda vei", $buttons->falas["inline"]);
+	//$start->editMessage($opc, "Mudei a porra toda vei", $buttons->falas["inline"]);
 		
 	if($opc["texto"] == "start"){
 		$start->editMessage($opc, "Fuck you");
