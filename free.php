@@ -11,7 +11,7 @@
 	$decode = json_decode($receive, true);
 	$mensagem = $decode["message"];
 
-	$opc["chat_id"]=$opc["chat_id"] //"@latitudeDell";
+	$opc["chat_id"]=$opc["chat_id"]; //"@latitudeDell";
 	$opc["texto"] = $mensagem['text'];
 	$opc["message_id"] = $mensagem["message_id"];
 	$opc["reply_markup"] = $mensagem["reply_markup"];
