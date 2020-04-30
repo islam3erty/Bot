@@ -13,7 +13,7 @@
 
 	$opc["chat_id"]="@latitudeDell";
 	$opc["texto"] = $mensagem['text'];
-	$opc["message_id"] = $mensagem["message_id"]+2;
+	$opc["message_id"] = $mensagem["message_id"];
 	$opc["reply_markup"] = $mensagem["reply_markup"];
 
 	$start = new Bot();

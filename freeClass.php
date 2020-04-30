@@ -28,12 +28,12 @@ class Bot {
 
 	public function editMessage($opc, $msg, $button=null){
 
-
+		$message = intval($opc["message_id"])+1;
 		if($button == null){
 			$parametro = [
 				"chat_id"=>$opc["chat_id"],
 				"parse_mode"=>"Markdown",
-				"message_id"=>$opc["message_id"],
+				"message_id"=>$message,
 				"text"=>$msg,
 			];
 		}else{
@@ -41,7 +41,7 @@ class Bot {
 			$parametro = [
 				"chat_id"=>$opc["chat_id"],
 				"parse_mode"=>"Markdown",
-				"message_id"=>$opc["message_id"],
+				"message_id"=>$message,
 				"text"=>$msg,
 				"reply_markup"=>$button,
 			];
