@@ -5,6 +5,6 @@
 	@fwrite($fp, "Contact Me");
 	@fclose($fp);
 	echo "Complete";*/
-	echo $name;
+	echo file_get_contents($name);
 	
 ?>
