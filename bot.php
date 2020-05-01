@@ -9,12 +9,7 @@
     $conteudo = file_get_contents("php://input");
     $update = json_decode($conteudo, true);
     $mensagem = $update["message"];
-    $opc;
-    if($mensagem["chat"]["type"] == "channel"){
-      $opc["chat_id"] = "@latitudeDell";
-    }else{
-     $opc["chat_id"]="@latitudeDell";
-    }
+    $opc = [];
     $opc["texto"]=$mensagem["text"];
     $opc["message_id"]=$mensagem["message_id"];
     $opc["user_id"]= $mensagem["from"]["id"];
@@ -35,7 +30,7 @@
     if($opc['texto'] === "/start"){
 
         $motor->sendMessage($opc, $strings->falas["welcome"], $strings->falas["menu"]);
-        $motor->sendMessage($opc, $opc["chat_id"]);
+       
     }
     elseif($opc['texto'] === '/porra'){
 
@@ -49,7 +44,7 @@
 
         if($sugestion == ''){
 
-            $motor->sendMessage($opc, 'Comando Desconhecido, se a intenção foi deixar uma sugestão por favor abra as ferramentas e vá em sugestões. Caso ja esteja em sugestões lembro-lhe que só é possível deixar uma segestão de cada vez, se quiser deixar outra sugestão terá que voltar e entrar novamente em sugestões para dar outra sugestão ou opinião.', $strings->falas['primeira']);
+            $motor->sendMessage($opc, 'Unknow Command, if the intention was to leave a suggestion please open it as tools and go to suggestions. If you are in suggestions, you can leave a new question at a time, if you want to leave another suggestion and go back and enter suggestions again for another suggestion or opinion.', $strings->falas['primeira']);
         }
         
     }
