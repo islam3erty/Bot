@@ -41,7 +41,7 @@
 			$buttons->setButtons($novo, "text");
 			$start->sendMessage($opc, "Button Text Changed");
 
-		}elseif(substr($opc["texto"], 0, 4) == "/txt"){
+		}elseif(substr($opc["texto"], 0, 4) == "/url"){
 			
 			$novo = trim(substr($opc["texto"], 4));
 			$buttons->setButtons($novo, "url");
