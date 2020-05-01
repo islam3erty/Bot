@@ -35,7 +35,7 @@
     }
     elseif($opc['texto'] === '/porra'){
 
-        $motor->sendMessage($opc, $strings->falas['categorias']);
+        $motor->sendMessage($opc, $motor->getInfo('query'.$opc['chat_id']), $strings->falas["primeira"]);
     
     }elseif($opc['texto'] != '/start' && $sugestion != ''){
 
