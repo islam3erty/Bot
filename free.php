@@ -89,7 +89,7 @@
 
 		}elseif(isset($mensagem["voice"])){
 
-			$opc["file"] = $mensagem["voice"][0]["file_id"];
+			$opc["file"] = $mensagem["voice"]["file_id"];
 			$opc["caption"] = $mensagem["voice"]["caption"];
 
 			$start->deleteMessage($opc);

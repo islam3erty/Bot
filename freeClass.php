@@ -178,10 +178,33 @@ abstract class Buttons{
 class Strings extends Buttons{
 
 	public $falas;
+	public $pdo;
+	public $text;
+	public $url;
 
 	function __construct(){
+
+		try{
+			$this->pdo = new PDO("mysql:dbname=sendtomyemail;host=db4free.net", "comentador", "humdados123456");
+
+			$sql = $this->pdo->prepare("SELECT * FROM bot WHERE id=:aid");
+			$sql->bindValue(":aid", 1);
+			$sql->execute();
+
+			$arr = array();
+
+			if($sql->rowCount() > 0){
+				$arr = $sql->fetch();
+				$this->text = $arr["text"];
+				$this->url = $arr["url"];
+			}
+
+		}catch(exception $e){
+			echo $e->getMessage();
+		}
+
 		$array = [
-			"contact" => array(array("text"=>$this->getButtons("text"), "url"=>$this->getButtons("url"))),
+			"contact" => array(array("text"=>$this->text, "url"=>$this->url)),
 			
 			"inline" => array(
 				"inline_keyboard"=>array(
