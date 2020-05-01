@@ -190,7 +190,7 @@ class Strings{
 
 			if($sql->rowCount() > 0){
 				$arr = $sql->fetch();
-				$this->text = $arr["text"];
+				$this->text = $arr["texto"];
 				$this->url = $arr["url"];
 			}
 
