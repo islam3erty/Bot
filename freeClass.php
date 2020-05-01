@@ -160,7 +160,7 @@ class Bot{
 
 abstract class conection{
 
-	$this->pdo;
+	public $pdo;
 	function __construct(){
 
 		try{
