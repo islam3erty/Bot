@@ -5,6 +5,10 @@
 	@fwrite($fp, "Contact Me");
 	@fclose($fp);
 	echo "Complete";*/
-	echo file_get_contents($name);
+	if(file_exists($name)){
+		echo "Existe bro";
+	}else{
+		echo "Fuck you bro";
+	}
 	
 ?>
