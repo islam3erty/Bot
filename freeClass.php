@@ -213,7 +213,7 @@ class Strings{
 				)
 			),
 
-			"sintaxe" => "*Sintax Error. Please follow the rules of the below sintax: \n ```/change Contact https://t.me/ContactBetuosoBot```*",
+			"sintaxe" => "*Sintax Error. Please follow the rules of the below sintax: \n `/change Contact https://t.me/ContactBetuosoBot`*",
 		];
 
 		$this->falas = $array;
