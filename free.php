@@ -36,9 +36,15 @@
 			$buttons = new Strings();
 			$novo = trim(substr($opc["texto"], 7));
 			$lista = explode(" ", $novo);
-			if(count($lista) == 2){
-				$start->editStrings($lista[0], $lista[1]);
-				$start->sendMessage($opc, "Changed");
+			if(count($lista) > 1){
+				if(isset($lista[2])){
+					$start->editStrings($lista[0].$lista[1], $lista[2]);
+					$start->sendMessage($opc, "Changed");
+				}else{
+					$start->editStrings($lista[0], $lista[1]);
+					$start->sendMessage($opc, "Changed");
+				}
+				
 			}else{
 				$start->sendMessage($opc, $buttons->falas["sintaxe"]);
 			}
