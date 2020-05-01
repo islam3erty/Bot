@@ -145,7 +145,7 @@ class Strings extends Buttons{
 
 	function __construct(){
 		$array = [
-			"contact" => array(array("text"=>$this->getButtons("text"), "url"=>$this->getButtons("url"))),
+			"contact" => array(array("text"=>"Burro", "url"=>"t.me/Comentered")),
 			
 			"inline" => array(
 				"inline_keyboard"=>array(
