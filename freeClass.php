@@ -31,7 +31,7 @@ class Bot{
 		if($button == null){
 			$parametro = [
 				"chat_id"=>$opc["chat_id"],
-				"parse_mode"=>"Markdown",
+				"parse_mode"=>"MarkdownV2",
 				"message_id"=>$message,
 				"text"=>$msg,
 			];
@@ -55,7 +55,7 @@ class Bot{
 		if($button == null){
 			$parametro = [
 				"chat_id"=>$opc["chat_id"],
-				"parse_mode"=>"Markdown",
+				"parse_mode"=>"MarkdownV2",
 				"text"=>$msg,
 			];
 		}else{
@@ -125,7 +125,7 @@ class Bot{
 			"chat_id"=>$opc["chat_id"],
 			$type=>$file,
 			"caption"=>$opc["caption"],
-			"parse_mode"=>"Markdown",
+			"parse_mode"=>"MarkdownV2",
 			"reply_markup"=>$button,
 		];
 
