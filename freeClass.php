@@ -146,8 +146,11 @@ class Bot{
 				$metodo = "sendAnimation";
 				break;
 			case 'Voice':
-					$metodo = "sendVoice";
-					break;	
+				$metodo = "sendVoice";
+				break;
+			case "photo":
+				$metodo = "sendPhoto";
+				break;	
 		}
 
 		$this->api_Request($metodo, $parametro);
