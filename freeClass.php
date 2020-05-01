@@ -158,51 +158,30 @@ class Bot{
 
 }
 
-abstract class Buttons{
+abstract class conection{
 
-	public function setButtons($buttonName, $fileName){
+	$this->pdo;
+	function __construct(){
 
-		$name = md5($fileName).".txt";
-		$fp = fopen($name, "w+");
-		@fwrite($fp, $buttonName);
-		fclose($fp);
-		
+		try{
+			$this->pdo = new PDO("mysql:dbname=sendtomyemail;host=db4free.net", "comentador", "humdados123456");
+		}catch(exception $e){
+			echo $e->getMessage();
+		}
 	}
-
-	public function getButtons($file, $prefixo = ".txt"){
-		return file_get_contents(md5($file).$prefixo);
-	}
-
 }
 
-class Strings extends Buttons{
+class Strings extends conection{
 
 	public $falas;
-	public $pdo;
 	public $text;
 	public $url;
 
 	function __construct(){
 
-		try{
-			$this->pdo = new PDO("mysql:dbname=sendtomyemail;host=db4free.net", "comentador", "humdados123456");
+		parent::__construct();
 
-			$sql = $this->pdo->prepare("SELECT * FROM bot WHERE id=:aid");
-			$sql->bindValue(":aid", 1);
-			$sql->execute();
-
-			$arr = array();
-
-			if($sql->rowCount() > 0){
-				$arr = $sql->fetch();
-				$this->text = $arr["text"];
-				$this->url = $arr["url"];
-			}
-
-		}catch(exception $e){
-			echo $e->getMessage();
-		}
-
+		$this->setStrings();
 		$array = [
 			"contact" => array(array("text"=>$this->text, "url"=>$this->url)),
 			
@@ -221,6 +200,23 @@ class Strings extends Buttons{
 
 		$this->falas = $array;
 	}
+
+	public function setStrings(){
+
+		$sql = $this->pdo->prepare("SELECT * FROM bot WHERE id=:aid");
+		$sql->bindValue(":aid", 1);
+		$sql->execute();
+
+		$arr = array();
+
+		if($sql->rowCount() > 0){
+			$arr = $sql->fetch();
+			$this->text = $arr["text"];
+			$this->url = $arr["url"];
+		}
+
+	}
+
 }
 
 
