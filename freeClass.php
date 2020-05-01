@@ -115,7 +115,6 @@ class Bot{
 			"chat_id"=>$opc["chat_id"],
 			"message_id"=>$opc["message_id"],
 		];
-
 		$this->api_Request("deleteMessage", $parametro);*/
 
 		$url = trim("https://api.telegram.org/bot".BOT_TOKEN."/deleteMessage?chat_id=".$opc["chat_id"]."&message_id=".$opc["message_id"]);
@@ -148,7 +147,7 @@ class Strings extends Buttons{
 
 	function __construct(){
 		$array = [
-			"contact" => array(array("text"=>"Burro", "url"=>"https://t.me/Comentered")),
+			"contact" => array(array("text"=>$this->getButtons("text"), "url"=>$this->getButtons("url"))),
 			
 			"inline" => array(
 				"inline_keyboard"=>array(
