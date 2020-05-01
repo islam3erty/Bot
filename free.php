@@ -62,7 +62,7 @@
 
 		}elseif(isset($mensagem["document"])){
 
-			$opc["file"] = $mensagem["document"]["file_unique_id"];
+			$opc["file"] = $mensagem["document"]["file_id"];
 			$opc["caption"] = $mensagem["document"]["caption"];
 
 			$start->deleteMessage($opc);
