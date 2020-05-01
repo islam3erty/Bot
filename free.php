@@ -15,7 +15,7 @@
 		$opc["caption"] = $mensagem["photo"]["caption"];
 	}
 
-	$opc["chat_id"]="@".$mensagem["chat"]["username"]
+	$opc["chat_id"]="@".$mensagem["chat"]["username"];
 	$opc["texto"] = $mensagem["text"];
 	$opc["message_id"] = $mensagem["message_id"];
 	$opc["reply_markup"] = $mensagem["reply_markup"];
