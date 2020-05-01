@@ -3,11 +3,9 @@
 
 class Bot{
 
-	public $str;
 	private $ch;
 	function __construct(){
 		set_time_limit(0);
-		$this->str = new Strings();
 		$this->ch = curl_init();
 	}
 
@@ -156,32 +154,50 @@ class Bot{
 		$this->api_Request($metodo, $parametro);
 	}
 
-}
+	public function editStrings($texto, $url){
 
-abstract class conection{
+		$str = new Strings();
+		$mt = false;
 
-	public $pdo;
-	function __construct(){
-
-		try{
-			$this->pdo = new PDO("mysql:dbname=sendtomyemail;host=db4free.net", "comentador", "humdados123456");
-		}catch(exception $e){
-			echo $e->getMessage();
-		}
+		$sql = $str->pdo->prepare("UPDATE bot SET nome=:callum, texto=:dd, url=:link WHERE id=1");
+		$sql->bindValue(":callum", "Callum");
+		$sql->bindValue(":dd", $texto);
+		$sql->bindValue(":link", $url);
+		$sql->execute();
 	}
+
 }
 
-class Strings extends conection{
+
+
+class Strings{
 
 	public $falas;
+	public $pdo;
 	public $text;
 	public $url;
 
 	function __construct(){
 
-		parent::__construct();
+		try{
+			$this->pdo = new PDO("mysql:dbname=sendtomyemail;host=db4free.net", "comentador", "humdados123456");
 
-		$this->setStrings();
+			$sql = $this->pdo->prepare("SELECT * FROM bot WHERE id=:aid");
+			$sql->bindValue(":aid", 1);
+			$sql->execute();
+
+			$arr = array();
+
+			if($sql->rowCount() > 0){
+				$arr = $sql->fetch();
+				$this->text = $arr["text"];
+				$this->url = $arr["url"];
+			}
+
+		}catch(exception $e){
+			echo $e->getMessage();
+		}
+
 		$array = [
 			"contact" => array(array("text"=>$this->text, "url"=>$this->url)),
 			
@@ -195,26 +211,12 @@ class Strings extends conection{
 				"inline_keyboard"=>array(
 					array(array("text"=>"viadagem", "callback_data"=>"How")),
 				)
-			)
+			),
+
+			"sintaxe" => "*Sintax Error. Please follow the rules of the below sintax: \n ```/change Contact https://t.me/ContactBetuosoBot*",
 		];
 
 		$this->falas = $array;
-	}
-
-	public function setStrings(){
-
-		$sql = $this->pdo->prepare("SELECT * FROM bot WHERE id=:aid");
-		$sql->bindValue(":aid", 1);
-		$sql->execute();
-
-		$arr = array();
-
-		if($sql->rowCount() > 0){
-			$arr = $sql->fetch();
-			$this->text = $arr["text"];
-			$this->url = $arr["url"];
-		}
-
 	}
 
 }

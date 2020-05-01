@@ -35,18 +35,17 @@
 	
 	if($opc["chat_type"] == "private"){
 
-		if(substr($opc["texto"], 0, 4) == "/txt"){
+		if(substr($opc["texto"], 0, 7) == "/change"){
 
-			$novo = trim(substr($opc["texto"], 4));
-			$buttons->setButtons($novo, "text");
-			$start->sendMessage($opc, "Button Text Changed");
+			$novo = trim(substr($opc["texto"], 7));
+			$lista = explode(" ", $novo);
+			if(count($lista) == 2){
+				$start->editStrings($lista[0], $lista[1]);
+				$start->sendMessage($opc, "Changed");
+			}else{
+				$start->sendMessage($opc, $buttons->falas["sintaxe"]);
+			}
 
-		}elseif(substr($opc["texto"], 0, 4) == "/url"){
-			
-			$novo = trim(substr($opc["texto"], 4));
-			$buttons->setButtons($novo, "url");
-			$start->sendMessage($opc, "URL Changed");
-		}
 	}
 	
 	if($opc["chat_type"] == "channel"){
