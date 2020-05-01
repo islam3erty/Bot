@@ -3,7 +3,6 @@
 	require "freeClass.php";
 
 	$start = new Bot();
-	$buttons = new Strings();
 
 	define("BOT_TOKEN", "833445680:AAGjpwc2TMP2RMXv0G04meBpdluL-qRmKsU");
 	define("API_URL", "https://api.telegram.org/bot".BOT_TOKEN."/");
@@ -27,8 +26,6 @@
 	$opc["message_id"] = $mensagem["message_id"];
 	$opc["chat_type"] = $mensagem["chat"]["type"];
 
-	array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
-
 	if(isset($decode["callback_query"])){
 		$start->callback($update["callback_query"]);
 	}
@@ -36,7 +33,7 @@
 	if($opc["chat_type"] == "private"){
 
 		if(substr($opc["texto"], 0, 7) == "/change"){
-
+			$buttons = new Strings();
 			$novo = trim(substr($opc["texto"], 7));
 			$lista = explode(" ", $novo);
 			if(count($lista) == 2){
@@ -50,7 +47,8 @@
 	}
 	
 	if($opc["chat_type"] == "channel"){
-
+		$buttons = new Strings();
+		array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
 		if(isset($mensagem["photo"])){
 
 			$opc["file"] = $mensagem["photo"][0]["file_id"];

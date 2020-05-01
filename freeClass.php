@@ -31,7 +31,7 @@ class Bot{
 		if($button == null){
 			$parametro = [
 				"chat_id"=>$opc["chat_id"],
-				"parse_mode"=>"MarkdownV2",
+				"parse_mode"=>"Markdown",
 				"message_id"=>$message,
 				"text"=>$msg,
 			];
@@ -125,7 +125,7 @@ class Bot{
 			"chat_id"=>$opc["chat_id"],
 			$type=>$file,
 			"caption"=>$opc["caption"],
-			"parse_mode"=>"MarkdownV2",
+			"parse_mode"=>"Markdown",
 			"reply_markup"=>$button,
 		];
 
@@ -213,7 +213,7 @@ class Strings{
 				)
 			),
 
-			"sintaxe" => "*Sintax Error. Please follow the rules of the below sintax: \n `/change Contact https://t.me/ContactBetuosoBot`*",
+			"sintaxe" => "`Sintax Error. Please follow the rules of the below sintax: \n /change Contact https://t.me/ContactBetuosoBot`",
 		];
 
 		$this->falas = $array;
