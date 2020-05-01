@@ -38,7 +38,7 @@
 			$lista = explode(" ", $novo);
 			if(count($lista) > 1){
 				if(isset($lista[2])){
-					$start->editStrings($lista[0].$lista[1], $lista[2]);
+					$start->editStrings($lista[0]." ".$lista[1], $lista[2]);
 					$start->sendMessage($opc, "Changed");
 				}else{
 					$start->editStrings($lista[0], $lista[1]);
