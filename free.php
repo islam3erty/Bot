@@ -46,6 +46,7 @@
 				$start->sendMessage($opc, $buttons->falas["sintaxe"]);
 			}
 
+		}
 	}
 	
 	if($opc["chat_type"] == "channel"){
