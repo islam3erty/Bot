@@ -1,5 +1,5 @@
 <?php
-	$name = md5("text").".txt";
+	$name = md5("url").".txt";
 
 	$fp = fopen($name, "w+");
 	@fwrite($fp, "Contact Me");
