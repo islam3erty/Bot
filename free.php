@@ -96,12 +96,7 @@
 
 		}elseif(isset($mensagem["voice"])){
 
-			$opc["file"] = $mensagem["voice"]["file_id"];
-			$opc["caption"] = $mensagem["voice"]["caption"];
-
-			$start->deleteMessage($opc);
-			sleep(1);
-			$start->sendFile($opc, $opc["file"], "voice", $opc["reply_markup"]);
+			die;
 
 		}elseif(isset($mensagem["animation"])){
 
