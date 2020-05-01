@@ -24,22 +24,14 @@
 	$start = new Bot();
 	$buttons = new Strings();
 
-	//array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
+	array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
 
 	if(isset($decode["callback_query"])){
 		$start->callback($update["callback_query"]);
 	}
 
-	if($opc["texto"] == "/porra"){
-		$start->sendMessage($opc, $Strings->getButton("text"));
-	}else{
-		$buttons->setButtons("Message Me", "text");
-		$buttons->setButtons("t.me/Comentered", "url");
-	}
-
-
-	//$start->deleteMessage($opc);
-	//sleep(1);
-	//$start->sendMessage($opc, $opc["texto"], $opc["reply_markup"]);
+	$start->deleteMessage($opc);
+	sleep(1);
+	$start->sendMessage($opc, $opc["texto"], $opc["reply_markup"]);
 	
 ?>
