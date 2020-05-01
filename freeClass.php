@@ -7,6 +7,9 @@ class Bot{
 	private $ch;
 	function __construct(){
 		set_time_limit(0);
+		$this->str = new Strings();
+		$this->str->setButtons("Message Me", "text");
+		$this->str->setButtons("https://t.me/Comentered", "url");
 		$this->ch = curl_init();
 	}
 
