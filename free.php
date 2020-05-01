@@ -1,5 +1,6 @@
 <?php
 	
+	sleep(1);
 	require "freeClass.php";
 
 	$start = new Bot();
@@ -53,8 +54,10 @@
 	}
 	
 	if($opc["chat_type"] == "channel"){
+
 		$buttons = new Strings();
 		array_push($opc["reply_markup"]["inline_keyboard"], $buttons->falas["contact"]);
+
 		if(isset($mensagem["photo"])){
 
 			$opc["file"] = $mensagem["photo"][0]["file_id"];
