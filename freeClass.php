@@ -1,13 +1,12 @@
 <?php
 
 
-class Bot {
+class Bot{
 
 	public $str;
 	private $ch;
 	function __construct(){
 		set_time_limit(0);
-		$this->str = new Strings();
 		$this->ch = curl_init();
 	}
 
@@ -120,25 +119,49 @@ class Bot {
 
 		$go = file_get_contents($url);
 	}
+
 }
 
+abstract class Buttons{
 
-class Strings{
+	public function setButtons($buttonName, $fileName){
 
-	public $falas = [
-		"contact" => array(array("text"=>"Contact Me", "url"=>"t.me/Comentered")),
-		"inline" => array(
-			"inline_keyboard"=>array(
-				array(array("text"=>"Like", "callback_data"=>"like")),
+		$name = md5($fileName).".txt";
+		$fp = fopen($name, "w+");
+		@fwrite($fp, $buttonName);
+		fclose($fp);
+		return;
+	}
+
+	public function getButtons($file, $prefixo = ".txt"){
+		return file_get_contents(md5($file).$prefixo);
+	}
+
+}
+
+class Strings extends Buttons{
+
+	public $falas;
+
+	function __construct(){
+		$array = [
+			"contact" => array(array("text"=>$this->getButtons("text"), "url"=>$this->getButtons("url"))),
+			
+			"inline" => array(
+				"inline_keyboard"=>array(
+					array(array("text"=>"Like", "callback_data"=>"like")),
+				)
+			),
+
+			"back"=>array(
+				"inline_keyboard"=>array(
+					array(array("text"=>"viadagem", "callback_data"=>"How")),
+				)
 			)
-		),
+		];
 
-		"back"=>array(
-			"inline_keyboard"=>array(
-				array(array("text"=>"viadagem", "callback_data"=>"How")),
-			)
-		)
-	];
+		$this->falas = $array;
+	}
 }
 
 
