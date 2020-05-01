@@ -130,7 +130,7 @@ abstract class Buttons{
 		$fp = fopen($name, "w+");
 		@fwrite($fp, $buttonName);
 		fclose($fp);
-		return;
+		
 	}
 
 	public function getButtons($file, $prefixo = ".txt"){
@@ -145,7 +145,7 @@ class Strings extends Buttons{
 
 	function __construct(){
 		$array = [
-			"contact" => array(array("text"=>"Burro", "url"=>"t.me/Comentered")),
+			"contact" => array(array("text"=>"Burro", "url"=>"https://t.me/Comentered")),
 			
 			"inline" => array(
 				"inline_keyboard"=>array(
