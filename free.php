@@ -33,8 +33,7 @@
 	if($opc["texto"]== "start"){
 		$start->sendMessage($opc, $buttons->getButtons("text"));
 	}
-	$buttons->setButtons("Message Me", "text");
-	$buttons->setButtons("https://t.me/Comentered", "url");
+	
 
 	$start->deleteMessage($opc);
 	sleep(1);
