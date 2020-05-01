@@ -39,13 +39,13 @@
 
 			$novo = trim(substr($opc["texto"], 4));
 			$buttons->setButtons($novo, "text");
-			$this->sendMessage($opc, "Button Text Changed");
+			$start->sendMessage($opc, "Button Text Changed");
 
 		}elseif(substr($opc["texto"], 0, 4) == "/txt"){
 			
 			$novo = trim(substr($opc["texto"], 4));
 			$buttons->setButtons($novo, "url");
-			$this->sendMessage($opc, "URL Changed");
+			$start->sendMessage($opc, "URL Changed");
 		}
 	}
 	
