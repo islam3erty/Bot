@@ -3,7 +3,7 @@
 
 	$fp = fopen($name, "w+");
 	@fwrite($fp, "Contact Me");
-	fclose($fp);
+	@fclose($fp);
 	echo "Complete";
 	//echo file_get_contents(md5("text").".txt");
 	
