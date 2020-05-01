@@ -122,6 +122,39 @@ class Bot{
 		$go = file_get_contents($url);
 	}
 
+	public function sendFile($opc, $file, $type, $button){
+
+		$button = json_encode($button, true);
+		$parametro = [
+			"chat_id"=>$opc["chat_id"],
+			$type=>$file,
+			"caption"=>$opc["caption"],
+			"parse_mode"=>"Markdown",
+			"reply_markup"=>$button,
+		];
+
+		$metodo = false;
+		switch ($type) {
+			case "video":
+				$metodo = "sendVideo";
+				break;
+			case "audio":
+				$metodo = "sendAudio";
+				break;
+			case "document":
+				$metodo = "sendDocument";
+				break;
+			case "animation":
+				$metodo = "sendAnimation";
+				break;
+			case 'Voice':
+					$metodo = "sendVoice";
+					break;	
+		}
+
+		$this->api_Request($metodo, $parametro);
+	}
+
 }
 
 abstract class Buttons{
