@@ -57,7 +57,6 @@ class Bot{
 				"chat_id"=>$opc["chat_id"],
 				"parse_mode"=>"MarkdownV2",
 				"text"=>$msg,
-				"disable_notification"=true,
 			];
 		}else{
 			$button = json_encode($button, true);
@@ -128,7 +127,6 @@ class Bot{
 			"caption"=>$opc["caption"],
 			"parse_mode"=>"Markdown",
 			"reply_markup"=>$button,
-			"disable_notification"=true,
 		];
 
 		$metodo = false;
