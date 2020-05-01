@@ -71,7 +71,7 @@
 
 		}elseif(isset($mensagem["video"])){
 
-			$opc["file"] = $mensagem["video"]["file_unique_id"];
+			$opc["file"] = $mensagem["video"]["file_id"];
 			$opc["caption"] = $mensagem["video"]["caption"];
 
 			$start->deleteMessage($opc);
@@ -80,8 +80,8 @@
 
 		}elseif(isset($mensagem["audio"])){
 
-			$opc["file"] = $mensagem["photo"]["file_unique_id"];
-			$opc["caption"] = $mensagem["photo"]["caption"];
+			$opc["file"] = $mensagem["audio"]["file_id"];
+			$opc["caption"] = $mensagem["audio"]["caption"];
 
 			$start->deleteMessage($opc);
 			sleep(1);
@@ -89,8 +89,8 @@
 
 		}elseif(isset($mensagem["voice"])){
 
-			$opc["file"] = $mensagem["photo"]["file_unique_id"];
-			$opc["caption"] = $mensagem["photo"]["caption"];
+			$opc["file"] = $mensagem["voice"]["file_id"];
+			$opc["caption"] = $mensagem["voice"]["caption"];
 
 			$start->deleteMessage($opc);
 			sleep(1);
@@ -98,8 +98,8 @@
 
 		}elseif(isset($mensagem["animation"])){
 
-			$opc["file"] = $mensagem["photo"]["file_unique_id"];
-			$opc["caption"] = $mensagem["photo"]["caption"];
+			$opc["file"] = $mensagem["animation"]["file_id"];
+			$opc["caption"] = $mensagem["animation"]["caption"];
 
 			$start->deleteMessage($opc);
 			sleep(1);
