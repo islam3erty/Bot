@@ -31,7 +31,7 @@
 	}
 	
 	if($opc["texto"]== "start"){
-		$start->sendMessage($opc, $buttons->getButtons("url"));
+		$start->sendMessage($opc, $buttons->getButtons("text"));
 	}
 	
 
