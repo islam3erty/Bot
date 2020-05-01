@@ -1,10 +1,10 @@
 <?php
 	$name = md5("text").".txt";
 
-	/*$fp = fopen($name, "w+");
+	$fp = fopen($name, "w+");
 	@fwrite($fp, "Contact Me");
 	@fclose($fp);
-	echo "Complete";*/
+	sleep(1);
 	if(file_exists($name)){
 		echo "Existe bro";
 	}else{
