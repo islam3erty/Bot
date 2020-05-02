@@ -18,7 +18,7 @@
 		$opc["chat_id"] = $mensagem["chat"]["id"];
 	}else{
 		$mensagem = $decode["edited_channel_post"];
-		$opc["chat_id"]="@".$mensagem["chat"]["username"];
+		$opc["chat_id"]="@".$mensagem["chat"]["id"];
 		$opc["reply_markup"] = $mensagem["reply_markup"];
 	}
 
